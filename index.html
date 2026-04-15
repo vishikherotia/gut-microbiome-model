@@ -528,7 +528,7 @@ input[type=range]{width:100%;accent-color:var(--moss);}
     <div class="hero-text">
       <div class="hero-eyebrow">Computational Biology &mdash; Hitee &middot; Vishi &middot; Shreya &mdash; 2026</div>
       <h1 class="hero-h1">Cross-feeding dynamics of<br><em>B. thetaiotaomicron</em> &amp; <em>B. breve</em><br>under real dietary inputs</h1>
-      <p class="hero-sub">How do daily fluctuations in a university canteen menu reshape the competitive balance of gut microbes in the proximal colon?</p>
+      <p class="hero-sub">How do daily fluctuations in dietary fiber from mess menu reshape the competitive balance of gut microbes in the proximal colon?</p>
       <div class="hero-rule"></div>
     </div>
     <div class="scroll-prompt">scroll to explore</div>
@@ -561,28 +561,89 @@ input[type=range]{width:100%;accent-color:var(--moss);}
     </div>
 
     <div class="ss flip" data-obs>
-      <div class="ss-text">
-        <div class="ss-n">02 &mdash; The washout problem</div>
-        <h2 class="ss-title">How do bacteria survive the flow?</h2>
-        <div class="ss-body">
-          <p>From a fluid dynamics perspective, the gut is a tube with constant forward flow. If bacteria were simply suspended in this flow, they would be expelled before they could reproduce &mdash; a phenomenon termed <em>washout</em>. In the proximal colon, flow velocity reaches ~20 &mu;m/s.<a class="cite" onclick="gotoRef(4)">[4]</a></p>
-          <p>Cremer et al.<a class="cite" onclick="gotoRef(4)">[4]</a> showed that peristaltic mixing is essential for bacterial survival, allowing cells to be retained against forward flow. The system collapses into one of three regimes determined by the dimensionless ratio $\alpha = v^2/(D\lambda_0)$: washout, chemostat, or spatially graded.</p>
-          <p>Salari &amp; Cremer<a class="cite" onclick="gotoRef(5)">[5]</a> extended this to include the cecum as a reservoir that repopulates the colon after meal-driven washout events, and showed that diurnal volume dynamics create daily population bottlenecks of $N_e \sim 10^7$&#8211;$10^{11}$ cells.</p>
-        </div>
+  <div class="ss-text">
+    <div class="ss-n">02 &mdash; Model framework</div>
+    <h2 class="ss-title">A biophysical model of growth, flow, and transport</h2>
+    
+    <div class="ss-body">
+
+      <p>
+        To understand microbial dynamics in the proximal colon, 
+        <strong>Salari & Cremer</strong><a class="cite" onclick="gotoRef(5)">[5]</a> 
+        model the gut as a flowing, reactive system where microbial growth is tightly coupled to nutrient transport and fluid dynamics.
+      </p>
+
+      <p>
+        The system is described by coupled partial differential equations capturing:
+        advection (flow), diffusion (mixing), and growth (nutrient-limited).
+      </p>
+
+      <div class="equation">
+        $$
+        \frac{\partial c_b}{\partial t}
+        = \nabla \cdot (D \nabla c_b - u c_b)
+        + \lambda \frac{c_n}{c_n + K} c_b
+        $$
       </div>
-      <div class="ss-vis" style="flex-direction:column;gap:.75rem;padding:1.25rem;">
-        <div class="img-upload-slot" id="slot-img2">
-          <div class="iup-inner">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="color:var(--moss3)"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-            <span class="iup-label">Upload figure from paper</span>
-            <span class="iup-hint">Cremer minigut setup, washout diagram, or flow regime figure</span>
-            <input type="file" accept="image/*" onchange="loadSlot(2,this)">
-            <button class="iup-btn" onclick="this.previousElementSibling.click()">Choose image</button>
-          </div>
-        </div>
-        <img id="slot-img2-img" style="display:none;width:100%;border-radius:3px;max-height:280px;object-fit:contain;">
+
+      <p>
+        <strong>Microbial dynamics:</strong>  
+        transport by flow + diffusion, with growth governed by Monod kinetics.
+      </p>
+
+      <div class="equation">
+        $$
+        \frac{\partial c_n}{\partial t}
+        = \nabla \cdot (D \nabla c_n - u c_n)
+        - \frac{\lambda}{Y} \frac{c_n}{c_n + K} c_b
+        $$
+      </div>
+
+      <p>
+        <strong>Nutrient dynamics:</strong>  
+        nutrients are transported similarly but are depleted by microbial consumption.
+      </p>
+
+      <div class="equation">
+        $$
+        \rho \left( \frac{\partial u}{\partial t} + (u \cdot \nabla)u \right)
+        = -\nabla p + \mu \nabla^2 u
+        $$
+      </div>
+
+      <p>
+        <strong>Flow:</strong>  
+        fluid motion drives transport and is modeled using hydrodynamics.
+      </p>
+
+      <h3>Key assumptions</h3>
+      <ul>
+        <li>Pipe-like geometry of the proximal colon</li>
+        <li>No bacterial attachment to intestinal walls</li>
+        <li>Mixing approximated as diffusion</li>
+        <li>Growth limited by nutrient availability (Monod kinetics)</li>
+      </ul>
+
+    </div>
+  </div>
+
+  <div class="ss-vis" style="flex-direction:column;gap:.75rem;padding:1.25rem;">
+    <div class="img-upload-slot" id="slot-img2">
+      <div class="iup-inner">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="color:var(--moss3)">
+          <rect x="3" y="3" width="18" height="18" rx="2"/>
+          <circle cx="8.5" cy="8.5" r="1.5"/>
+          <polyline points="21 15 16 10 5 21"/>
+        </svg>
+        <span class="iup-label">Upload figure from paper</span>
+        <span class="iup-hint">Fig. 1: model schematic (recommended)</span>
+        <input type="file" accept="image/*" onchange="loadSlot(2,this)">
+        <button class="iup-btn" onclick="this.previousElementSibling.click()">Choose image</button>
       </div>
     </div>
+    <img id="slot-img2-img" style="display:none;width:100%;border-radius:3px;max-height:280px;object-fit:contain;">
+  </div>
+</div>
 
     <div class="ss" data-obs>
       <div class="ss-text">
