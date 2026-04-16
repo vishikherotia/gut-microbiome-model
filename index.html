@@ -58,10 +58,10 @@ nav{position:fixed;top:0;left:0;right:0;z-index:500;display:flex;align-items:cen
 
 /* ─── INTRO SCROLL ─── */
 .intro-scroll{padding:7rem 4rem 5rem;max-width:1160px;margin:0 auto;}
-.ss{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;margin-bottom:10rem;opacity:0;transform:translateY(32px);transition:opacity .7s,transform .7s;}
+.ss{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start;margin-bottom:8rem;opacity:0;transform:translateY(32px);transition:opacity .7s,transform .7s;}
+.ss.solo{display:block;max-width:720px;}
 .ss.vis{opacity:1;transform:translateY(0);}
-.ss.flip{direction:rtl;}
-.ss.flip>*{direction:ltr;}
+.ss.flip{}
 .ss-n{font-family:var(--mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink3);margin-bottom:.7rem;}
 .ss-title{font-family:var(--serif);font-size:1.9rem;font-weight:400;line-height:1.18;color:var(--ink);margin-bottom:1rem;}
 .ss-body p{font-family:Georgia,'Times New Roman',serif;font-size:1.05rem;color:var(--ink2);line-height:1.88;margin-bottom:.85rem;}
@@ -291,7 +291,7 @@ input[type=range]{width:100%;accent-color:var(--moss);}
     <div class="hero-text">
       <div class="hero-eyebrow">Computational Biology &mdash; Hitee &middot; Vishi &middot; Shreya &mdash; 2026</div>
       <h1 class="hero-h1">Cross-feeding dynamics of<br><em>B. thetaiotaomicron</em> &amp; <em>B. breve</em><br>under real dietary inputs</h1>
-      <p class="hero-sub">How do daily fluctuations in a university canteen menu reshape the competitive balance of gut microbes in the proximal colon?</p>
+      <p class="hero-sub">How do daily fluctuations in fiber content from meals from a university mess menu reshape the competitive balance of gut microbes in the proximal colon?</p>
       <div class="hero-rule"></div>
     </div>
     <div class="scroll-prompt">scroll to explore</div>
@@ -299,243 +299,132 @@ input[type=range]{width:100%;accent-color:var(--moss);}
 
   <div class="intro-scroll">
 
-    <div class="ss" data-obs>
-      <div class="ss-text">
-        <div class="ss-n">01 &mdash; The gut microbiome</div>
-        <h2 class="ss-title">A complex, indispensable ecosystem</h2>
-        <div class="ss-body">
-          <p>The human gut harbours a vast microbial consortium of hundreds of bacterial, archaeal, and eukaryotic species. In the large intestine, the community is dominated by the phyla <em>Bacteroidota</em> and <em>Bacillota</em>, which together account for roughly 90% of microbial abundance.<a class="cite" onclick="gotoRef(1)">[1]</a></p>
-          <p>A central function of the gut microbiota is the fermentation of complex dietary fibres into short-chain fatty acids (SCFAs), which contribute almost 10% of host energy requirements.<a class="cite" onclick="gotoRef(3)">[3]</a> Early ODE-based frameworks, such as the Muñoz-Tamayo model, established the "trophic chain" of this fermentation process — but assume constant fibre intake and lump all carbohydrates into a single variable, diverging significantly from reality.</p>
-          <p>Dysbiosis — disruption of this balance — is linked to IBD, colorectal cancer, obesity, and neurological conditions. Understanding what <em>drives</em> community structure dynamically is therefore both an ecological and clinical question.</p>
-        </div>
-      </div>
-      <div class="ss-vis" style="padding:0;overflow:hidden;background:transparent;border:none;">
-        <svg viewBox="0 0 400 290" xmlns="http://www.w3.org/2000/svg" style="width:100%;border-radius:3px;border:1px solid var(--rule);background:#f0ece3;">
-          <!-- Background gradient -->
-          <defs>
-            <linearGradient id="gutGrad" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stop-color="#e8f0e4"/>
-              <stop offset="100%" stop-color="#f0ece3"/>
-            </linearGradient>
-            <linearGradient id="barGrad1" x1="0" y1="0" x2="1" y2="0">
-              <stop offset="0%" stop-color="#2d5a3d"/>
-              <stop offset="100%" stop-color="#3d7a52"/>
-            </linearGradient>
-            <linearGradient id="barGrad2" x1="0" y1="0" x2="1" y2="0">
-              <stop offset="0%" stop-color="#5a7a3d"/>
-              <stop offset="100%" stop-color="#8aaa5d"/>
-            </linearGradient>
-          </defs>
-          <rect width="400" height="290" fill="url(#gutGrad)"/>
+    <div class="ss solo" data-obs>
+  <div class="ss-text">
+    <div class="ss-n">01 &mdash; The gut microbiome</div>
+    <h2 class="ss-title">A complex, indispensable ecosystem</h2>
 
-          <!-- Title -->
-          <text x="20" y="24" font-family="'JetBrains Mono',monospace" font-size="7.5" fill="#8a8a84" letter-spacing="1.5" text-transform="uppercase">MICROBIAL COMMUNITY COMPOSITION</text>
+    <div class="ss-body">
+      <p>
+        The human gut harbours a vast microbial consortium of hundreds of bacterial, archaeal, and eukaryotic species. 
+        In the large intestine, the community is dominated by the phyla <em>Bacteroidota</em> and <em>Bacillota</em>, 
+        which together account for roughly 90% of microbial abundance.
+        <a class="cite" onclick="gotoRef(1)">[1]</a>
+      </p>
 
-          <!-- Gut tube schematic at top -->
-          <rect x="20" y="34" width="360" height="38" rx="19" fill="none" stroke="#2d5a3d" stroke-width="1.2" stroke-dasharray="4,3" opacity="0.35"/>
-          <rect x="20" y="34" width="360" height="38" rx="19" fill="rgba(45,90,61,0.04)"/>
-          <text x="200" y="57" font-family="Georgia,serif" font-size="10" fill="#2d5a3d" text-anchor="middle" font-style="italic" opacity="0.7">Proximal Colon — CSTR</text>
+      <p>
+        A central function of the gut microbiota is the fermentation of complex dietary fibres into short-chain fatty acids (SCFAs), 
+        which contribute almost 10% of host energy requirements.
+        <a class="cite" onclick="gotoRef(3)">[3]</a> 
+        Early ODE-based frameworks, such as the Muñoz-Tamayo model, established the "trophic chain" of this fermentation process — 
+        but assume constant fibre intake and lump all carbohydrates into a single variable, diverging significantly from reality.
+      </p>
+    </div>
 
-          <!-- Phyla bar chart -->
-          <text x="20" y="96" font-family="'JetBrains Mono',monospace" font-size="7" fill="#8a8a84" letter-spacing="1">DOMINANT PHYLA (%)</text>
+    <!-- IMAGE + CAPTION -->
+    <div style="margin-top:1.5rem;">
+      <img src="gut biogeography.png" 
+           style="width:100%;border-radius:3px;border:1px solid var(--rule);">
 
-          <!-- Bacteroidota bar -->
-          <rect x="20" y="104" width="198" height="16" rx="2" fill="url(#barGrad1)"/>
-          <text x="225" y="116" font-family="Georgia,serif" font-size="10.5" fill="#444440">Bacteroidota</text>
-          <text x="370" y="116" font-family="'JetBrains Mono',monospace" font-size="9" fill="#2d5a3d" text-anchor="end">~55%</text>
-
-          <!-- Bacillota bar -->
-          <rect x="20" y="126" width="145" height="16" rx="2" fill="url(#barGrad2)"/>
-          <text x="225" y="138" font-family="Georgia,serif" font-size="10.5" fill="#444440">Bacillota</text>
-          <text x="370" y="138" font-family="'JetBrains Mono',monospace" font-size="9" fill="#5a7a3d" text-anchor="end">~40%</text>
-
-          <!-- Other bar -->
-          <rect x="20" y="148" width="18" height="16" rx="2" fill="#c8d8c0"/>
-          <text x="225" y="160" font-family="Georgia,serif" font-size="10.5" fill="#8a8a84">Other</text>
-          <text x="370" y="160" font-family="'JetBrains Mono',monospace" font-size="9" fill="#8a8a84" text-anchor="end">~5%</text>
-
-          <!-- Divider -->
-          <line x1="20" y1="178" x2="380" y2="178" stroke="rgba(45,90,61,0.15)" stroke-width="0.8"/>
-
-          <!-- SCFA fermentation pathway schematic -->
-          <text x="20" y="196" font-family="'JetBrains Mono',monospace" font-size="7" fill="#8a8a84" letter-spacing="1">FERMENTATION PATHWAY</text>
-
-          <!-- Nodes -->
-          <rect x="20" y="206" width="80" height="26" rx="3" fill="rgba(45,90,61,0.08)" stroke="#2d5a3d" stroke-width="0.8"/>
-          <text x="60" y="223" font-family="Georgia,serif" font-size="9.5" fill="#2d5a3d" text-anchor="middle" font-style="italic">Dietary Fibre</text>
-
-          <line x1="102" y1="219" x2="128" y2="219" stroke="#2d5a3d" stroke-width="1" marker-end="url(#arr)"/>
-          <rect x="130" y="206" width="80" height="26" rx="3" fill="rgba(45,90,61,0.12)" stroke="#2d5a3d" stroke-width="0.9"/>
-          <text x="170" y="221" font-family="Georgia,serif" font-size="8.5" fill="#2d5a3d" text-anchor="middle" font-style="italic">B. theta</text>
-          <text x="170" y="230" font-family="'JetBrains Mono',monospace" font-size="7" fill="#8a8a84" text-anchor="middle">degrades inulin</text>
-
-          <line x1="212" y1="219" x2="238" y2="219" stroke="#2d5a3d" stroke-width="1"/>
-          <polygon points="238,215 246,219 238,223" fill="#2d5a3d"/>
-          <rect x="248" y="206" width="65" height="26" rx="3" fill="rgba(139,105,20,0.08)" stroke="#8b6914" stroke-width="0.8"/>
-          <text x="281" y="221" font-family="Georgia,serif" font-size="8.5" fill="#8b6914" text-anchor="middle" font-style="italic">FOS</text>
-          <text x="281" y="230" font-family="'JetBrains Mono',monospace" font-size="7" fill="#8a8a84" text-anchor="middle">oligosaccharides</text>
-
-          <line x1="315" y1="219" x2="341" y2="219" stroke="#8b6914" stroke-width="1"/>
-          <polygon points="341,215 349,219 341,223" fill="#8b6914"/>
-
-          <!-- B. breve node at end -->
-          <rect x="350" y="206" width="32" height="26" rx="3" fill="rgba(139,105,20,0.12)" stroke="#8b6914" stroke-width="0.9"/>
-          <text x="366" y="218" font-family="Georgia,serif" font-size="7.5" fill="#8b6914" text-anchor="middle" font-style="italic">B.</text>
-          <text x="366" y="228" font-family="Georgia,serif" font-size="7.5" fill="#8b6914" text-anchor="middle" font-style="italic">breve</text>
-
-          <!-- SCFA output arrow -->
-          <line x1="170" y1="234" x2="170" y2="254" stroke="#2d5a3d" stroke-width="0.9" stroke-dasharray="3,2"/>
-          <polygon points="166,254 170,262 174,254" fill="#2d5a3d"/>
-          <text x="178" y="261" font-family="'JetBrains Mono',monospace" font-size="7" fill="#444440">SCFAs</text>
-          <text x="178" y="270" font-family="Georgia,serif" font-size="8.5" fill="#8a8a84" font-style="italic">~10% host energy</text>
-          <text x="20" y="284" font-family="'JetBrains Mono',monospace" font-size="7" fill="#8a8a84">Source: McCallum &amp; Tropini, 2024  ·  Muñoz-Tamayo et al., 2010</text>
-        </svg>
+      <div class="fig-cap">
+        <strong>Figure 1.</strong> Microbial community composition and fibre fermentation pathways in the gut. 
+        Adapted from McCallum &amp; Tropini 
+        <a class="cite" onclick="gotoRef(2)">[2]</a>.
       </div>
     </div>
+
+  </div>
+</div>
 
     <div class="ss flip" data-obs>
       <div class="ss-text">
         <div class="ss-n">02 &mdash; The washout problem</div>
-        <h2 class="ss-title">How do bacteria survive the flow?</h2>
+        <h2 class="ss-title">The washout problem</h2>
         <div class="ss-body">
           <p>From a fluid dynamics perspective, the gut is a tube with constant forward flow. If bacteria were simply suspended in luminal content, they would be expelled before they could reproduce — a phenomenon termed <em>washout</em>.</p>
           <p>Cremer et al.<a class="cite" onclick="gotoRef(4)">[4]</a> constructed a 2D partial differential model that showed peristaltic mixing is necessary to combat washout for microbial populations not to be swept off. Their model considers flow to peak an hour after food has been consumed, with a dynamic radius accounting for gut contractions. A dead-end cecal pouch provides a region safe from flow where bacterial populations can be replenished.</p>
           <p>Salari &amp; Cremer<a class="cite" onclick="gotoRef(5)">[5]</a> extended this by incorporating diurnal cecal volume dynamics, showing daily population bottlenecks of $N_e \sim 10^7$&#8211;$10^{11}$ cells driven by meal-driven washout events.</p>
         </div>
       </div>
-      <div class="ss-vis" style="padding:0;overflow:hidden;background:transparent;border:none;">
-        <svg viewBox="0 0 400 290" xmlns="http://www.w3.org/2000/svg" style="width:100%;border-radius:3px;border:1px solid var(--rule);background:#f0ece3;">
-          <defs>
-            <linearGradient id="flowGrad" x1="0" y1="0" x2="1" y2="0">
-              <stop offset="0%" stop-color="rgba(45,90,61,0.25)"/>
-              <stop offset="100%" stop-color="rgba(45,90,61,0.04)"/>
-            </linearGradient>
-            <marker id="arrowBlue" markerWidth="7" markerHeight="7" refX="5" refY="3.5" orient="auto">
-              <polygon points="0 0, 7 3.5, 0 7" fill="#3a5a9e" opacity="0.8"/>
-            </marker>
-            <marker id="arrowGreen" markerWidth="7" markerHeight="7" refX="5" refY="3.5" orient="auto">
-              <polygon points="0 0, 7 3.5, 0 7" fill="#2d5a3d"/>
-            </marker>
-          </defs>
+      <div class="ss-vis" style="padding:1.6rem 1.3rem;display:block;background:var(--paper2);border:1px solid var(--rule2);">
 
-          <rect width="400" height="290" fill="#f0ece3"/>
-          <text x="20" y="22" font-family="'JetBrains Mono',monospace" font-size="7.5" fill="#8a8a84" letter-spacing="1.5">CREMER ET AL. — GUT FLOW MODEL</text>
+  <div class="eq-section-label" style="margin-bottom:1.2rem;">
+    Cremer et al., PNAS 2016 — Spatial population dynamics
+    <a class="cite" onclick="gotoRef(2)">[2]</a>
+  </div>
 
-          <!-- Gut tube cross-section (top view) -->
-          <!-- Outer wall -->
-          <rect x="20" y="36" width="310" height="80" rx="12" fill="rgba(200,216,192,0.3)" stroke="#2d5a3d" stroke-width="1.4"/>
-          <!-- Inner lumen -->
-          <rect x="30" y="50" width="280" height="52" rx="8" fill="url(#flowGrad)" stroke="rgba(45,90,61,0.25)" stroke-width="0.8"/>
+  <div style="overflow-x:auto;padding-bottom:.6rem;">
+    $$
+    \frac{\partial \rho(x,t)}{\partial t}
+    =
+    \underbrace{\lambda(x,t)\,\rho}_{\text{growth}}
+    \;-\;
+    \underbrace{v(x,t)\,\frac{\partial \rho}{\partial x}}_{\text{advection (flow)}}
+    \;+\;
+    \underbrace{D\,\frac{\partial^2 \rho}{\partial x^2}}_{\text{diffusion}}
+    $$
+  </div>
 
-          <!-- Flow arrows (left to right) -->
-          <line x1="50" y1="76" x2="115" y2="76" stroke="#3a5a9e" stroke-width="1.5" marker-end="url(#arrowBlue)" opacity="0.7"/>
-          <line x1="130" y1="76" x2="195" y2="76" stroke="#3a5a9e" stroke-width="1.5" marker-end="url(#arrowBlue)" opacity="0.7"/>
-          <line x1="210" y1="76" x2="275" y2="76" stroke="#3a5a9e" stroke-width="1.5" marker-end="url(#arrowBlue)" opacity="0.7"/>
+  <div class="eq-note-block" style="margin-top:1rem;">
 
-          <!-- Peristaltic wave lines -->
-          <path d="M60,52 Q75,46 90,52 Q105,58 120,52" fill="none" stroke="rgba(45,90,61,0.4)" stroke-width="1" stroke-dasharray="2,2"/>
-          <path d="M150,98 Q165,104 180,98 Q195,92 210,98" fill="none" stroke="rgba(45,90,61,0.4)" stroke-width="1" stroke-dasharray="2,2"/>
+    <span>
+      <strong>$\rho(x,t)$</strong> — bacterial density along the intestinal axis $x$ over time.
+    </span>
 
-          <!-- Bacteria dots in lumen -->
-          <circle cx="80" cy="70" r="4" fill="#2d5a3d" opacity="0.7"/>
-          <circle cx="95" cy="82" r="3.5" fill="#2d5a3d" opacity="0.6"/>
-          <circle cx="140" cy="67" r="4" fill="#8b6914" opacity="0.65"/>
-          <circle cx="160" cy="79" r="3.5" fill="#2d5a3d" opacity="0.7"/>
-          <circle cx="185" cy="73" r="4" fill="#8b6914" opacity="0.6"/>
-          <circle cx="220" cy="68" r="3.5" fill="#2d5a3d" opacity="0.7"/>
-          <circle cx="240" cy="81" r="4" fill="#2d5a3d" opacity="0.65"/>
+    <span>
+      <strong>$\lambda(x,t)\rho$ — Growth:</strong> local net growth rate governed by nutrient availability; can become negative during strong flow events.
+    </span>
 
-          <!-- Labels -->
-          <text x="200" y="148" font-family="'JetBrains Mono',monospace" font-size="7.5" fill="#3a5a9e" text-anchor="middle" opacity="0.9">→  luminal flow (mean velocity)</text>
-          <text x="170" y="44" font-family="Georgia,serif" font-size="8.5" fill="#2d5a3d" text-anchor="middle" font-style="italic" opacity="0.8">peristaltic mixing counteracts washout</text>
+    <span>
+      <strong>$v(x,t)\,\partial_x \rho$ — Advection:</strong> fluid flow transports bacteria downstream, driving washout following meals.
+    </span>
 
-          <!-- Cecal pouch -->
-          <ellipse cx="355" cy="76" rx="28" ry="36" fill="rgba(45,90,61,0.08)" stroke="#2d5a3d" stroke-width="1.2" stroke-dasharray="3,2"/>
-          <text x="355" y="68" font-family="'JetBrains Mono',monospace" font-size="7" fill="#2d5a3d" text-anchor="middle">cecal</text>
-          <text x="355" y="79" font-family="'JetBrains Mono',monospace" font-size="7" fill="#2d5a3d" text-anchor="middle">pouch</text>
-          <text x="355" y="90" font-family="Georgia,serif" font-size="7.5" fill="#8a8a84" text-anchor="middle" font-style="italic">safe zone</text>
-          <line x1="328" y1="76" x2="310" y2="76" stroke="#2d5a3d" stroke-width="0.8" stroke-dasharray="2,2"/>
+    <span>
+      <strong>$D\,\partial^2_x \rho$ — Diffusion:</strong> effective mixing from peristalsis, enabling redistribution and recolonisation.
+    </span>
 
-          <!-- Divider -->
-          <line x1="20" y1="160" x2="380" y2="160" stroke="rgba(45,90,61,0.15)" stroke-width="0.8"/>
+  </div>
 
-          <!-- Post-meal flow peak schematic -->
-          <text x="20" y="178" font-family="'JetBrains Mono',monospace" font-size="7" fill="#8a8a84" letter-spacing="1">FLOW VELOCITY vs TIME (schematic)</text>
-
-          <!-- Axes -->
-          <line x1="30" y1="245" x2="380" y2="245" stroke="rgba(45,90,61,0.3)" stroke-width="0.8"/>
-          <line x1="30" y1="190" x2="30" y2="248" stroke="rgba(45,90,61,0.3)" stroke-width="0.8"/>
-          <text x="26" y="248" font-family="'JetBrains Mono',monospace" font-size="7" fill="#8a8a84" text-anchor="end">0</text>
-          <text x="205" y="258" font-family="'JetBrains Mono',monospace" font-size="7" fill="#8a8a84" text-anchor="middle">Time →</text>
-          <text x="16" y="220" font-family="'JetBrains Mono',monospace" font-size="7" fill="#8a8a84" text-anchor="middle" transform="rotate(-90 16 220)">velocity</text>
-
-          <!-- Baseline flow -->
-          <line x1="30" y1="237" x2="100" y2="237" stroke="#3a5a9e" stroke-width="1.5" opacity="0.7"/>
-          <!-- Meal spike -->
-          <path d="M100,237 Q118,197 135,237" fill="none" stroke="#3a5a9e" stroke-width="1.8" opacity="0.85"/>
-          <!-- Return to baseline -->
-          <line x1="135" y1="237" x2="220" y2="237" stroke="#3a5a9e" stroke-width="1.5" opacity="0.7"/>
-          <!-- Second spike -->
-          <path d="M220,237 Q238,200 255,237" fill="none" stroke="#3a5a9e" stroke-width="1.8" opacity="0.85"/>
-          <line x1="255" y1="237" x2="380" y2="237" stroke="#3a5a9e" stroke-width="1.5" opacity="0.7"/>
-
-          <!-- Meal markers -->
-          <line x1="100" y1="245" x2="100" y2="200" stroke="rgba(45,90,61,0.3)" stroke-width="0.8" stroke-dasharray="2,2"/>
-          <line x1="220" y1="245" x2="220" y2="203" stroke="rgba(45,90,61,0.3)" stroke-width="0.8" stroke-dasharray="2,2"/>
-          <text x="100" y="257" font-family="Georgia,serif" font-size="8" fill="#444440" text-anchor="middle" font-style="italic">meal</text>
-          <text x="220" y="257" font-family="Georgia,serif" font-size="8" fill="#444440" text-anchor="middle" font-style="italic">meal</text>
-          <text x="118" y="205" font-family="'JetBrains Mono',monospace" font-size="7" fill="#3a5a9e" opacity="0.9">peak +1h</text>
-
-          <text x="20" y="284" font-family="'JetBrains Mono',monospace" font-size="7" fill="#8a8a84">Adapted from Cremer et al., PNAS 2016</text>
-        </svg>
-      </div>
-    </div>
+</div>
 
     <div class="ss" data-obs>
       <div class="ss-text">
         <div class="ss-n">03 &mdash; Our biological system</div>
         <h2 class="ss-title"><em>B. theta</em> feeds <em>B. breve</em></h2>
         <div class="ss-body">
-          <p><em>Bacteroides thetaiotaomicron</em> is a primary degrader that cleaves complex inulin into fructo-oligosaccharides (FOS), acting as the trophic foundation for cross-feeding.<a class="cite" onclick="gotoRef(2)">[2]</a> Its Monod constant $K_p = 13.5$ mM reflects relatively lower affinity for complex inulin polymers.</p>
-          <p><em>Bifidobacterium breve</em> lacks the machinery for initial polymer breakdown but is highly efficient at consuming the FOS oligosaccharides released by <em>B. theta</em>.<a class="cite" onclick="gotoRef(6)">[6]</a> Its lower $K_c = 6.98$ mM reflects specialist FOS transport systems — higher affinity for simpler oligosaccharides.<a class="cite" onclick="gotoRef(7)">[7]</a></p>
-          <p>This metabolic interdependence means species survival depends not just on growth kinetics, but on the temporal fluctuations of nutrient availability — making meal composition the primary driver of competitive balance.</p>
+          <p>Our model investigates gut community structure driven by cross-feeding between primary degraders and secondary consumers. <em>Bacteroides thetaiotaomicron</em> ($B_p$) cleaves complex inulin into fructo-oligosaccharides (FOS), which <em>Bifidobacterium breve</em> ($B_c$) then consumes, as it lacks the enzymes for initial polymer breakdown. This metabolic interdependence suggests that species persistence is governed by temporal nutrient fluctuations and growth kinetics.</p>
         </div>
       </div>
-      <div class="ss-vis" style="flex-direction:column;gap:.75rem;padding:1.25rem;">
-        <div class="img-upload-slot" id="slot-img3">
-          <div class="iup-inner">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="color:var(--moss3)"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-            <span class="iup-label">Upload figure from paper</span>
-            <span class="iup-hint">B. theta / B. breve cross-feeding schematic or co-culture data</span>
-            <input type="file" accept="image/*" onchange="loadSlot(3,this)">
-            <button class="iup-btn" onclick="this.previousElementSibling.click()">Choose image</button>
-          </div>
-        </div>
-        <img id="slot-img3-img" style="display:none;width:100%;border-radius:3px;max-height:280px;object-fit:contain;">
-      </div>
-    </div>
+      <div class="ss-vis" style="padding:0;overflow:hidden;">
+  
+  <img src="metabolic pathway.png"
+       style="width:100%;border-radius:3px;border:1px solid var(--rule);object-fit:contain;">
+
+  <div class="fig-cap">
+    <strong>Figure 3.</strong> Cross-feeding interaction between 
+    <em>B. thetaiotaomicron</em> and <em>B. breve</em>, where breakdown products 
+    from primary fibre degradation support secondary consumers.
+  </div>
+
+</div>
 
     <div class="ss flip" data-obs>
       <div class="ss-text">
         <div class="ss-n">04 &mdash; Our approach</div>
-        <h2 class="ss-title">Modelling the gut with real meals</h2>
+        <h2 class="ss-title">Our approach</h2>
         <div class="ss-body">
           <p>We developed a time-dependent ODE model that replaces traditional steady-state assumptions with a dynamic meal influx function $M(t)$. Using the Ashoka University canteen menu, we simulated a 10-day dietary profile by randomly selecting three food items and one beverage for each of breakfast, lunch, and dinner.</p>
           <p>Nutrient delivery was characterised using discrete Gaussian distributions. Unlike models that assume instantaneous spikes or constant flow, this accounts for the gradual passage of a meal through the colon — fibre concentration increases toward a peak and gradually dissipates, with a 1.5h standard deviation centred 1.5h after each meal.</p>
-          <p>This lets us ask: do real-world eating habits act as a <em>growth filter</em> on the microbiome, selecting for certain species over others, meal by meal?</p>
         </div>
       </div>
-      <div class="ss-vis" style="flex-direction:column;gap:.75rem;padding:1.25rem;">
-        <div class="img-upload-slot" id="slot-img4">
-          <div class="iup-inner">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="color:var(--moss3)"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-            <span class="iup-label">Upload figure from paper</span>
-            <span class="iup-hint">CSTR model setup or model diagram</span>
-            <input type="file" accept="image/*" onchange="loadSlot(4,this)">
-            <button class="iup-btn" onclick="this.previousElementSibling.click()">Choose image</button>
-          </div>
+      <div class="ss-vis" style="padding:0;overflow:hidden;min-height:240px;position:relative;">
+        <img id="intro-img4" src="" alt="" style="display:none;width:100%;height:100%;object-fit:contain;border-radius:3px;">
+        <div id="intro-img4-placeholder" style="width:100%;height:100%;min-height:240px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.5rem;padding:1.5rem;text-align:center;">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="color:var(--moss3)"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+          <span style="font-family:var(--sans);font-size:12.5px;color:var(--ink2);font-weight:500;">Add image</span>
+          <span style="font-family:var(--mono);font-size:10px;color:var(--ink3);">CSTR model setup or diagram</span>
+          <input type="text" id="intro-img4-url" placeholder="Paste image URL…" style="margin-top:.5rem;width:100%;font-family:var(--mono);font-size:10.5px;border:1px solid var(--rule2);border-radius:2px;padding:.3rem .6rem;background:var(--paper);color:var(--ink);outline:none;" oninput="loadIntroImg(4,this.value)">
         </div>
-        <img id="slot-img4-img" style="display:none;width:100%;border-radius:3px;max-height:280px;object-fit:contain;">
       </div>
     </div>
 
@@ -668,19 +557,30 @@ input[type=range]{width:100%;accent-color:var(--moss);}
 ════════════════════════ -->
 <div id="results" class="page">
   <div class="content">
-    <div class="sec-hdr"><div class="sec-hdr-inner"><span class="sec-n">03</span><h2 class="sec-t">Results</h2></div></div>
-    <p>Simulations run over 10 days (240h) using the Ashoka University canteen menu as dietary input, integrated with RK4 ($dt = 0.001$ h, 240,000 steps). Four panels characterise the nutrient and bacterial dynamics; upload your Python-generated figures below.</p>
+    <div class="sec-hdr">
+      <div class="sec-hdr-inner">
+        <span class="sec-n">03</span>
+        <h2 class="sec-t">Results</h2>
+      </div>
+    </div>
+
+    <p>
+      Simulations run over 10 days (240h) using the Ashoka University mess menu as dietary input, 
+      integrated with RK4 ($dt = 0.001$ h, 240,000 steps). Four panels characterise the nutrient and bacterial dynamics.
+    </p>
+
     <div class="divider"></div>
 
+    <!-- FIGURE 1 -->
     <div class="graph-block">
       <div class="blabel">Figure 1</div>
-      <div class="graph-ph" id="fig1-ph">
-        <p>Nutrient concentrations $N_I$ (inulin) and $N_{FOS}$ (FOS) over 10 days</p>
-        <input type="file" id="f1up" accept="image/*" style="display:none" onchange="loadFig(1,this)">
-        <button class="up-btn" onclick="document.getElementById('f1up').click()">Upload figure</button>
+
+      <div class="graph-ph" style="padding:0;">
+        <img src="1_nutrient_timeseries.png" style="width:100%;border-radius:3px;border:1px solid var(--rule)">
       </div>
-      <img id="fig1-img" style="display:none;width:100%;border-radius:3px;border:1px solid var(--rule)">
+
       <div class="graph-title">Nutrient concentrations over 10 days</div>
+
       <div class="inference">
         <div class="inf-lbl">Inference</div>
         <p>We hypothesised oscillatory behaviour here: once inulin enters the gut, it is consumed by <em>B. theta</em> over time (producing the dip in the curve) before the next meal restores it. Analogous to a prey-predator model, FOS concentration should not peak before inulin's. However, the observed result shows FOS concentration continuously declining rather than oscillating. This is consistent with $Y_p$ being set too high and the initial $B_p$ population being too small to efficiently convert inulin to FOS, leaving the consumer substrate-starved across the simulation window.</p>
@@ -689,32 +589,34 @@ input[type=range]{width:100%;accent-color:var(--moss);}
 
     <div class="divider"></div>
 
+    <!-- FIGURE 2 -->
     <div class="graph-block">
       <div class="blabel">Figure 2</div>
-      <div class="graph-ph" id="fig2-ph">
-        <p>Bacterial concentrations $B_p$ (<em>B. theta</em>) and $B_c$ (<em>B. breve</em>) over 10 days</p>
-        <input type="file" id="f2up" accept="image/*" style="display:none" onchange="loadFig(2,this)">
-        <button class="up-btn" onclick="document.getElementById('f2up').click()">Upload figure</button>
+
+      <div class="graph-ph" style="padding:0;">
+        <img src="2_bacteria_timeseries.png" style="width:100%;border-radius:3px;border:1px solid var(--rule)">
       </div>
-      <img id="fig2-img" style="display:none;width:100%;border-radius:3px;border:1px solid var(--rule)">
+
       <div class="graph-title">Bacterial population dynamics over 10 days</div>
+
       <div class="inference">
         <div class="inf-lbl">Inference</div>
-        <p>We expected oscillatory coexistence: producer bacteria rising first as inulin becomes available, consumer populations then rising as FOS accumulates, followed by joint decline as nutrients are exhausted — the cycle repeating at each meal. Instead, the simulation shows <em>B. theta</em> rising exponentially toward the carrying capacity, while <em>B. breve</em> remains suppressed near zero. Nutrients are constantly replenished from three daily meals, preventing the boom-bust cycles we anticipated. The large divergence in population sizes may stem from a high $Y_p$ generating disproportionate <em>B. theta</em> concentration per unit inulin consumed, or from washout rates that differentially disadvantage the consumer.</p>
+        <p>We expected oscillatory coexistence: producer bacteria rising first as inulin becomes available, consumer populations then rising as FOS accumulates, followed by joint decline as nutrients are exhausted — the cycle repeating at each meal. Instead, the simulation shows <em>B. theta</em> rising exponentially, while <em>B. breve</em> remains suppressed near zero. Nutrients are constantly replenished from three daily meals, preventing the boom-bust cycles we anticipated. The large divergence in population sizes may stem from a high $Y_p$ generating disproportionate <em>B. theta</em> concentration per unit inulin consumed, or from washout rates that differentially disadvantage the consumer.</p>
       </div>
     </div>
 
     <div class="divider"></div>
 
+    <!-- FIGURE 3 -->
     <div class="graph-block">
       <div class="blabel">Figure 3</div>
-      <div class="graph-ph" id="fig3-ph">
-        <p>Phase portrait: $N_{FOS}$ vs $N_I$ &mdash; nutrient trajectory</p>
-        <input type="file" id="f3up" accept="image/*" style="display:none" onchange="loadFig(3,this)">
-        <button class="up-btn" onclick="document.getElementById('f3up').click()">Upload figure</button>
+
+      <div class="graph-ph" style="padding:0;">
+        <img src="3_nutrient_phase.png" style="width:100%;border-radius:3px;border:1px solid var(--rule)">
       </div>
-      <img id="fig3-img" style="display:none;width:100%;border-radius:3px;border:1px solid var(--rule)">
+
       <div class="graph-title">Phase portrait: substrate dynamics (FOS vs Inulin)</div>
+
       <div class="inference">
         <div class="inf-lbl">Inference</div>
         <p>The nutrient phase portrait reveals clear producer-consumer coupling: FOS cannot increase before inulin does, and concentrations for both drop as they are utilised by their respective bacteria. The time-coloured trajectory shows the system initially transiting from high-FOS / low-inulin (start, top left) toward increasing inulin from meals, with FOS gradually declining to near zero by the end of the simulation. The tight convergence of late-time trajectories near the inulin axis confirms FOS depletion — a signature of the $Y_p$ mismatch identified in Figure 1.</p>
@@ -723,22 +625,26 @@ input[type=range]{width:100%;accent-color:var(--moss);}
 
     <div class="divider"></div>
 
+    <!-- FIGURE 4 -->
     <div class="graph-block">
       <div class="blabel">Figure 4</div>
-      <div class="graph-ph" id="fig4-ph">
-        <p>Phase portrait: $B_c$ vs $B_p$ &mdash; bacterial co-dynamics</p>
-        <input type="file" id="f4up" accept="image/*" style="display:none" onchange="loadFig(4,this)">
-        <button class="up-btn" onclick="document.getElementById('f4up').click()">Upload figure</button>
+
+      <div class="graph-ph" style="padding:0;">
+        <img src="4_bacteria_phase.png" style="width:100%;border-radius:3px;border:1px solid var(--rule)">
       </div>
-      <img id="fig4-img" style="display:none;width:100%;border-radius:3px;border:1px solid var(--rule)">
+
       <div class="graph-title">Phase portrait: bacterial co-dynamics (<em>B. breve</em> vs <em>B. theta</em>)</div>
+
       <div class="inference">
         <div class="inf-lbl">Inference</div>
-        <p>We expected coexistence behaviour, with both consumer and producer populations cycling together in a limit cycle. The phase portrait shows instead a monotonic trajectory: <em>B. theta</em> grows continuously along the x-axis while <em>B. breve</em> collapses from its initial value toward zero, before both converge to a fixed point. This is consistent with competitive exclusion driven by the near-zero FOS supply — the cross-feeding chain is effectively broken by insufficient FOS production, leaving <em>B. breve</em> unable to maintain its population above the washout threshold.</p>
+        <p>We expected coexistence behaviour, with both consumer and producer populations cycling together in a limit cycle. The phase portrait shows instead a monotonic trajectory: <em>B. theta</em> grows continuously along the x-axis while <em>B. breve</em> collapses from its initial value toward zero. This is consistent with competitive exclusion driven by the near-zero FOS supply — the cross-feeding chain is effectively broken by insufficient FOS production, leaving <em>B. breve</em> unable to maintain its population above the washout threshold.</p>
       </div>
     </div>
 
     <div class="divider"></div>
+
+  </div>
+</div>
 
     <!-- POLL -->
     <div class="poll-block">
@@ -1120,56 +1026,41 @@ Bp, Bc, NI, NFOS = [system_states[:,j] for j in range(4)]</pre>
 
     <div class="divider"></div>
 
-    <!-- TEAM CARDS -->
-    <div class="team-grid">
-      <div class="team-card">
-        <div class="team-photo-slot" id="tslot-1">
-          <div class="tup-inner">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="color:var(--moss3)"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
-            <span class="tup-hint">upload photo</span>
-            <input type="file" accept="image/*" onchange="loadTeam(1,this)">
-          </div>
-        </div>
-        <img id="timg-1" class="team-photo-img" style="display:none">
-        <div class="team-info">
-          <div class="team-name">Hitee</div>
-          <div class="team-role">ODE modelling &middot; parameter estimation</div>
-          <div class="team-bio">Designed the core four-ODE system, estimated growth parameters from log-phase data, and implemented the RK4 integrator.</div>
-        </div>
-      </div>
-      <div class="team-card">
-        <div class="team-photo-slot" id="tslot-2">
-          <div class="tup-inner">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="color:var(--moss3)"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
-            <span class="tup-hint">upload photo</span>
-            <input type="file" accept="image/*" onchange="loadTeam(2,this)">
-          </div>
-        </div>
-        <img id="timg-2" class="team-photo-img" style="display:none">
-        <div class="team-info">
-          <div class="team-name">Vishi</div>
-          <div class="team-role">dietary data &middot; meal function M(t)</div>
-          <div class="team-bio">Tracked 10 days of Ashoka canteen meals via HealthifyMe, extracted per-item fibre data, and built the CSV-to-Gaussian meal pulse pipeline.</div>
-        </div>
-      </div>
-      <div class="team-card">
-        <div class="team-photo-slot" id="tslot-3">
-          <div class="tup-inner">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="color:var(--moss3)"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
-            <span class="tup-hint">upload photo</span>
-            <input type="file" accept="image/*" onchange="loadTeam(3,this)">
-          </div>
-        </div>
-        <img id="timg-3" class="team-photo-img" style="display:none">
-        <div class="team-info">
-          <div class="team-name">Shreya</div>
-          <div class="team-role">literature review &middot; biological interpretation</div>
-          <div class="team-bio">Led the literature synthesis across seven papers, wrote the biological justifications for cross-feeding parameters, and drafted the discussion.</div>
-        </div>
+<div class="team-grid">
+
+  <div class="team-card">
+    <img src="hitee.JPG" class="team-photo-img">
+    <div class="team-info">
+      <div class="team-name">Hitee</div>
+      <div class="team-bio">
+        Do you have a gut feeling?
       </div>
     </div>
+  </div>
 
-    <div class="divider"></div>
+  <div class="team-card">
+    <img src="vishi.png" class="team-photo-img">
+    <div class="team-info">
+      <div class="team-name">Vishi</div>
+      <div class="team-bio">
+        "I didn't come this far to come this far...is a trap in modelling."
+      </div>
+    </div>
+  </div>
+
+  <div class="team-card">
+    <img src="assets/shreya.jpg" class="team-photo-img">
+    <div class="team-info">
+      <div class="team-name">Shreya</div>
+      <div class="team-bio">
+        Led the literature synthesis across seven papers, wrote the biological justifications for cross-feeding parameters, and drafted the discussion.
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="divider"></div>
 
     <!-- MODELLING JOURNEY (moved from Model page) -->
     <div class="blabel">Modelling journey</div>
@@ -1207,79 +1098,47 @@ Bp, Bc, NI, NFOS = [system_states[:,j] for j in range(4)]</pre>
     <div class="divider"></div>
 
     <!-- BTS CAROUSEL -->
-    <div class="blabel">Behind the scenes</div>
-    <div class="btitle">How this project came together</div>
-    <p>The model went through five major iterations over the course of the semester — from a single-species chemostat to a two-species, meal-driven CSTR. Below are snapshots from the process: whiteboard derivations, debugging sessions, and the canteen meals that became our data.</p>
+<div class="blabel">Behind the scenes</div>
+<div class="btitle">How this project came together</div>
 
-    <div class="bts-carousel">
-      <div class="bts-track" id="bts-track">
-        <div class="bts-slide">
-          <div class="bts-slot" id="bts-1">
-            <div class="bts-inner">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="color:var(--moss3)"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-              <span class="bts-hint">upload BTS photo</span>
-              <input type="file" accept="image/*" onchange="loadBTS(1,this)">
-            </div>
-            <img id="bts-img-1" style="display:none;width:100%;height:100%;object-fit:cover;border-radius:3px;position:absolute;top:0;left:0;">
-          </div>
-        </div>
-        <div class="bts-slide">
-          <div class="bts-slot" id="bts-2">
-            <div class="bts-inner">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="color:var(--moss3)"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-              <span class="bts-hint">upload BTS photo</span>
-              <input type="file" accept="image/*" onchange="loadBTS(2,this)">
-            </div>
-            <img id="bts-img-2" style="display:none;width:100%;height:100%;object-fit:cover;border-radius:3px;position:absolute;top:0;left:0;">
-          </div>
-        </div>
-        <div class="bts-slide">
-          <div class="bts-slot" id="bts-3">
-            <div class="bts-inner">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="color:var(--moss3)"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-              <span class="bts-hint">upload BTS photo</span>
-              <input type="file" accept="image/*" onchange="loadBTS(3,this)">
-            </div>
-            <img id="bts-img-3" style="display:none;width:100%;height:100%;object-fit:cover;border-radius:3px;position:absolute;top:0;left:0;">
-          </div>
-        </div>
-        <div class="bts-slide">
-          <div class="bts-slot" id="bts-4">
-            <div class="bts-inner">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="color:var(--moss3)"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-              <span class="bts-hint">upload BTS photo</span>
-              <input type="file" accept="image/*" onchange="loadBTS(4,this)">
-            </div>
-            <img id="bts-img-4" style="display:none;width:100%;height:100%;object-fit:cover;border-radius:3px;position:absolute;top:0;left:0;">
-          </div>
-        </div>
-        <div class="bts-slide">
-          <div class="bts-slot" id="bts-5">
-            <div class="bts-inner">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="color:var(--moss3)"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-              <span class="bts-hint">upload BTS photo</span>
-              <input type="file" accept="image/*" onchange="loadBTS(5,this)">
-            </div>
-            <img id="bts-img-5" style="display:none;width:100%;height:100%;object-fit:cover;border-radius:3px;position:absolute;top:0;left:0;">
-          </div>
-        </div>
-        <div class="bts-slide">
-          <div class="bts-slot" id="bts-6">
-            <div class="bts-inner">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="color:var(--moss3)"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-              <span class="bts-hint">upload BTS photo</span>
-              <input type="file" accept="image/*" onchange="loadBTS(6,this)">
-            </div>
-            <img id="bts-img-6" style="display:none;width:100%;height:100%;object-fit:cover;border-radius:3px;position:absolute;top:0;left:0;">
-          </div>
-        </div>
-      </div>
-      <div class="bts-nav">
-        <button class="bts-arrow" onclick="scrollBTS(-1)">&#8592;</button>
-        <button class="bts-arrow" onclick="scrollBTS(1)">&#8594;</button>
-      </div>
+<p>
+  The model went through five major iterations over the course of the semester — from a single-species chemostat 
+  to a two-species, meal-driven CSTR. Below are snapshots from the process: whiteboard derivations, debugging sessions, 
+  and the canteen meals that became our data.
+</p>
+
+<div class="bts-carousel">
+  <div class="bts-track" id="bts-track">
+
+    <div class="bts-slide">
+      <img src="board1.png class="bts-img">
     </div>
 
+    <div class="bts-slide">
+      <img src="board2.png" class="bts-img">
+    </div>
+
+    <div class="bts-slide">
+      <img src="board3.1.png" class="bts-img">
+    </div>
+
+    <div class="bts-slide">
+      <img src="board3.png" class="bts-img">
+    </div>
+
+    <div class="bts-slide">
+      <img src="board4.png" class="bts-img">
+    </div>
+
+    <div class="bts-slide">
+      <img src="fin.HEIC" class="bts-img">
+    </div>
+
+  </div>
+
+  <div class="bts-nav">
+    <button class="bts-arrow" onclick="scrollBTS(-1)">&#8592;</button>
+    <button class="bts-arrow" onclick="scrollBTS(1)">&#8594;</button>
   </div>
 </div>
 
@@ -1550,6 +1409,18 @@ function runODE(){
     +(tf>20?'High-fibre day — strong inulin pulses give B. theta a growth advantage. Try raising εc to see if FOS production rescues B. breve.':
       tf>10?'Moderate-fibre day — B. theta dominates but B. breve may hold a niche if FOS builds up over multiple meals.':
       'Low-fibre day — inulin pulses are small, FOS barely accumulates, and B. breve is heavily suppressed. Add Chapati, Dal, or Muesli to change this.');
+}
+
+// ── Intro image URL loader ──
+function loadIntroImg(n, url) {
+  if (!url) return;
+  const img = document.getElementById('intro-img' + n);
+  const ph = document.getElementById('intro-img' + n + '-placeholder');
+  img.src = url;
+  img.onload = function() {
+    img.style.display = 'block';
+    ph.style.display = 'none';
+  };
 }
 
 // ── Team photo upload ──
