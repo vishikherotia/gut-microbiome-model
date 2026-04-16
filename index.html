@@ -39,7 +39,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:500;display:flex;align-items:cen
 
 /* PAGES */
 .page{display:none;min-height:100vh;}
-.page.active{display:block;}
+.page.active{display:block !important;}
 
 /* VIDEO HERO */
 .video-hero{position:relative;height:100vh;overflow:hidden;display:flex;align-items:flex-end;}
@@ -401,9 +401,10 @@ input[type=range]{width:100%;accent-color:var(--moss);}
 
   </div>
 
-</div>
+    </div><!-- end last .ss -->
+  </div><!-- end intro-scroll -->
+</div><!-- end #home -->
 
-</div>
 <!-- ════ MODEL ════ -->
 <div id="model" class="page">
   <div class="content">
@@ -828,15 +829,21 @@ input[type=range]{width:100%;accent-color:var(--moss);}
 const MENU_DATA={"breakfast": {"Akuri": 1.1, "Banana Porridge": 0.9, "Boiled Egg": 0.0, "Boiled Eggs": 0.0, "Brown Bread & White Bread": 2.3, "Chocos": 5.0, "Cinnamon Wheat Porridge": 0.3, "Corn Flakes": 4.5, "Cut Guava": 5.4, "Dal Paratha": 5.2, "Daliya Porridge with Jaggery": 1.9, "Egg Bhurji": 0.0, "Fruit Loops": 5.0, "Herb Scrambled Egg": 0.0, "Honeydew": 0.8, "Idli": 2.6, "Indori Poha": 1.1, "Karwari Poha": 1.1, "Keerai Vada": 4.6, "Kulcha": 1.6, "Masala Omellete": 0.9, "Medu Vada": 4.8, "Methi Thepla": 5.9, "Millet Porridge": 0.7, "Mix Cut Fruit": 2.5, "Mix Fruit": 2.5, "Mix Fruit Porridge": 1.9, "Mix Veg Paratha": 5.6, "Muesli": 7.5, "Oats & Cinnamon Porridge": 1.6, "Orange": 1.1, "Papaya": 2.6, "Peanut Butter Porridge": 1.2, "Pyaaz Methi Paratha": 5.7, "Ragi Porridge": 0.7, "Ragi Uttapam": 3.9, "Rawa Upma": 1.1, "Sago Khichidi": 1.5, "Sago Porridge": 0.2, "Sambhar": 2.5, "Saute Veg Idli": 2.6, "Star & Moon": 4.5, "Tomato Cucumber Sandwich": 1.8, "Tooti Frooti Porridge": 1.6, "Vegetable Besan Cheela": 3.2, "Vegetable Oats": 2.6, "Vegetable Podi Uttapam": 1.7, "Vegetable Upma": 1.1, "Vermicelli Upma": 1.1, "Wheat Flakes": 10.0, "Whole Banana": 1.9, "Whole Fruit Banana": 1.9}, "lunch": {"Adraki Aloo Gobhi": 2.2, "Ajwaini Chapati": 7.7, "Assorted Pastry": 0.7, "Banarasi Thela Aloo Sabzi": 1.7, "Beetroot Sesame Salad": 3.5, "Black Eyed Pea Salad": 1.9, "Boondi Laddu": 2.4, "Burani Raita": 0.4, "Chapati": 7.7, "Chicken Curry": 1.2, "Chicken Vindaloo": 1.1, "Cholar Dal": 3.7, "Chole Masala": 3.9, "Chu Chu Baingan Masala": 3.1, "Churma Laddu": 2.6, "Coconut Laddo": 2.6, "Corn Salad": 2.1, "Creamy Coleslaw Salad": 2.1, "Cucumber Raita": 0.3, "Curd": 0.0, "Dahi Bhalla": 2.4, "Dal Kachori": 2.3, "Dal Makhani": 3.9, "Dal Tadka": 1.9, "Death By Chocolate": 1.0, "Gajar Methi Shalgum Ki Sabji": 4.6, "Green Salad": 1.8, "Gulab Jamun": 0.0, "Gunjiya": 2.4, "Handi Paneer": 0.8, "Homestyle Macaroni": 1.5, "Ice Cream": 0.0, "Jalebi": 0.6, "Jeera Chapati": 7.7, "Jeera Rice": 1.0, "Kadambo Poriyal": 3.6, "Kaddu Masala": 1.2, "Kadhai Chicken": 1.2, "Karela Do Pyaza": 3.9, "Masoor Dal Tadka": 2.2, "Mediterranean Salad": 2.0, "Methi Mooli Ki Bhurji": 2.1, "Mexican Corn Salad": 2.0, "Mint Raita": 0.7, "Murgh Khada Masala": 1.2, "Murgh Makhanwala": 1.2, "Palak Paneer": 2.1, "Palak Poori": 6.1, "Paneer Butter Masala": 0.8, "Paneer Kolhapuri": 0.8, "Paneer Lababdar": 0.8, "Paruppu": 3.5, "Penne Pasta In Pink Sauce": 1.5, "Plain Curd": 0.0, "Ragda Pattice/Saunth/Mint Chutney": 2.5, "Rawa Ladoo": 3.1, "Red Masoor Dal Tadka": 2.2, "Sem Aloo": 5.7, "Sindhi Kadhi": 1.9, "Soya Matar Curry": 3.9, "Steam Rice": 0.4, "Steamed Rice": 0.4, "Stir Fry Arbi": 4.3, "Tadka Dahi": 0.8, "Urad Dhuli Dal Tadka": 2.6, "Veg Jalfrezi": 2.4, "Veg Kofta Curry": 2.3, "Vegetable Pulao": 1.3}, "dinner": {"Achari Baingan": 3.2, "Ajwaini Chapati": 7.1, "Assorted Pastry": 0.7, "Atte Ka Halwa": 2.0, "Balushahi": 0.1, "Beans Fogath": 2.9, "Black Masoor Dal Tadka": 2.2, "Carrot Kosambari": 4.3, "Chapati": 7.7, "Coriander Rice": 0.9, "Dal Double Tadka": 2.0, "Dal Maharani": 3.7, "Dal Methi": 0.6, "Dal Nagori": 1.2, "Dal Panchmel": 2.3, "Dhaba Dal": 2.0, "Dum Aloo Kashmiri": 1.6, "Elaichi Malpua": 0.9, "Green Moong Dal Tadka": 3.7, "Green Salad": 1.8, "Gulab Jamun": 0.0, "Ice Cream": 0.0, "Jeera Rice": 1.0, "Karela Masala": 3.4, "Kimchi Salad": 2.9, "Lauki Mussallam": 2.8, "Lauki Tamatar ki Sabzi": 2.0, "Lehsuni Palak Corn": 2.3, "Mac And Cheese": 1.5, "Mangori Ki Sabji": 1.2, "Matar Patta Gobhi ki Sabji": 2.5, "Matar Pulao": 1.7, "Matki Sprout Salad": 1.4, "Millet & Bean Salad": 7.1, "Moong Dal Halwa": 1.5, "Mushroom Matar": 2.5, "Onion Pulao": 2.0, "Panzanella Salad": 3.5, "Phirni": 0.7, "Pickled Vegetable Salad": 0.8, "Pumpkin Salad With Herb Chilli Dressing": 3.0, "Pyaaz ka Pulao": 2.0, "Rai Wali Arbi": 4.1, "Raw Banana Kofta Curry": 1.1, "Raw Papaya & Black Chana Tarkari": 2.6, "Raw Papaya Salad": 2.6, "Roasted Beetroot & Orange Salad": 1.1, "Roasted Egg Curry": 1.0, "Sago Kheer": 0.4, "Sambhar": 2.5, "Sev Tamatar Nu Saak": 2.1, "Shahi Tukda": 1.0, "Soya Matar": 3.9, "Steam Rice": 0.4, "Suran Kalwadi": 4.1, "Tabbouleh Salad": 4.5, "Tadka Nariyali Tindli": 3.3, "Urad Dhuli Dal Tadka": 2.6, "Veg Diwani Handi": 2.1}};
 
 function show(id){
-  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
-  document.querySelectorAll('.nav-links a').forEach(a=>a.classList.remove('active'));
-  document.getElementById(id).classList.add('active');
-  document.getElementById('nav-'+id).classList.add('active');
+  document.querySelectorAll('.page').forEach(function(p){
+    p.classList.remove('active');
+    p.style.display='none';
+  });
+  document.querySelectorAll('.nav-links a').forEach(function(a){ a.classList.remove('active'); });
+  var target=document.getElementById(id);
+  if(!target){ console.error('Page not found: '+id); return; }
+  target.classList.add('active');
+  target.style.display='block';
+  var navEl=document.getElementById('nav-'+id);
+  if(navEl) navEl.classList.add('active');
   window.scrollTo(0,0);
-  // Fix: force scroll-reveal elements visible when switching pages
-  document.querySelectorAll('#'+id+' [data-obs]').forEach(el=>el.classList.add('vis'));
+  target.querySelectorAll('[data-obs]').forEach(function(el){ el.classList.add('vis'); });
   if(window.MathJax && window.MathJax.typesetPromise){
-    MathJax.typesetPromise([document.getElementById(id)]).catch(err=>console.log(err));
+    MathJax.typesetPromise([target]).catch(function(err){ console.log(err); });
   }
 }
 
