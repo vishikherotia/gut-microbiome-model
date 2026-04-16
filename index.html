@@ -783,7 +783,6 @@ input[type=range]{width:100%;accent-color:var(--moss);}
         </div>
         <div class="team-info">
           <div class="team-name">Shreya</div>
-          <img src="shreya.jpg" class="team-photo-img" alt="Shreya">
           <div class="team-bio">Let's assume!</div>
         </div>
       </div>
@@ -834,6 +833,8 @@ function show(id){
   document.getElementById(id).classList.add('active');
   document.getElementById('nav-'+id).classList.add('active');
   window.scrollTo(0,0);
+  // Fix: force scroll-reveal elements visible when switching pages
+  document.querySelectorAll('#'+id+' [data-obs]').forEach(el=>el.classList.add('vis'));
   if(window.MathJax && window.MathJax.typesetPromise){
     MathJax.typesetPromise([document.getElementById(id)]).catch(err=>console.log(err));
   }
