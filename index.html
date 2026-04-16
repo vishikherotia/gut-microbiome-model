@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+\<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -29,7 +29,7 @@ window.MathJax = {
 html{scroll-behavior:smooth;}
 body{background:var(--paper);color:var(--ink);font-family:Georgia,'Times New Roman',serif;font-size:17px;line-height:1.8;overflow-x:hidden;}
 
-/* ─── NAV ─── */
+/* NAV */
 nav{position:fixed;top:0;left:0;right:0;z-index:500;display:flex;align-items:center;justify-content:space-between;padding:0 2.5rem;height:var(--nav);background:rgba(247,244,238,0.94);backdrop-filter:blur(16px);border-bottom:1px solid var(--rule);}
 .nav-logo{font-family:var(--mono);font-size:10.5px;color:var(--moss);letter-spacing:.12em;text-transform:uppercase;}
 .nav-links{display:flex;gap:0;list-style:none;}
@@ -37,11 +37,11 @@ nav{position:fixed;top:0;left:0;right:0;z-index:500;display:flex;align-items:cen
 .nav-links li a:hover{color:var(--moss);}
 .nav-links li a.active{color:var(--paper);background:var(--moss);}
 
-/* ─── PAGES ─── */
+/* PAGES */
 .page{display:none;min-height:100vh;}
 .page.active{display:block;}
 
-/* ─── VIDEO HERO ─── */
+/* VIDEO HERO */
 .video-hero{position:relative;height:100vh;overflow:hidden;display:flex;align-items:flex-end;}
 .video-hero video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:brightness(.32) saturate(1.6) contrast(1.1);}
 .hero-grain{position:absolute;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)' opacity='0.06'/%3E%3C/svg%3E");pointer-events:none;}
@@ -56,19 +56,21 @@ nav{position:fixed;top:0;left:0;right:0;z-index:500;display:flex;align-items:cen
 @keyframes up{from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:translateY(0);}}
 @keyframes fade{from{opacity:0;}to{opacity:1;}}
 
-/* ─── INTRO SCROLL ─── */
+/* INTRO SCROLL — always 2-col grid */
 .intro-scroll{padding:7rem 4rem 5rem;max-width:1160px;margin:0 auto;}
 .ss{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start;margin-bottom:8rem;opacity:0;transform:translateY(32px);transition:opacity .7s,transform .7s;}
-.ss.solo{display:block;max-width:720px;}
 .ss.vis{opacity:1;transform:translateY(0);}
-.ss.flip{}
 .ss-n{font-family:var(--mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink3);margin-bottom:.7rem;}
 .ss-title{font-family:var(--serif);font-size:1.9rem;font-weight:400;line-height:1.18;color:var(--ink);margin-bottom:1rem;}
 .ss-body p{font-family:Georgia,'Times New Roman',serif;font-size:1.05rem;color:var(--ink2);line-height:1.88;margin-bottom:.85rem;}
 .ss-body p:last-child{margin-bottom:0;}
-.ss-vis{background:var(--paper2);border:1px solid var(--rule);border-radius:3px;padding:2rem;display:flex;align-items:center;justify-content:center;min-height:220px;}
+/* FIX: ss-vis always flex col, image fills properly */
+.ss-vis{background:var(--paper2);border:1px solid var(--rule);border-radius:3px;overflow:hidden;display:flex;flex-direction:column;}
+.ss-vis img{width:100%;display:block;object-fit:contain;}
+/* FIX: fig-cap — never clipped, full width */
+.fig-cap{font-family:var(--mono);font-size:9.5px;color:var(--ink3);line-height:1.6;padding:.65rem 1rem;background:var(--paper2);border-top:1px solid var(--rule);width:100%;}
 
-/* ─── SHARED ─── */
+/* SHARED */
 .content{max-width:820px;margin:0 auto;padding:5rem 3rem 7rem;}
 .sec-hdr{margin-bottom:3.5rem;padding-bottom:1.2rem;border-bottom:1px solid var(--rule);}
 .sec-hdr-inner{display:flex;align-items:baseline;gap:1.2rem;}
@@ -80,14 +82,12 @@ p{font-family:Georgia,'Times New Roman',serif;font-size:1.05rem;color:var(--ink2
 p:last-child{margin-bottom:0;}
 em{color:var(--moss);font-style:italic;}
 .divider{height:1px;background:var(--rule);margin:3rem 0;}
-
 .callout{border-left:2px solid var(--moss3);padding:.85rem 1.4rem;background:rgba(45,90,61,.04);margin:1.5rem 0;}
 .callout p{font-size:.93rem;color:var(--ink2);margin:0;}
-
 .cite{font-family:var(--mono);font-size:9.5px;color:var(--moss2);vertical-align:super;margin-left:1.5px;cursor:pointer;text-decoration:none;border-bottom:1px dotted var(--moss3);transition:color .15s;}
 .cite:hover{color:var(--moss);}
 
-/* ─── EQUATION BOX ─── */
+/* EQUATION BOX */
 .eq-wrap{background:var(--paper2);border:1px solid var(--rule2);border-radius:3px;padding:2rem 2.2rem;margin:1.5rem 0;}
 .eq-section-label{font-family:var(--mono);font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink3);margin-bottom:1.1rem;padding-bottom:.5rem;border-bottom:1px solid var(--rule);}
 .eq-line{display:flex;align-items:center;gap:1rem;margin-bottom:.9rem;padding-bottom:.9rem;border-bottom:1px solid var(--rule);}
@@ -98,14 +98,14 @@ em{color:var(--moss);font-style:italic;}
 .eq-note-block span{display:block;margin-bottom:.25rem;}
 .eq-note-block span:last-child{margin-bottom:0;}
 
-/* ─── ASSUMPTIONS TABLE ─── */
+/* ASSUMPTIONS TABLE */
 .assumptions-grid{display:grid;grid-template-columns:1fr 1fr;gap:.75rem;margin:1.2rem 0;}
 .assumption-card{background:var(--paper2);border:1px solid var(--rule);border-radius:3px;padding:1rem 1.1rem;}
 .acard-num{font-family:var(--mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--moss3);margin-bottom:.3rem;}
 .acard-title{font-family:var(--sans);font-size:13px;font-weight:500;color:var(--ink);margin-bottom:.3rem;}
 .acard-body{font-family:var(--serif);font-size:.88rem;color:var(--ink3);line-height:1.6;margin:0;}
 
-/* ─── PARAM TABLE ─── */
+/* PARAM TABLE */
 .ptbl{width:100%;border-collapse:collapse;margin:1.5rem 0;font-size:13.5px;}
 .ptbl thead tr{border-bottom:1px solid var(--rule2);}
 .ptbl th{font-family:var(--mono);font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink3);text-align:left;padding:.55rem .75rem;font-weight:400;}
@@ -115,10 +115,6 @@ em{color:var(--moss);font-style:italic;}
 .ptbl tbody tr:hover td{background:rgba(45,90,61,.03);}
 .ptbl tbody tr:last-child td{border-bottom:none;}
 
-/* tags */
-.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:1rem;}
-.tag{font-family:var(--mono);font-size:10.5px;padding:3px 10px;border:1px solid var(--rule2);border-radius:2px;color:var(--moss);background:rgba(45,90,61,.05);}
-
 /* model component cards */
 .mgrid{display:grid;grid-template-columns:1fr 1fr;gap:.75rem;margin:1.2rem 0;}
 .mc{background:var(--paper2);border:1px solid var(--rule);border-radius:3px;padding:1.2rem;}
@@ -126,7 +122,7 @@ em{color:var(--moss);font-style:italic;}
 .mc-t{font-family:var(--serif);font-size:1.05rem;color:var(--ink);margin-bottom:.4rem;}
 .mc p{font-family:var(--serif);font-size:.89rem;color:var(--ink2);line-height:1.65;margin:0;}
 
-/* ─── RESULTS ─── */
+/* RESULTS */
 .graph-block{margin:2.5rem 0;}
 .graph-ph{width:100%;min-height:240px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.6rem;background:var(--paper2);border:1px dashed var(--rule2);border-radius:3px;padding:2rem;}
 .graph-ph p{font-family:var(--mono);font-size:10.5px;color:var(--ink3);text-align:center;margin:0;}
@@ -137,7 +133,7 @@ em{color:var(--moss);font-style:italic;}
 .inf-lbl{font-family:var(--mono);font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--moss);margin-bottom:.3rem;}
 .inference p{font-family:var(--serif);font-size:.92rem;margin:0;color:var(--ink2);}
 
-/* ─── POLL ─── */
+/* POLL — always inside results content, no special container needed */
 .poll-block{background:var(--paper2);border:1px solid var(--rule2);border-radius:3px;padding:1.5rem 1.8rem;margin:2.5rem 0;}
 .poll-q{font-family:var(--serif);font-size:1.15rem;color:var(--ink);margin-bottom:1.1rem;}
 .poll-opts{display:flex;gap:.75rem;flex-wrap:wrap;}
@@ -152,7 +148,7 @@ em{color:var(--moss);font-style:italic;}
 .poll-pct{font-family:var(--mono);font-size:10px;color:var(--moss);width:35px;text-align:right;}
 .poll-note{font-family:var(--mono);font-size:9.5px;color:var(--ink3);margin-top:.8rem;}
 
-/* ─── SIMULATE ─── */
+/* SIMULATE */
 .meal-slot{margin-bottom:1.75rem;}
 .ms-label{font-family:var(--mono);font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink3);margin-bottom:.55rem;padding-bottom:.4rem;border-bottom:1px solid var(--rule);}
 .ms-row{display:flex;gap:.75rem;align-items:center;flex-wrap:wrap;}
@@ -178,11 +174,11 @@ select:focus{border-color:var(--moss);}
 .sim-out{display:none;margin-top:1rem;}
 .slider-grid{display:grid;grid-template-columns:1fr 1fr;gap:.75rem;margin:1.2rem 0;}
 .sl-item{background:var(--paper2);border:1px solid var(--rule);border-radius:3px;padding:.9rem 1.1rem;}
-.sl-lbl{font-family:var(--mono);font-size:11px;color:var(--ink2);margin-bottom:.5rem;display:flex;justify-content:space-between;}
+.sl-lbl{font-family:var(--mono);font-size:11px;color:var(--ink2);margin-bottom:.5rem;display:flex;justify-content:space-between;flex-wrap:wrap;gap:.3rem;}
 .sl-lbl span{color:var(--moss);}
 input[type=range]{width:100%;accent-color:var(--moss);}
 
-/* ─── DISCUSSION ─── */
+/* DISCUSSION */
 .disc-block{margin-bottom:3rem;padding-left:1.5rem;border-left:2px solid var(--rule2);}
 .fut-grid{display:grid;grid-template-columns:1fr 1fr;gap:.75rem;margin:1.2rem 0;}
 .fut-card{background:var(--paper2);border:1px solid var(--rule);border-radius:3px;padding:1.1rem;}
@@ -190,7 +186,7 @@ input[type=range]{width:100%;accent-color:var(--moss);}
 .fut-t{font-family:var(--serif);font-size:1rem;color:var(--ink);margin-bottom:.3rem;}
 .fut-b{font-family:var(--serif);font-size:.88rem;color:var(--ink2);margin:0;line-height:1.6;}
 
-/* ─── REFERENCES ─── */
+/* REFERENCES */
 .ref-list{list-style:none;}
 .ref-item{padding:.9rem 0;border-bottom:1px solid var(--rule);display:grid;grid-template-columns:30px 1fr;gap:.75rem;align-items:start;border-radius:2px;transition:background .4s;}
 .ref-item.hl{background:rgba(45,90,61,.07);}
@@ -199,32 +195,18 @@ input[type=range]{width:100%;accent-color:var(--moss);}
 .ref-text em{color:var(--ink);font-style:italic;}
 .ref-j{font-family:var(--mono);font-size:10px;color:var(--ink3);display:block;margin-top:.2rem;}
 
-/* ─── INTRO IMAGE UPLOAD SLOTS ─── */
-.img-upload-slot{width:100%;min-height:200px;border:1.5px dashed var(--rule2);border-radius:3px;background:var(--paper2);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:border-color .18s,background .18s;position:relative;overflow:hidden;}
-.img-upload-slot:hover{border-color:var(--moss);background:rgba(45,90,61,.04);}
-.img-upload-slot.has-img{border-style:solid;border-color:var(--rule);}
-.iup-inner{display:flex;flex-direction:column;align-items:center;gap:.45rem;padding:1.5rem;text-align:center;pointer-events:none;}
-.img-upload-slot input[type=file]{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%;}
-.iup-label{font-family:var(--sans);font-size:12.5px;color:var(--ink2);font-weight:500;}
-.iup-hint{font-family:var(--mono);font-size:10px;color:var(--ink3);max-width:200px;line-height:1.5;}
-.iup-btn{font-family:var(--mono);font-size:10px;color:var(--moss);background:none;border:1px solid var(--rule2);border-radius:2px;padding:.28rem .75rem;cursor:pointer;margin-top:.2rem;pointer-events:all;transition:border-color .15s;}
-.iup-btn:hover{border-color:var(--moss);}
-
-/* ─── TEAM PAGE ─── */
+/* TEAM PAGE — FIX: natural height photos, no compression */
 .team-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin:1.5rem 0;}
 .team-card{background:var(--paper2);border:1px solid var(--rule);border-radius:3px;overflow:hidden;}
-.team-photo-slot{width:100%;height:200px;background:var(--paper3);display:flex;align-items:center;justify-content:center;cursor:pointer;position:relative;overflow:hidden;transition:background .18s;}
-.team-photo-slot:hover{background:rgba(45,90,61,.06);}
-.team-photo-slot input[type=file]{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%;}
-.tup-inner{display:flex;flex-direction:column;align-items:center;gap:.4rem;pointer-events:none;}
-.tup-hint{font-family:var(--mono);font-size:10px;color:var(--ink3);}
-.team-photo-img{width:100%;height:200px;object-fit:cover;object-position:top;display:block;}
+/* FIX: photo container has no fixed height — auto height so image shows naturally */
+.team-photo-wrap{width:100%;overflow:hidden;background:var(--paper3);}
+.team-photo-img{width:100%;height:auto;display:block;object-fit:cover;}
 .team-info{padding:1.1rem 1.2rem;}
 .team-name{font-family:var(--serif);font-size:1.2rem;color:var(--ink);margin-bottom:.2rem;}
 .team-role{font-family:var(--mono);font-size:9.5px;color:var(--moss);letter-spacing:.06em;text-transform:uppercase;margin-bottom:.6rem;}
 .team-bio{font-family:var(--serif);font-size:.88rem;color:var(--ink2);line-height:1.65;margin:0;}
 
-/* ─── MODEL ITERATIONS (now in team) ─── */
+/* MODEL ITERATIONS */
 .iter-track{display:flex;gap:.75rem;overflow-x:auto;padding-bottom:.5rem;margin:1.2rem 0;scrollbar-width:thin;scrollbar-color:var(--rule2) transparent;}
 .iter-card{flex-shrink:0;width:210px;background:var(--paper2);border:1px solid var(--rule);border-radius:3px;padding:1.1rem;}
 .iter-card.arrived{border-color:var(--moss);background:rgba(45,90,61,.05);}
@@ -237,23 +219,18 @@ input[type=range]{width:100%;accent-color:var(--moss);}
 .bts-track{display:flex;gap:1rem;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;padding-bottom:4px;}
 .bts-track::-webkit-scrollbar{display:none;}
 .bts-slide{flex:0 0 calc(33.33% - .67rem);scroll-snap-align:start;}
-.bts-slot{aspect-ratio:4/3;background:var(--paper2);border:1.5px dashed var(--rule2);border-radius:3px;overflow:hidden;position:relative;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:border-color .18s,background .18s;width:100%;height:100%;}
-.bts-slot:hover{border-color:var(--moss);background:rgba(45,90,61,.04);}
-.bts-inner{display:flex;flex-direction:column;align-items:center;gap:.4rem;pointer-events:none;}
-.bts-hint{font-family:var(--mono);font-size:10px;color:var(--ink3);}
-.bts-slot input[type=file]{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%;}
+.bts-img{width:100%;height:auto;border-radius:3px;display:block;object-fit:contain;}
 .bts-nav{display:flex;gap:.5rem;margin-top:.75rem;justify-content:center;}
 .bts-arrow{font-family:var(--mono);font-size:12px;color:var(--moss);background:none;border:1px solid var(--rule2);border-radius:2px;padding:.2rem .7rem;cursor:pointer;transition:border-color .15s;}
 .bts-arrow:hover{border-color:var(--moss);}
 
-/* ─── RESPONSIVE ─── */
+/* RESPONSIVE */
 @media(max-width:720px){
   nav{padding:0 1.2rem;}
   .nav-links li a{padding:.3rem .55rem;font-size:11px;}
   .hero-text{padding:0 1.5rem 4rem;}
   .intro-scroll{padding:5rem 1.5rem;}
-  .ss,.ss.flip{grid-template-columns:1fr;gap:2.5rem;}
-  .ss.flip{direction:ltr;}
+  .ss{grid-template-columns:1fr;gap:2.5rem;}
   .content{padding:4rem 1.5rem 5rem;}
   .mgrid,.assumptions-grid,.fut-grid,.slider-grid{grid-template-columns:1fr;}
   .team-grid{grid-template-columns:1fr;}
@@ -277,11 +254,8 @@ input[type=range]{width:100%;accent-color:var(--moss);}
   </ul>
 </nav>
 
-<!-- ════════════════════════
-     HOME
-════════════════════════ -->
+<!-- ════ HOME ════ -->
 <div id="home" class="page active">
-
   <div class="video-hero">
     <video autoplay muted loop playsinline>
       <source src="bact.mp4" type="video/mp4">
@@ -299,117 +273,90 @@ input[type=range]{width:100%;accent-color:var(--moss);}
 
   <div class="intro-scroll">
 
-    <div class="ss solo" data-obs>
-  <div class="ss-text">
-    <div class="ss-n">01 &mdash; The gut microbiome</div>
-    <h2 class="ss-title">A complex, indispensable ecosystem</h2>
-
-    <div class="ss-body">
-      <p>
-        The human gut harbours a vast microbial consortium of hundreds of bacterial, archaeal, and eukaryotic species. 
-        In the large intestine, the community is dominated by the phyla <em>Bacteroidota</em> and <em>Bacillota</em>, 
-        which together account for roughly 90% of microbial abundance.
-        <a class="cite" onclick="gotoRef(1)">[1]</a>
-      </p>
-
-      <p>
-        A central function of the gut microbiota is the fermentation of complex dietary fibres into short-chain fatty acids (SCFAs), 
-        which contribute almost 10% of host energy requirements.
-        <a class="cite" onclick="gotoRef(3)">[3]</a> 
-        Early ODE-based frameworks, such as the Muñoz-Tamayo model, established the "trophic chain" of this fermentation process — 
-        but assume constant fibre intake and lump all carbohydrates into a single variable, diverging significantly from reality.
-      </p>
-    </div>
-
-    <!-- IMAGE + CAPTION -->
-    <div style="margin-top:1.5rem;">
-      <img src="gut biogeography.png" 
-           style="width:100%;border-radius:3px;border:1px solid var(--rule);">
-
-      <div class="fig-cap">
-        <strong>Figure 1.</strong> Microbial community composition and fibre fermentation pathways in the gut. 
-        Adapted from McCallum &amp; Tropini 
-        <a class="cite" onclick="gotoRef(2)">[2]</a>.
+    <!-- 01 — 2-col: text left, image right -->
+    <div class="ss" data-obs>
+      <div class="ss-text">
+        <div class="ss-n">01 &mdash; The gut microbiome</div>
+        <h2 class="ss-title">A complex, indispensable ecosystem</h2>
+        <div class="ss-body">
+          <p>The human gut harbours a vast microbial consortium of hundreds of bacterial, archaeal, and eukaryotic species. In the large intestine, the community is dominated by the phyla <em>Bacteroidota</em> and <em>Bacillota</em>, which together account for roughly 90% of microbial abundance.<a class="cite" onclick="gotoRef(1)">[1]</a></p>
+          <p>A central function of the gut microbiota is the fermentation of complex dietary fibres into short-chain fatty acids (SCFAs), which contribute almost 10% of host energy requirements.<a class="cite" onclick="gotoRef(3)">[3]</a> Early ODE-based frameworks, such as the Muñoz-Tamayo model, established the "trophic chain" of this fermentation process — but assume constant fibre intake and lump all carbohydrates into a single variable, diverging significantly from reality.</p>
+        </div>
+      </div>
+      <!-- FIX: image in its own col, caption outside the overflow clip -->
+      <div style="display:flex;flex-direction:column;gap:0;">
+        <div class="ss-vis" style="padding:0;">
+          <img src="gut biogeography.png" alt="Gut biogeography" style="width:100%;display:block;object-fit:contain;">
+        </div>
+        <div class="fig-cap"><strong>Figure 1.</strong> Microbial community composition and fibre fermentation pathways in the gut. Adapted from McCallum &amp; Tropini <a class="cite" onclick="gotoRef(2)">[2]</a>.</div>
       </div>
     </div>
 
-  </div>
-</div>
-
-    <div class="ss flip" data-obs>
-      <div class="ss-text">
+    <!-- 02 — text right, equation panel left (flip) -->
+    <div class="ss" style="direction:rtl;" data-obs>
+      <div class="ss-text" style="direction:ltr;">
         <div class="ss-n">02 &mdash; The washout problem</div>
         <h2 class="ss-title">The washout problem</h2>
         <div class="ss-body">
           <p>From a fluid dynamics perspective, the gut is a tube with constant forward flow. If bacteria were simply suspended in luminal content, they would be expelled before they could reproduce — a phenomenon termed <em>washout</em>.</p>
-          <p>Cremer et al.<a class="cite" onclick="gotoRef(4)">[4]</a> constructed a 2D partial differential model that showed peristaltic mixing is necessary to combat washout for microbial populations not to be swept off. Their model considers flow to peak an hour after food has been consumed, with a dynamic radius accounting for gut contractions. A dead-end cecal pouch provides a region safe from flow where bacterial populations can be replenished.</p>
+          <p>Cremer et al.<a class="cite" onclick="gotoRef(4)">[4]</a> constructed a 2D partial differential model that showed peristaltic mixing is necessary to combat washout. Their model considers flow to peak an hour after food has been consumed, with a dynamic radius accounting for gut contractions. A dead-end cecal pouch provides a region safe from flow where bacterial populations can be replenished.</p>
           <p>Salari &amp; Cremer<a class="cite" onclick="gotoRef(5)">[5]</a> extended this by incorporating diurnal cecal volume dynamics, showing daily population bottlenecks of $N_e \sim 10^7$&#8211;$10^{11}$ cells driven by meal-driven washout events.</p>
         </div>
       </div>
-      <div class="ss-vis" style="padding:1.6rem 1.3rem;display:block;background:var(--paper2);border:1px solid var(--rule2);">
-
-  <div class="eq-section-label" style="margin-bottom:1.2rem;">
-    Cremer et al., PNAS 2016 — Spatial population dynamics
-    <a class="cite" onclick="gotoRef(2)">[4]</a>
-  </div>
-
-  <div style="overflow-x:auto;padding-bottom:.6rem;">
-    $$
-    \frac{\partial \rho(x,t)}{\partial t}
-    =
-    \underbrace{\lambda(x,t)\,\rho}_{\text{growth}}
-    \;-\;
-    \underbrace{v(x,t)\,\frac{\partial \rho}{\partial x}}_{\text{advection (flow)}}
-    \;+\;
-    \underbrace{D\,\frac{\partial^2 \rho}{\partial x^2}}_{\text{diffusion}}
-    $$
-  </div>
-
-  <div class="eq-note-block" style="margin-top:1rem;">
-
-    <span>
-      <strong>$\rho(x,t)$</strong> — bacterial density along the intestinal axis $x$ over time.
-    </span>
-
-    <span>
-      <strong>$\lambda(x,t)\rho$ — Growth:</strong> local net growth rate governed by nutrient availability; can become negative during strong flow events.
-    </span>
-
-    <span>
-      <strong>$v(x,t)\,\partial_x \rho$ — Advection:</strong> fluid flow transports bacteria downstream, driving washout following meals.
-    </span>
-
-    <span>
-      <strong>$D\,\partial^2_x \rho$ — Diffusion:</strong> effective mixing from peristalsis, enabling redistribution and recolonisation.
-    </span>
-
-  </div>
-</div>
-</div>
-
-    <div class="ss" data-obs>
-      <div class="ss-text">
-        <div class="ss-n">03 &mdash; Our biological system</div>
-        <h2 class="ss-title"><em>B. theta</em> feeds <em>B. breve</em></h2>
-        <div class="ss-body">
-          <p>Our model investigates gut community structure driven by cross-feeding between primary degraders and secondary consumers. <em>Bacteroides thetaiotaomicron</em> ($B_p$) cleaves complex inulin into fructo-oligosaccharides (FOS), which <em>Bifidobacterium breve</em> ($B_c$) then consumes, as it lacks the enzymes for initial polymer breakdown. This metabolic interdependence suggests that species persistence is governed by temporal nutrient fluctuations and growth kinetics.</p>
+      <div style="direction:ltr;">
+        <div class="ss-vis" style="padding:1.6rem 1.3rem;background:var(--paper2);border:1px solid var(--rule2);">
+          <div class="eq-section-label" style="margin-bottom:1.2rem;">Cremer et al., PNAS 2016 — Spatial population dynamics <a class="cite" onclick="gotoRef(4)">[4]</a></div>
+          <div style="overflow-x:auto;padding-bottom:.6rem;">
+            $$\frac{\partial \rho(x,t)}{\partial t} = \underbrace{\lambda(x,t)\,\rho}_{\text{growth}} \;-\; \underbrace{v(x,t)\,\frac{\partial \rho}{\partial x}}_{\text{advection (flow)}} \;+\; \underbrace{D\,\frac{\partial^2 \rho}{\partial x^2}}_{\text{diffusion}}$$
+          </div>
+          <div class="eq-note-block" style="margin-top:1rem;">
+            <span><strong>$\rho(x,t)$</strong> — bacterial density along the intestinal axis $x$ over time.</span>
+            <span><strong>$\lambda(x,t)\rho$ — Growth:</strong> local net growth rate governed by nutrient availability; can become negative during strong flow events.</span>
+            <span><strong>$v(x,t)\,\partial_x \rho$ — Advection:</strong> fluid flow transports bacteria downstream, driving washout following meals.</span>
+            <span><strong>$D\,\partial^2_x \rho$ — Diffusion:</strong> effective mixing from peristalsis, enabling redistribution and recolonisation.</span>
+          </div>
         </div>
       </div>
-      <div class="ss-vis" style="padding:0;overflow:hidden;">
-  
-  <img src="metabolic pathway.png"
-       style="width:100%;border-radius:3px;border:1px solid var(--rule);object-fit:contain;">
+    </div>
 
-  <div class="fig-cap">
-    <strong>Figure 3.</strong> Cross-feeding interaction between 
-    <em>B. thetaiotaomicron</em> and <em>B. breve</em>, where breakdown products 
-    from primary fibre degradation support secondary consumers.
-  </div>
+    <div class="ss" data-obs>
+  <div class="ss-text">
+    <div class="ss-n">03 &mdash; Our biological system</div>
+    <h2 class="ss-title"><em>B. theta</em> feeds <em>B. breve</em></h2>
 
-</div>
+    <div class="ss-body">
 
-    <div class="ss flip" data-obs>
-      <div class="ss-text">
+      <p>
+        Our model investigates gut community structure driven by cross-feeding between primary degraders and secondary consumers. 
+        <em>Bacteroides thetaiotaomicron</em> ($B_p$) cleaves complex inulin into fructo-oligosaccharides (FOS), which 
+        <em>Bifidobacterium breve</em> ($B_c$) then consumes, as it lacks the enzymes for initial polymer breakdown. 
+        
+      </p>
+
+      <p>
+        Growth in this system follows Monod kinetics, where the rate depends on substrate availability via the half-saturation constant $K_s$. 
+        This constant represents the substrate concentration at which growth reaches half of its maximum value. Crucially, $K_s$ differs across 
+        species and substrates.
+
+        This asymmetry in substrate affinity reinforces the directional nature of cross-feeding, where primary degraders generate accessible 
+        metabolites that selectively sustain secondary consumers.
+        <a class="cite" onclick="gotoRef(6)">[6]</a>
+        <a class="cite" onclick="gotoRef(7)">[7]</a>
+      </p>
+
+    </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:0;">
+        <div class="ss-vis" style="padding:0;">
+          <img src="metabolic pathway.png" alt="Metabolic pathway" style="width:100%;display:block;object-fit:contain;">
+        </div>
+        <div class="fig-cap"><strong>Figure 3.</strong> Cross-feeding interaction between <em>B. thetaiotaomicron</em> and <em>B. breve</em>, where breakdown products from primary fibre degradation support secondary consumers.</div>
+      </div>
+    </div>
+
+    <!-- 04 — text right, placeholder left (flip) -->
+    <div class="ss" style="direction:rtl;" data-obs>
+      <div class="ss-text" style="direction:ltr;">
         <div class="ss-n">04 &mdash; Our approach</div>
         <h2 class="ss-title">Our approach</h2>
         <div class="ss-body">
@@ -417,30 +364,18 @@ input[type=range]{width:100%;accent-color:var(--moss);}
           <p>Nutrient delivery was characterised using discrete Gaussian distributions. Unlike models that assume instantaneous spikes or constant flow, this accounts for the gradual passage of a meal through the colon — fibre concentration increases toward a peak and gradually dissipates, with a 1.5h standard deviation centred 1.5h after each meal.</p>
         </div>
       </div>
-      <div class="ss-vis" style="padding:0;overflow:hidden;min-height:240px;position:relative;">
-        <img id="intro-img4" src="" alt="" style="display:none;width:100%;height:100%;object-fit:contain;border-radius:3px;">
-        <div id="intro-img4-placeholder" style="width:100%;height:100%;min-height:240px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.5rem;padding:1.5rem;text-align:center;">
-          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="color:var(--moss3)"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-          <span style="font-family:var(--sans);font-size:12.5px;color:var(--ink2);font-weight:500;">Add image</span>
-          <span style="font-family:var(--mono);font-size:10px;color:var(--ink3);">CSTR model setup or diagram</span>
-          <input type="text" id="intro-img4-url" placeholder="Paste image URL…" style="margin-top:.5rem;width:100%;font-family:var(--mono);font-size:10.5px;border:1px solid var(--rule2);border-radius:2px;padding:.3rem .6rem;background:var(--paper);color:var(--ink);outline:none;" oninput="loadIntroImg(4,this.value)">
+     
         </div>
       </div>
     </div>
 
-  </div>
-</div>
-</div>
-<!-- ════════════════════════
-     MODEL
-════════════════════════ -->
+<!-- ════ MODEL ════ -->
 <div id="model" class="page">
   <div class="content">
     <div class="sec-hdr">
       <div class="sec-hdr-inner"><span class="sec-n">02</span><h2 class="sec-t">The Model</h2></div>
     </div>
 
-    <!-- MODEL COMPONENTS -->
     <div class="blabel">Model components</div>
     <div class="btitle">Four interacting state variables</div>
     <p>We use a system of coupled ODEs to model the rate of change for two bacterial populations and two nutrients in the proximal colon, treated as a Continuous Stirred-Tank Reactor (CSTR).</p>
@@ -453,7 +388,6 @@ input[type=range]{width:100%;accent-color:var(--moss);}
 
     <div class="divider"></div>
 
-    <!-- GOVERNING EQUATIONS -->
     <div class="blabel">Governing equations</div>
     <div class="btitle">The coupled ODE system</div>
     <p>Four state variables are tracked over time $t$: bacterial concentrations $B_p$ (<em>B. theta</em>) and $B_c$ (<em>B. breve</em>), inulin concentration $N_I$, and FOS concentration $N_{FOS}$. Each equation decomposes into labelled biological terms.</p>
@@ -494,7 +428,6 @@ input[type=range]{width:100%;accent-color:var(--moss);}
 
     <div class="divider"></div>
 
-    <!-- PARAMETER TABLE -->
     <div class="blabel">Parameters and estimation</div>
     <table class="ptbl">
       <thead><tr><th>Symbol</th><th>Parameter</th><th>Value</th><th>Units</th><th>Estimation</th></tr></thead>
@@ -514,73 +447,33 @@ input[type=range]{width:100%;accent-color:var(--moss);}
 
     <div class="divider"></div>
 
-    <!-- ASSUMPTIONS -->
     <div class="blabel">Assumptions</div>
     <div class="assumptions-grid">
-      <div class="assumption-card">
-        <div class="acard-num">A1</div>
-        <div class="acard-title">Well-mixed lumen (CSTR)</div>
-        <p class="acard-body">The proximal colon is modelled as a Continuous Stirred-Tank Reactor. Peristaltic contractions justify this approximation, eliminating spatial gradients.</p>
-      </div>
-      <div class="assumption-card">
-        <div class="acard-num">A2</div>
-        <div class="acard-title">Constant washout rate</div>
-        <p class="acard-body">$1/\tau = 0.0357$ h&#x207B;&#xB9; is held fixed. This ensures population dynamics are driven by nutrient availability rather than fluctuating transit speeds.</p>
-      </div>
-      <div class="assumption-card">
-        <div class="acard-num">A3</div>
-        <div class="acard-title">Substrate specificity</div>
-        <p class="acard-body"><em>B. theta</em> is the sole primary degrader of inulin; <em>B. breve</em> grows exclusively on produced FOS. All substrate encountered by a cell is consumed — no partial leakage.</p>
-      </div>
-      <div class="assumption-card">
-        <div class="acard-num">A4</div>
-        <div class="acard-title">Shared space constraints</div>
-        <p class="acard-body">Growth is limited by finite physical space $S$. The logistic crowding term applies to the combined niche occupancy of both species.</p>
-      </div>
-      <div class="assumption-card">
-        <div class="acard-num">A5</div>
-        <div class="acard-title">Environmental stability</div>
-        <p class="acard-body">pH (~6.3) and temperature (37°C) are constant. Fermentation-driven acidification and its feedback on growth rates are not modelled.</p>
-      </div>
-      <div class="assumption-card">
-        <div class="acard-num">A6</div>
-        <div class="acard-title">Luminal focus</div>
-        <p class="acard-body">Only free-swimming (luminal) populations are tracked. Mucus-attached or biofilm-associated bacteria are excluded.</p>
-      </div>
+      <div class="assumption-card"><div class="acard-num">A1</div><div class="acard-title">Well-mixed lumen (CSTR)</div><p class="acard-body">The proximal colon is modelled as a Continuous Stirred-Tank Reactor. Peristaltic contractions justify this approximation, eliminating spatial gradients.</p></div>
+      <div class="assumption-card"><div class="acard-num">A2</div><div class="acard-title">Constant washout rate</div><p class="acard-body">$1/\tau = 0.0357$ h&#x207B;&#xB9; is held fixed. This ensures population dynamics are driven by nutrient availability rather than fluctuating transit speeds.</p></div>
+      <div class="assumption-card"><div class="acard-num">A3</div><div class="acard-title">Substrate specificity</div><p class="acard-body"><em>B. theta</em> is the sole primary degrader of inulin; <em>B. breve</em> grows exclusively on produced FOS. All substrate encountered by a cell is consumed — no partial leakage.</p></div>
+      <div class="assumption-card"><div class="acard-num">A4</div><div class="acard-title">Shared space constraints</div><p class="acard-body">Growth is limited by finite physical space $S$. The logistic crowding term applies to the combined niche occupancy of both species.</p></div>
+      <div class="assumption-card"><div class="acard-num">A5</div><div class="acard-title">Environmental stability</div><p class="acard-body">pH (~6.3) and temperature (37°C) are constant. Fermentation-driven acidification and its feedback on growth rates are not modelled.</p></div>
+      <div class="assumption-card"><div class="acard-num">A6</div><div class="acard-title">Luminal focus</div><p class="acard-body">Only free-swimming (luminal) populations are tracked. Mucus-attached or biofilm-associated bacteria are excluded.</p></div>
     </div>
-
   </div>
 </div>
 
-<!-- ════════════════════════
-     RESULTS
-════════════════════════ -->
+<!-- ════ RESULTS ════ -->
 <div id="results" class="page">
   <div class="content">
     <div class="sec-hdr">
-      <div class="sec-hdr-inner">
-        <span class="sec-n">03</span>
-        <h2 class="sec-t">Results</h2>
-      </div>
+      <div class="sec-hdr-inner"><span class="sec-n">03</span><h2 class="sec-t">Results</h2></div>
     </div>
-
-    <p>
-      Simulations run over 10 days (240h) using the Ashoka University mess menu as dietary input, 
-      integrated with RK4 ($dt = 0.001$ h, 240,000 steps). Four panels characterise the nutrient and bacterial dynamics.
-    </p>
-
+    <p>Simulations run over 10 days (240h) using the Ashoka University mess menu as dietary input, integrated with RK4 ($dt = 0.001$ h, 240,000 steps). Four panels characterise the nutrient and bacterial dynamics.</p>
     <div class="divider"></div>
 
-    <!-- FIGURE 1 -->
     <div class="graph-block">
       <div class="blabel">Figure 1</div>
-
       <div class="graph-ph" style="padding:0;">
         <img src="1_nutrient_timeseries.png" style="width:100%;border-radius:3px;border:1px solid var(--rule)">
       </div>
-
       <div class="graph-title">Nutrient concentrations over 10 days</div>
-
       <div class="inference">
         <div class="inf-lbl">Inference</div>
         <p>We hypothesised oscillatory behaviour here: once inulin enters the gut, it is consumed by <em>B. theta</em> over time (producing the dip in the curve) before the next meal restores it. Analogous to a prey-predator model, FOS concentration should not peak before inulin's. However, the observed result shows FOS concentration continuously declining rather than oscillating. This is consistent with $Y_p$ being set too high and the initial $B_p$ population being too small to efficiently convert inulin to FOS, leaving the consumer substrate-starved across the simulation window.</p>
@@ -589,16 +482,12 @@ input[type=range]{width:100%;accent-color:var(--moss);}
 
     <div class="divider"></div>
 
-    <!-- FIGURE 2 -->
     <div class="graph-block">
       <div class="blabel">Figure 2</div>
-
       <div class="graph-ph" style="padding:0;">
         <img src="2_bacteria_timeseries.png" style="width:100%;border-radius:3px;border:1px solid var(--rule)">
       </div>
-
       <div class="graph-title">Bacterial population dynamics over 10 days</div>
-
       <div class="inference">
         <div class="inf-lbl">Inference</div>
         <p>We expected oscillatory coexistence: producer bacteria rising first as inulin becomes available, consumer populations then rising as FOS accumulates, followed by joint decline as nutrients are exhausted — the cycle repeating at each meal. Instead, the simulation shows <em>B. theta</em> rising exponentially, while <em>B. breve</em> remains suppressed near zero. Nutrients are constantly replenished from three daily meals, preventing the boom-bust cycles we anticipated. The large divergence in population sizes may stem from a high $Y_p$ generating disproportionate <em>B. theta</em> concentration per unit inulin consumed, or from washout rates that differentially disadvantage the consumer.</p>
@@ -607,16 +496,12 @@ input[type=range]{width:100%;accent-color:var(--moss);}
 
     <div class="divider"></div>
 
-    <!-- FIGURE 3 -->
     <div class="graph-block">
       <div class="blabel">Figure 3</div>
-
       <div class="graph-ph" style="padding:0;">
         <img src="3_nutrient_phase.png" style="width:100%;border-radius:3px;border:1px solid var(--rule)">
       </div>
-
       <div class="graph-title">Phase portrait: substrate dynamics (FOS vs Inulin)</div>
-
       <div class="inference">
         <div class="inf-lbl">Inference</div>
         <p>The nutrient phase portrait reveals clear producer-consumer coupling: FOS cannot increase before inulin does, and concentrations for both drop as they are utilised by their respective bacteria. The time-coloured trajectory shows the system initially transiting from high-FOS / low-inulin (start, top left) toward increasing inulin from meals, with FOS gradually declining to near zero by the end of the simulation. The tight convergence of late-time trajectories near the inulin axis confirms FOS depletion — a signature of the $Y_p$ mismatch identified in Figure 1.</p>
@@ -625,16 +510,12 @@ input[type=range]{width:100%;accent-color:var(--moss);}
 
     <div class="divider"></div>
 
-    <!-- FIGURE 4 -->
     <div class="graph-block">
       <div class="blabel">Figure 4</div>
-
       <div class="graph-ph" style="padding:0;">
         <img src="4_bacteria_phase.png" style="width:100%;border-radius:3px;border:1px solid var(--rule)">
       </div>
-
       <div class="graph-title">Phase portrait: bacterial co-dynamics (<em>B. breve</em> vs <em>B. theta</em>)</div>
-
       <div class="inference">
         <div class="inf-lbl">Inference</div>
         <p>We expected coexistence behaviour, with both consumer and producer populations cycling together in a limit cycle. The phase portrait shows instead a monotonic trajectory: <em>B. theta</em> grows continuously along the x-axis while <em>B. breve</em> collapses from its initial value toward zero. This is consistent with competitive exclusion driven by the near-zero FOS supply — the cross-feeding chain is effectively broken by insufficient FOS production, leaving <em>B. breve</em> unable to maintain its population above the washout threshold.</p>
@@ -643,10 +524,7 @@ input[type=range]{width:100%;accent-color:var(--moss);}
 
     <div class="divider"></div>
 
-  
-</div>
-
-    <!-- POLL -->
+    <!-- POLL — now correctly INSIDE the results .content div -->
     <div class="poll-block">
       <div class="blabel">Community poll</div>
       <div class="poll-q">Based on the results, do you think $Y_p$ (the yield coefficient for <em>B. theta</em>) is set too high?</div>
@@ -678,17 +556,13 @@ input[type=range]{width:100%;accent-color:var(--moss);}
   </div>
 </div>
 
-<!-- ════════════════════════
-     SIMULATE
-════════════════════════ -->
+<!-- ════ SIMULATE ════ -->
 <div id="simulate" class="page">
   <div class="content">
     <div class="sec-hdr"><div class="sec-hdr-inner"><span class="sec-n">04</span><h2 class="sec-t">Simulate Yourself</h2></div></div>
     <p>Select items from the actual Ashoka University canteen menu. Add as many items per meal as you like &mdash; just as you would in the real canteen. The simulator runs the RK4 ODE system for <strong>one full day</strong> (24h, three meals) based on exactly what you pick, and animates the bacterial and nutrient dynamics from breakfast through to the next morning.</p>
-
     <div class="divider"></div>
     <div class="blabel">Step 1 &mdash; Build your meal plan</div>
-
     <div class="meal-slot">
       <div class="ms-label">Breakfast &mdash; 08:00</div>
       <div class="ms-row">
@@ -698,7 +572,6 @@ input[type=range]{width:100%;accent-color:var(--moss);}
       </div>
       <div class="sel-items" id="items-breakfast"></div>
     </div>
-
     <div class="meal-slot">
       <div class="ms-label">Lunch &mdash; 13:00</div>
       <div class="ms-row">
@@ -708,7 +581,6 @@ input[type=range]{width:100%;accent-color:var(--moss);}
       </div>
       <div class="sel-items" id="items-lunch"></div>
     </div>
-
     <div class="meal-slot">
       <div class="ms-label">Dinner &mdash; 20:00</div>
       <div class="ms-row">
@@ -718,7 +590,6 @@ input[type=range]{width:100%;accent-color:var(--moss);}
       </div>
       <div class="sel-items" id="items-dinner"></div>
     </div>
-
     <div class="fibre-summary">
       <div class="fs-item">
         <div class="fs-lbl">Total dietary fibre</div>
@@ -735,12 +606,10 @@ input[type=range]{width:100%;accent-color:var(--moss);}
         </div>
       </div>
     </div>
-
     <button class="run-btn" onclick="runODE()">
       <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
       Run 1-day simulation
     </button>
-
     <div class="blabel" style="margin-top:2rem">Output &mdash; microbial dynamics over 24 hours</div>
     <canvas class="sim-canvas" id="simCanvas" width="820" height="400"></canvas>
     <div class="sim-legend">
@@ -750,9 +619,7 @@ input[type=range]{width:100%;accent-color:var(--moss);}
       <div class="leg-i"><div class="leg-l" style="background:transparent;border-top:2px dashed #7a9e6e;width:20px;height:1px"></div>FOS $N_{FOS}$ (mM)</div>
     </div>
     <div class="sim-out callout" id="simOut"><p id="simOutText"></p></div>
-
     <div class="divider"></div>
-
     <div class="blabel">Step 2 &mdash; Explore parameter sensitivity</div>
     <p>Adjust the ODE parameters and re-run to see how the dynamics change. Each slider directly modifies a term in the governing equations.</p>
     <div class="slider-grid">
@@ -793,35 +660,28 @@ input[type=range]{width:100%;accent-color:var(--moss);}
       <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
       Re-run with new parameters
     </button>
-
   </div>
 </div>
 
-<!-- ════════════════════════
-     DISCUSSION
-════════════════════════ -->
+<!-- ════ DISCUSSION ════ -->
 <div id="discussion" class="page">
   <div class="content">
     <div class="sec-hdr"><div class="sec-hdr-inner"><span class="sec-n">05</span><h2 class="sec-t">Discussion</h2></div></div>
-
     <div class="disc-block">
       <div class="blabel">Scenario 2 — Varying growth-to-yield ratios ($\lambda/Y$)</div>
       <div class="btitle">How $\lambda/Y$ dictates competition and coexistence</div>
       <p>When the producer ratio $\lambda_p/Y_p$ is high due to high growth: <em>B. theta</em> plateaus quickly, but <em>B. breve</em> faces early extinction from initial FOS scarcity. Lowering $Y_p$ to $10^5$ rescues the consumer, allowing it to overtake <em>B. theta</em>; at $Y_p = 10^3$, <em>B. breve</em> enters exponential growth as FOS production spikes. A low producer ratio with low growth causes <em>B. theta</em> growth to flatten and eventually crash, while high yield increases <em>B. theta</em> rapidly but leaves <em>B. breve</em> unable to persist. For the consumer, a high $\lambda_c/Y_c$ ratio slows <em>B. breve</em> decay under high growth conditions, while low yield accelerates it. Under specific parameter combinations, both populations coexist exponentially as FOS builds up. Low consumer growth leads to total extinction of <em>B. breve</em>, while high yield enables faster recovery.</p>
     </div>
-
     <div class="disc-block">
       <div class="blabel">Scenario 3 — Varying residence time ($\tau$)</div>
       <div class="btitle">Sensitivity to bacterial and nutrient washout</div>
       <p>Decreasing $\tau_b$ (bacterial washout) was expected to deplete <em>B. theta</em>, but high inulin levels prevent a crash. However, <em>B. breve</em> drops to near zero as FOS production cannot offset the increased removal rate. Decreasing $\tau_n$ (nutrient washout) does not deplete inulin but increases its oscillation amplitude. High yield minimises the consumption impact on the nutrient pool, causing the $N/t$ term to increase despite faster turnover. Notably, low yield conditions produce the most interesting dynamics: coexistence and nutrient oscillation emerge, visible in phase portraits. Varying $\varepsilon_c$ and $Y_p$ together produces detailed bifurcation-like behaviours worth further investigation.</p>
     </div>
-
     <div class="disc-block">
       <div class="blabel">Caveats</div>
       <div class="btitle">Where the model falls short</div>
       <p>Several important biological realities are not captured. The model treats the proximal colon as a single well-mixed compartment — missing the spatial gradients a PDE framework would resolve.<a class="cite" onclick="gotoRef(4)">[4]</a> The mucus layer is entirely absent.<a class="cite" onclick="gotoRef(1)">[1]</a> pH dynamics are not modelled — fermentation-driven acidification would differentially affect species growth rates. The simplifying assumption $U_1 = U_{FOS} = 1.0$ may overestimate FOS availability. The 15% inulin fraction of dietary fibre applied here is a literature average and may vary significantly meal-to-meal.</p>
     </div>
-
     <div class="disc-block">
       <div class="blabel">Future directions</div>
       <div class="btitle">What else can be done</div>
@@ -837,9 +697,7 @@ input[type=range]{width:100%;accent-color:var(--moss);}
   </div>
 </div>
 
-<!-- ════════════════════════
-     REFERENCES
-════════════════════════ -->
+<!-- ════ REFERENCES ════ -->
 <div id="references" class="page">
   <div class="content">
     <div class="sec-hdr"><div class="sec-hdr-inner"><span class="sec-n">06</span><h2 class="sec-t">References</h2></div></div>
@@ -852,300 +710,88 @@ input[type=range]{width:100%;accent-color:var(--moss);}
       <li class="ref-item" id="ref5"><span class="ref-n">[5]</span><span class="ref-text">Salari A. &amp; Cremer J. <em>Diurnal variations in digestion and flow drive microbial dynamics in the gut.</em><span class="ref-j">PRX Life, 3, 023012 (2025). doi:10.1103/PRXLife.3.023012</span></span></li>
       <li class="ref-item" id="ref6"><span class="ref-n">[6]</span><span class="ref-text">Van Wey A.S., Lovatt S.J., Roy N.C. &amp; Shorten P.R. <em>Monoculture parameters successfully predict co-culture growth kinetics of Bacteroides thetaiotaomicron and two Bifidobacterium strains.</em><span class="ref-j">International Journal of Food Microbiology, 191, 172&ndash;181 (2014). doi:10.1016/j.ijfoodmicro.2014.09.015</span></span></li>
       <li class="ref-item" id="ref7"><span class="ref-n">[7]</span><span class="ref-text">Kumar M., Ji B., Zengler K. &amp; Nielsen J. <em>Modelling approaches for studying the microbiome.</em><span class="ref-j">Nature Microbiology, 4, 1253&ndash;1267 (2019). doi:10.1038/s41564-019-0491-9</span></span></li>
-      <li class="ref-item" id="ref8"><span class="ref-n">[8]</span><span class="ref-text">Kherotia V., Hitee &amp; Shreya. <em>GutModel — ODE simulation of B. thetaiotaomicron &amp; B. breve cross-feeding dynamics under real dietary inputs.</em><span class="ref-j">Python source code. Ashoka University, Computational Biology Course (2026).</span>
-        <details style="margin-top:.75rem;">
-          <summary style="font-family:var(--mono);font-size:10.5px;color:var(--moss);cursor:pointer;user-select:none;">View Python script ▾</summary>
-          <pre style="margin-top:.75rem;background:var(--paper2);border:1px solid var(--rule2);border-radius:3px;padding:1.1rem 1.2rem;overflow-x:auto;font-family:var(--mono);font-size:10.5px;color:var(--ink2);line-height:1.7;white-space:pre;">import csv
-from pickle import EXT1
-
-import matplotlib.pyplot as plt
-import numpy as np
-import pandas as pd
-import random
-from matplotlib.collections import LineCollection
-import matplotlib.collections as mcoll
-plt.rcParams.update({
-    "font.family": "serif",
-    "axes.edgecolor": "#cfc8bb",
-    "axes.labelcolor": "#444440",
-    "xtick.color": "#8a8a84",
-    "ytick.color": "#8a8a84",
-    "text.color": "#1a1a18"
-})
-
-# VARIABLE ASSIGNMENT
-class GutParameters:
-    def __init__(self):
-        # microbes
-        self.Bp = 0.25*10**6  # initial population size of producer bacteria
-        self.Bc = 0.12*10**6  # initial population size of consumer bacteria
-
-        # nutrients
-        self.NI = 0.451       # initial inulin concentration in the gut
-        self.NFOS = 0.434     # initial FOS concentration in the gut
-
-        # space and time constraints
-        self.R = 3            # Replicates
-        self.S = 5.9*10**9   # total available space
-        self.Sp = 7.85        # size of producer bacteria
-        self.Sc = 4.25        # size of consumer bacteria
-        self.T = 240          # hours
-
-        # kinetic constants
-        self.Kp = 13.5        # Monod constant for Producer
-        self.Kc = 6.98        # Monod constant for Consumer
-
-        self.Rp = 0.23        # Growth Rate of Producer
-        self.Rc = 0.37        # Growth Rate of Consumer
-
-        self.Yp = 7.39*10**8  # Yield (concentration/nutrient) of Producer
-        self.Yc = 4.30*10**8  # Yield (concentration/nutrient) of Consumer
-
-        self.EC = 0.45        # Efficiency of Inulin to FOS Conversion by Producer
-        self.EI = 0.95        # uptake efficiency of Inulin by Producer
-        self.EFOS = 0.125     # uptake efficiency of FOS by Consumer
-
-        # Fluid Mechanic Component
-        self.taoB = 72        # Bacterial Retention Time in hours
-        self.taoN = 24        # Nutrient Retention Time in hours
-
-        # Meal Intake (Gaussian) Parameters
-        self.meal_sigma = 0.5
-        self.inulin_MW = 0.504  # g/mmol (MW ~504 g/mol)
-        self.V = 0.377          # L volume of the proximal colon
-gp = GutParameters()
-
-# DATA INLOADING
-meal_df_file_path = "/path/to/AshokaMenu_CompBioHVS.csv"
-meal_df = pd.read_csv(meal_df_file_path)
-
-def get_meal_time(hour):
-    if abs(hour - (8.0 + 1.5)) &lt; 1.5:
-        return "breakfast"
-    elif abs(hour - (13.0 + 1.5)) &lt; 1.5:
-        return "lunch"
-    elif abs(hour - (20.0 + 1.5)) &lt; 1.5:
-        return "dinner"
-    else:
-        return None
-
-def meal_helper(meal_df):
-    meal_items = []
-    for day in range(1, 11):
-        for meal_time in ['breakfast', 'lunch', 'dinner']:
-            meal_mask = (meal_df['day'] == day) &amp; (meal_df['meal_time'].str.lower() == meal_time)
-            meal_options = meal_df[meal_mask]
-            if not meal_options.empty:
-                food_items = meal_options[meal_options['item_type'].str.lower() == "food"]
-                drink_items = meal_options[meal_options['item_type'].str.lower() == "drink"]
-                selected_food = random.sample(list(food_items['item_name']), min(len(food_items), 3))
-                selected_drink = random.choice(list(drink_items['item_name'])) if not drink_items.empty else None
-                food_fibre = meal_options[meal_options['item_name'].isin(selected_food)]['dietary_fibre'].sum()
-                drink_fibre = meal_options[meal_options['item_name'] == selected_drink]['dietary_fibre'].sum()
-                meal_items.append({
-                    "day": day, "meal_time": meal_time,
-                    "food_items": selected_food, "drink_items": selected_drink,
-                    "meal_dietary_fibre": food_fibre + drink_fibre
-                })
-    return pd.DataFrame(meal_items)
-
-meal_recruits_df = meal_helper(meal_df)
-
-def meal_recruiter(day, meal_time):
-    if meal_time is None:
-        return 0.0
-    mask = (meal_recruits_df['day'] == day) &amp; (meal_recruits_df['meal_time'].str.lower() == meal_time.lower())
-    result = meal_recruits_df[mask]
-    return result.iloc[0]['meal_dietary_fibre'] if not result.empty else 0.0
-
-# ODE SYSTEM
-def producer(Bp, Bc, Rp, NI, Kp, Sp, Sc, S, taoB):
-    return Bp * Rp * (NI / (NI + Kp)) * (1 - (Bp*Sp + Bc*Sc)/S) - (1/taoB)*Bp
-
-def consumer(Bc, Bp, Rc, NFOS, Kc, Sp, Sc, S, taoB):
-    return Bc * Rc * (NFOS / (NFOS + Kc)) * (1 - (Bp*Sp + Bc*Sc)/S) - (1/taoB)*Bc
-
-def inulin(NI, Rp, Yp, Kp, Bp, taoN, inulin_MW, hour, day, meal_time):
-    if meal_time is None:
-        NIinflow_rate = 0.0
-    else:
-        fibre_g = meal_recruiter(day, meal_time)
-        meal_hours = {"breakfast": 8.0, "lunch": 13.0, "dinner": 20.0}
-        peak = meal_hours[meal_time] + 1.5
-        deltaT = hour - peak
-        gauss = np.exp(-0.5*(deltaT/gp.meal_sigma)**2) / (gp.meal_sigma*np.sqrt(2*np.pi))
-        NIinflow_rate = ((fibre_g * 0.15 * gp.inulin_MW) / gp.V) * gauss
-    return NIinflow_rate - (Rp/Yp)*(NI/(NI+Kp))*Bp - (1/taoN)*NI
-
-def fos(NFOS, NI, EC, EI, EFOS, Rc, Yc, Kc, Bc, Bp, taoN, Rp, Yp, Kp):
-    return EC*EI*(Rp/Yp)*(NI/(NI+Kp))*Bp - (Rc/Yc)*EFOS*(NFOS/(NFOS+Kc))*Bc - (1/taoN)*NFOS
-
-def update(system_state, gp, hour, day, meal_time):
-    Bp, Bc, NI, NFOS = system_state
-    return np.array([
-        producer(Bp, Bc, gp.Rp, NI, gp.Kp, gp.Sp, gp.Sc, gp.S, gp.taoB),
-        consumer(Bc, Bp, gp.Rc, NFOS, gp.Kc, gp.Sp, gp.Sc, gp.S, gp.taoB),
-        inulin(NI, gp.Rp, gp.Yp, gp.Kp, Bp, gp.taoN, gp.inulin_MW, hour, day, meal_time),
-        fos(NFOS, NI, gp.EC, gp.EI, gp.EFOS, gp.Rc, gp.Yc, gp.Kc, Bc, Bp, gp.taoN, gp.Rp, gp.Yp, gp.Kp)
-    ])
-
-def rk4(sys_state, gp, dt, hour, day, meal_time):
-    k1 = update(sys_state,        gp, hour, day, meal_time) * dt
-    k2 = update(sys_state + k1/2, gp, hour, day, meal_time) * dt
-    k3 = update(sys_state + k2/2, gp, hour, day, meal_time) * dt
-    k4 = update(sys_state + k3,   gp, hour, day, meal_time) * dt
-    return sys_state + (k1 + 2*k2 + 2*k3 + k4)/6
-
-# INTEGRATION
-dt = 0.001; steps = 240000
-T_list = np.arange(0, (steps+1)*dt, dt)
-system_states = np.empty((steps+1, 4))
-system_states[0] = [gp.Bp, gp.Bc, gp.NI, gp.NFOS]
-
-for i in range(steps):
-    current_time = i * dt
-    hour = current_time % 24
-    day = int(current_time // 24) + 1
-    meal_time = get_meal_time(hour)
-    system_states[i+1] = rk4(system_states[i], gp, dt, hour, day, meal_time)
-
-Bp, Bc, NI, NFOS = [system_states[:,j] for j in range(4)]</pre>
-        </details>
-      </span></li>
+      <li class="ref-item" id="ref8"><span class="ref-n">[8]</span><span class="ref-text">Kherotia V., Hitee &amp; Shreya. <em>GutModel — ODE simulation of B. thetaiotaomicron &amp; B. breve cross-feeding dynamics under real dietary inputs.</em><span class="ref-j">Python source code. Ashoka University, Computational Biology Course (2026).</span></span></li>
     </ul>
   </div>
 </div>
 
-<!-- ════════════════════════
-     TEAM
-════════════════════════ -->
+<!-- ════ TEAM ════ -->
 <div id="team" class="page">
   <div class="content">
     <div class="sec-hdr"><div class="sec-hdr-inner"><span class="sec-n">07</span><h2 class="sec-t">Meet the Team</h2></div></div>
     <p style="max-width:560px">Third-year students at Ashoka University, 2026. This project was built for the Computational Biology course — modelling the gut microbiome from scratch using real dietary data from our own canteen.</p>
+    <div class="divider"></div>
+
+    <!-- FIX: team-photo-wrap has no fixed height so portrait photos display naturally -->
+    <div class="team-grid">
+      <div class="team-card">
+        <div class="team-photo-wrap">
+          <img src="hitee.JPG" class="team-photo-img" alt="Hitee">
+        </div>
+        <div class="team-info">
+          <div class="team-name">Hitee</div>
+          <div class="team-bio">Do you have a gut feeling?</div>
+        </div>
+      </div>
+      <div class="team-card">
+        <div class="team-photo-wrap">
+          <img src="vishi.png" class="team-photo-img" alt="Vishi">
+        </div>
+        <div class="team-info">
+          <div class="team-name">Vishi</div>
+          <div class="team-bio">"I didn't come this far to come this far...is a trap in modelling."</div>
+        </div>
+      </div>
+      <div class="team-card">
+        <div class="team-photo-wrap">
+          <img src="assets/shreya.jpg" class="team-photo-img" alt="Shreya">
+        </div>
+        <div class="team-info">
+          <div class="team-name">Shreya</div>
+          <div class="team-bio">Let's assume!</div>
+        </div>
+      </div>
+    </div>
 
     <div class="divider"></div>
 
-<div class="team-grid">
-
-  <div class="team-card">
-    <img src="hitee.JPG" class="team-photo-img">
-    <div class="team-info">
-      <div class="team-name">Hitee</div>
-      <div class="team-bio">
-        Do you have a gut feeling?
-      </div>
-    </div>
-  </div>
-
-  <div class="team-card">
-    <img src="vishi.png" class="team-photo-img">
-    <div class="team-info">
-      <div class="team-name">Vishi</div>
-      <div class="team-bio">
-        "I didn't come this far to come this far...is a trap in modelling."
-      </div>
-    </div>
-  </div>
-
-  <div class="team-card">
-    <img src="assets/shreya.jpg" class="team-photo-img">
-    <div class="team-info">
-      <div class="team-name">Shreya</div>
-      <div class="team-bio">
-        Let's assume!
-      </div>
-    </div>
-  </div>
-
-</div>
-
-<div class="divider"></div>
-
-    <!-- MODELLING JOURNEY (moved from Model page) -->
     <div class="blabel">Modelling journey</div>
     <div class="btitle">Five iterations from PDE to real meals</div>
     <p>The final model emerged through successive iterations, each adding one layer of biological realism while keeping the system analytically tractable.</p>
     <div class="iter-track">
-      <div class="iter-card">
-        <div class="iter-lbl">Iteration 01</div>
-        <div class="iter-t">Spatial Foundation (Cremer)</div>
-        <div class="iter-b">We began with the Cremer advection-diffusion PDE model, tracking bacteria and nutrients across space and time using Navier-Stokes equations with varying viscosity. Showed peristaltic mixing essential for population survival.</div>
-      </div>
-      <div class="iter-card">
-        <div class="iter-lbl">Iteration 02</div>
-        <div class="iter-t">Dimensional reduction to ODEs</div>
-        <div class="iter-b">To focus on long-term dietary effects, spatial PDEs were simplified to ODEs. Advection and diffusion assumed constant; Monod kinetics retained to keep growth nutrient-dependent.</div>
-      </div>
-      <div class="iter-card">
-        <div class="iter-lbl">Iteration 03</div>
-        <div class="iter-t">Cross-feeding trophic chain</div>
-        <div class="iter-b">Expanded to two species. Introduced the inulin-FOS link: fraction $\varepsilon_c = 0.1$ of processed inulin liberated as FOS, creating obligate metabolic dependency between producer and consumer.</div>
-      </div>
-      <div class="iter-card">
-        <div class="iter-lbl">Iteration 04</div>
-        <div class="iter-t">Space constraints &amp; washout</div>
-        <div class="iter-b">Added shared logistic crowding to prevent unbounded population explosions, and a constant washout term for both bacteria and nutrients representing continuous natural clearance.</div>
-      </div>
-      <div class="iter-card arrived">
-        <div class="iter-lbl">&#10003; Final model</div>
-        <div class="iter-t">Ashoka menu as M(t)</div>
-        <div class="iter-b">Replaced constant inflow with Gaussian meal pulses derived from real dietary fibre data from the Ashoka canteen. 10-day feast-and-famine cycles, calculating how specific student meal patterns dictate microbiome survival.</div>
-      </div>
+      <div class="iter-card"><div class="iter-lbl">Iteration 01</div><div class="iter-t">Spatial Foundation (Cremer)</div><div class="iter-b">We began with the Cremer advection-diffusion PDE model, tracking bacteria and nutrients across space and time using Navier-Stokes equations with varying viscosity. Showed peristaltic mixing essential for population survival.</div></div>
+      <div class="iter-card"><div class="iter-lbl">Iteration 02</div><div class="iter-t">Dimensional reduction to ODEs</div><div class="iter-b">To focus on long-term dietary effects, spatial PDEs were simplified to ODEs. Advection and diffusion assumed constant; Monod kinetics retained to keep growth nutrient-dependent.</div></div>
+      <div class="iter-card"><div class="iter-lbl">Iteration 03</div><div class="iter-t">Cross-feeding trophic chain</div><div class="iter-b">Expanded to two species. Introduced the inulin-FOS link: fraction $\varepsilon_c = 0.1$ of processed inulin liberated as FOS, creating obligate metabolic dependency between producer and consumer.</div></div>
+      <div class="iter-card"><div class="iter-lbl">Iteration 04</div><div class="iter-t">Space constraints &amp; washout</div><div class="iter-b">Added shared logistic crowding to prevent unbounded population explosions, and a constant washout term for both bacteria and nutrients representing continuous natural clearance.</div></div>
+      <div class="iter-card arrived"><div class="iter-lbl">&#10003; Final model</div><div class="iter-t">Ashoka menu as M(t)</div><div class="iter-b">Replaced constant inflow with Gaussian meal pulses derived from real dietary fibre data from the Ashoka canteen. 10-day feast-and-famine cycles, calculating how specific student meal patterns dictate microbiome survival.</div></div>
     </div>
     <div class="callout"><p>Each iteration added exactly one degree of realism. The final model is the minimal system that simultaneously captures CSTR geometry, inulin&rarr;FOS cross-feeding, logistic crowding, and real dietary inflow.</p></div>
 
     <div class="divider"></div>
 
-    <!-- BTS CAROUSEL -->
-<div class="blabel">Behind the scenes</div>
-<div class="btitle">How this project came together</div>
-
-<p>
-  The model went through five major iterations over the course of the semester — from a single-species chemostat 
-  to a two-species, meal-driven CSTR. Below are snapshots from the process: whiteboard derivations, debugging sessions, 
-  and the canteen meals that became our data.
-</p>
-
-<div class="bts-carousel">
-  <div class="bts-track" id="bts-track">
-
-    <div class="bts-slide">
-      <img src="board1.png class="bts-img">
+    <div class="blabel">Behind the scenes</div>
+    <div class="btitle">How this project came together</div>
+    <p>The model went through five major iterations over the course of the semester — from a single-species chemostat to a two-species, meal-driven CSTR. Below are snapshots from the process: whiteboard derivations, debugging sessions, and the canteen meals that became our data.</p>
+    <div class="bts-carousel">
+      <div class="bts-track" id="bts-track">
+        <div class="bts-slide"><img src="board1.png" class="bts-img" alt="Board 1"></div>
+        <div class="bts-slide"><img src="board2.png" class="bts-img" alt="Board 2"></div>
+        <div class="bts-slide"><img src="board3.1.png" class="bts-img" alt="Board 3.1"></div>
+        <div class="bts-slide"><img src="board3.png" class="bts-img" alt="Board 3"></div>
+        <div class="bts-slide"><img src="board4.png" class="bts-img" alt="Board 4"></div>
+        <div class="bts-slide"><img src="fin.HEIC" class="bts-img" alt="Final"></div>
+      </div>
+      <div class="bts-nav">
+        <button class="bts-arrow" onclick="scrollBTS(-1)">&#8592;</button>
+        <button class="bts-arrow" onclick="scrollBTS(1)">&#8594;</button>
+      </div>
     </div>
-
-    <div class="bts-slide">
-      <img src="board2.png" class="bts-img">
-    </div>
-
-    <div class="bts-slide">
-      <img src="board3.1.png" class="bts-img">
-    </div>
-
-    <div class="bts-slide">
-      <img src="board3.png" class="bts-img">
-    </div>
-
-    <div class="bts-slide">
-      <img src="board4.png" class="bts-img">
-    </div>
-
-    <div class="bts-slide">
-      <img src="fin.HEIC" class="bts-img">
-    </div>
-
-  </div>
-
-  <div class="bts-nav">
-    <button class="bts-arrow" onclick="scrollBTS(-1)">&#8592;</button>
-    <button class="bts-arrow" onclick="scrollBTS(1)">&#8594;</button>
   </div>
 </div>
 
 <script>
 const MENU_DATA={"breakfast": {"Akuri": 1.1, "Banana Porridge": 0.9, "Boiled Egg": 0.0, "Boiled Eggs": 0.0, "Brown Bread & White Bread": 2.3, "Chocos": 5.0, "Cinnamon Wheat Porridge": 0.3, "Corn Flakes": 4.5, "Cut Guava": 5.4, "Dal Paratha": 5.2, "Daliya Porridge with Jaggery": 1.9, "Egg Bhurji": 0.0, "Fruit Loops": 5.0, "Herb Scrambled Egg": 0.0, "Honeydew": 0.8, "Idli": 2.6, "Indori Poha": 1.1, "Karwari Poha": 1.1, "Keerai Vada": 4.6, "Kulcha": 1.6, "Masala Omellete": 0.9, "Medu Vada": 4.8, "Methi Thepla": 5.9, "Millet Porridge": 0.7, "Mix Cut Fruit": 2.5, "Mix Fruit": 2.5, "Mix Fruit Porridge": 1.9, "Mix Veg Paratha": 5.6, "Muesli": 7.5, "Oats & Cinnamon Porridge": 1.6, "Orange": 1.1, "Papaya": 2.6, "Peanut Butter Porridge": 1.2, "Pyaaz Methi Paratha": 5.7, "Ragi Porridge": 0.7, "Ragi Uttapam": 3.9, "Rawa Upma": 1.1, "Sago Khichidi": 1.5, "Sago Porridge": 0.2, "Sambhar": 2.5, "Saute Veg Idli": 2.6, "Star & Moon": 4.5, "Tomato Cucumber Sandwich": 1.8, "Tooti Frooti Porridge": 1.6, "Vegetable Besan Cheela": 3.2, "Vegetable Oats": 2.6, "Vegetable Podi Uttapam": 1.7, "Vegetable Upma": 1.1, "Vermicelli Upma": 1.1, "Wheat Flakes": 10.0, "Whole Banana": 1.9, "Whole Fruit Banana": 1.9}, "lunch": {"Adraki Aloo Gobhi": 2.2, "Ajwaini Chapati": 7.7, "Assorted Pastry": 0.7, "Banarasi Thela Aloo Sabzi": 1.7, "Beetroot Sesame Salad": 3.5, "Black Eyed Pea Salad": 1.9, "Boondi Laddu": 2.4, "Burani Raita": 0.4, "Chapati": 7.7, "Chicken Curry": 1.2, "Chicken Vindaloo": 1.1, "Cholar Dal": 3.7, "Chole Masala": 3.9, "Chu Chu Baingan Masala": 3.1, "Churma Laddu": 2.6, "Coconut Laddo": 2.6, "Corn Salad": 2.1, "Creamy Coleslaw Salad": 2.1, "Cucumber Raita": 0.3, "Curd": 0.0, "Dahi Bhalla": 2.4, "Dal Kachori": 2.3, "Dal Makhani": 3.9, "Dal Tadka": 1.9, "Death By Chocolate": 1.0, "Gajar Methi Shalgum Ki Sabji": 4.6, "Green Salad": 1.8, "Gulab Jamun": 0.0, "Gunjiya": 2.4, "Handi Paneer": 0.8, "Homestyle Macaroni": 1.5, "Ice Cream": 0.0, "Jalebi": 0.6, "Jeera Chapati": 7.7, "Jeera Rice": 1.0, "Kadambo Poriyal": 3.6, "Kaddu Masala": 1.2, "Kadhai Chicken": 1.2, "Karela Do Pyaza": 3.9, "Masoor Dal Tadka": 2.2, "Mediterranean Salad": 2.0, "Methi Mooli Ki Bhurji": 2.1, "Mexican Corn Salad": 2.0, "Mint Raita": 0.7, "Murgh Khada Masala": 1.2, "Murgh Makhanwala": 1.2, "Palak Paneer": 2.1, "Palak Poori": 6.1, "Paneer Butter Masala": 0.8, "Paneer Kolhapuri": 0.8, "Paneer Lababdar": 0.8, "Paruppu": 3.5, "Penne Pasta In Pink Sauce": 1.5, "Plain Curd": 0.0, "Ragda Pattice/Saunth/Mint Chutney": 2.5, "Rawa Ladoo": 3.1, "Red Masoor Dal Tadka": 2.2, "Sem Aloo": 5.7, "Sindhi Kadhi": 1.9, "Soya Matar Curry": 3.9, "Steam Rice": 0.4, "Steamed Rice": 0.4, "Stir Fry Arbi": 4.3, "Tadka Dahi": 0.8, "Urad Dhuli Dal Tadka": 2.6, "Veg Jalfrezi": 2.4, "Veg Kofta Curry": 2.3, "Vegetable Pulao": 1.3}, "dinner": {"Achari Baingan": 3.2, "Ajwaini Chapati": 7.1, "Assorted Pastry": 0.7, "Atte Ka Halwa": 2.0, "Balushahi": 0.1, "Beans Fogath": 2.9, "Black Masoor Dal Tadka": 2.2, "Carrot Kosambari": 4.3, "Chapati": 7.7, "Coriander Rice": 0.9, "Dal Double Tadka": 2.0, "Dal Maharani": 3.7, "Dal Methi": 0.6, "Dal Nagori": 1.2, "Dal Panchmel": 2.3, "Dhaba Dal": 2.0, "Dum Aloo Kashmiri": 1.6, "Elaichi Malpua": 0.9, "Green Moong Dal Tadka": 3.7, "Green Salad": 1.8, "Gulab Jamun": 0.0, "Ice Cream": 0.0, "Jeera Rice": 1.0, "Karela Masala": 3.4, "Kimchi Salad": 2.9, "Lauki Mussallam": 2.8, "Lauki Tamatar ki Sabzi": 2.0, "Lehsuni Palak Corn": 2.3, "Mac And Cheese": 1.5, "Mangori Ki Sabji": 1.2, "Matar Patta Gobhi ki Sabji": 2.5, "Matar Pulao": 1.7, "Matki Sprout Salad": 1.4, "Millet & Bean Salad": 7.1, "Moong Dal Halwa": 1.5, "Mushroom Matar": 2.5, "Onion Pulao": 2.0, "Panzanella Salad": 3.5, "Phirni": 0.7, "Pickled Vegetable Salad": 0.8, "Pumpkin Salad With Herb Chilli Dressing": 3.0, "Pyaaz ka Pulao": 2.0, "Rai Wali Arbi": 4.1, "Raw Banana Kofta Curry": 1.1, "Raw Papaya & Black Chana Tarkari": 2.6, "Raw Papaya Salad": 2.6, "Roasted Beetroot & Orange Salad": 1.1, "Roasted Egg Curry": 1.0, "Sago Kheer": 0.4, "Sambhar": 2.5, "Sev Tamatar Nu Saak": 2.1, "Shahi Tukda": 1.0, "Soya Matar": 3.9, "Steam Rice": 0.4, "Suran Kalwadi": 4.1, "Tabbouleh Salad": 4.5, "Tadka Nariyali Tindli": 3.3, "Urad Dhuli Dal Tadka": 2.6, "Veg Diwani Handi": 2.1}};
 
-// ── Nav ──
 function show(id){
   document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
   document.querySelectorAll('.nav-links a').forEach(a=>a.classList.remove('active'));
@@ -1157,7 +803,6 @@ function show(id){
   }
 }
 
-// ── Reference jump ──
 function gotoRef(n){
   show('references');
   setTimeout(()=>{
@@ -1178,28 +823,17 @@ window.addEventListener('load',function(){
 const obs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('vis');});},{threshold:0.1});
 document.querySelectorAll('[data-obs]').forEach(el=>obs.observe(el));
 
-// ── Intro image slots ──
-function loadSlot(n,input){
-  const f=input.files[0];if(!f)return;
-  const url=URL.createObjectURL(f);
-  const slot=document.getElementById('slot-img'+n);
-  const img=document.getElementById('slot-img'+n+'-img');
-  slot.querySelector('.iup-inner').style.display='none';
-  slot.classList.add('has-img');
-  img.src=url;img.style.display='block';
-  img.onclick=()=>{img.style.display='none';slot.querySelector('.iup-inner').style.display='flex';slot.classList.remove('has-img');};
+function loadIntroImg(n, url) {
+  if (!url) return;
+  const img = document.getElementById('intro-img' + n);
+  const ph = document.getElementById('intro-img' + n + '-placeholder');
+  img.src = url;
+  img.onload = function() {
+    img.style.display = 'block';
+    ph.style.display = 'none';
+  };
 }
 
-// ── Results figure upload ──
-function loadFig(n,input){
-  const f=input.files[0];if(!f)return;
-  const url=URL.createObjectURL(f);
-  document.getElementById('fig'+n+'-ph').style.display='none';
-  const img=document.getElementById('fig'+n+'-img');
-  img.src=url;img.style.display='block';
-}
-
-// ── Menu dropdowns ──
 const sel_items={breakfast:[],lunch:[],dinner:[]};
 function populateDDs(){
   ['breakfast','lunch','dinner'].forEach(slot=>{
@@ -1238,12 +872,10 @@ function renderItems(slot){
 function updateTotals(){
   const total=['breakfast','lunch','dinner'].reduce((s,slot)=>s+sel_items[slot].reduce((a,b)=>a+b.fibre,0),0);
   document.getElementById('fs-total').textContent=total.toFixed(1);
-  // Updated formula: fibre(g) * 0.15 inulin_fraction / (504 g/mol * 0.377 L) — matches Python code
   const mM=total*0.15/0.504/0.377;
   document.getElementById('fs-inulin').textContent=mM.toFixed(2);
 }
 
-// ── ODE Simulator — updated to match Python code parameters ──
 const MEAL_TIMES=[8,13,20];
 function getMeal(slot){return sel_items[slot].reduce((a,b)=>a+b.fibre,0);}
 
@@ -1254,32 +886,16 @@ function runODE(){
   const Kc=parseFloat(document.getElementById('sl-kc').value);
   const ec=parseFloat(document.getElementById('sl-ec').value);
   const D=parseFloat(document.getElementById('sl-D').value);
-
-  // Updated parameters matching Python GutParameters class
   const Yp=Math.pow(10, parseFloat(document.getElementById('sl-Yp').value));
   const Yc=Math.pow(10, parseFloat(document.getElementById('sl-Yc').value));
-  const S=5.9e9;        // total available space (CFU equiv.)
-  const Sp=7.85, Sc=4.25; // species sizes
-  const SIG=0.5;        // meal_sigma from Python
-  const INFRAC=0.15;    // 0.15 inulin fraction of dietary fibre
-  const MW=0.504;       // inulin_MW g/mmol
-  const VG=0.377;       // proximal colon volume L
-  const EI=0.95;        // uptake efficiency of inulin by producer
-  const EFOS=0.125;     // uptake efficiency of FOS by consumer
-
-  const T=24, dt=0.02;
-  const steps=Math.floor(T/dt);
+  const S=5.9e9, Sp=7.85, Sc=4.25, SIG=0.5, INFRAC=0.15, MW=0.504, VG=0.377, EI=0.95, EFOS=0.125;
+  const T=24, dt=0.02, steps=Math.floor(T/dt);
   const mF=[getMeal('breakfast'),getMeal('lunch'),getMeal('dinner')];
-
-  // Gaussian pulse per-meal: (fibre_g * INFRAC / MW) / VG * gauss
-  // peak is meal_hour + 1.5 (matching Python: peak = meal_hours[meal_time] + 1.5)
   const mealPeaks=[8+1.5, 13+1.5, 20+1.5];
-
   function Mfn(t){
     let Q=0;
     mealPeaks.forEach((peak,i)=>{
       const d=t-peak;
-      // window: abs(hour - peak) < 1.5 i.e. ±3*SIG when SIG=0.5
       if(Math.abs(d)<3*SIG){
         const gauss=Math.exp(-0.5*(d/SIG)**2)/(SIG*Math.sqrt(2*Math.PI));
         Q+=(mF[i]*INFRAC/MW/VG)*gauss;
@@ -1287,26 +903,16 @@ function runODE(){
     });
     return Q;
   }
-
   function monod(n,K){return Math.max(0,n)/(K+Math.max(0,n)+1e-12);}
-  // Crowding uses Bp*Sp + Bc*Sc / S matching Python exactly
   function crowd(Bp,Bc){return Math.max(0,1-(Bp*Sp+Bc*Sc)/S);}
-
   function deriv([Bp,Bc,NI,NF],t){
-    const Q=Mfn(t);
-    const m1=monod(NI,Kp), m2=monod(NF,Kc);
-    const cr=crowd(Bp,Bc);
-    // dBp = Bp*lp*m1*cr - (1/taoB)*Bp  (taoB=72h => 1/72)
+    const Q=Mfn(t), m1=monod(NI,Kp), m2=monod(NF,Kc), cr=crowd(Bp,Bc);
     const dBp=lp*m1*Bp*cr - D*Bp;
-    // dBc = Bc*lc*m2*cr - (1/taoB)*Bc
     const dBc=lc*m2*Bc*cr - D*Bc;
-    // dNI = M(t) - (lp/Yp)*m1*Bp - (1/taoN)*NI
     const dNI=Q - (lp/Yp)*m1*Bp - D*NI;
-    // dNFOS = ec*EI*(lp/Yp)*m1*Bp - (lc/Yc)*EFOS*m2*Bc - (1/taoN)*NFOS
     const dNF=ec*EI*(lp/Yp)*m1*Bp - (lc/Yc)*EFOS*m2*Bc - D*NF;
     return[dBp,dBc,dNI,dNF];
   }
-
   function rk4(s,t,h){
     const k1=deriv(s,t);
     const s2=s.map((v,i)=>v+k1[i]*h/2);const k2=deriv(s2,t+h/2);
@@ -1314,30 +920,22 @@ function runODE(){
     const s4=s.map((v,i)=>v+k3[i]*h);  const k4=deriv(s4,t+h);
     return s.map((v,i)=>Math.max(1e-12,v+(k1[i]+2*k2[i]+2*k3[i]+k4[i])*h/6));
   }
-
-  // Initial conditions matching Python: Bp=0.25e6, Bc=0.12e6, NI=0.451, NFOS=0.434
   let state=[0.25e6, 0.12e6, 0.451, 0.434];
   const Bp=[],Bc=[],NI=[],NF=[],tArr=[];
   for(let i=0;i<=steps;i++){
     const t=i*dt;
-    tArr.push(t);
-    Bp.push(state[0]);Bc.push(state[1]);NI.push(state[2]);NF.push(state[3]);
+    tArr.push(t);Bp.push(state[0]);Bc.push(state[1]);NI.push(state[2]);NF.push(state[3]);
     state=rk4(state,t,dt);
   }
-
-  // ── Draw ──
   const cv=document.getElementById('simCanvas'),ctx=cv.getContext('2d');
   const W=cv.width,H=cv.height;
   const pad={l:68,r:22,t:28,b:44};
   const mid=H/2,bH=mid-pad.t-20,nH=mid-20-pad.b,pW=W-pad.l-pad.r;
   const N=Bp.length;
-  const maxB=Math.max(...Bp,...Bc,1);
-  const maxN=Math.max(...NI,...NF,0.01);
+  const maxB=Math.max(...Bp,...Bc,1), maxN=Math.max(...NI,...NF,0.01);
   let frame=0;const tot=75;
-
   const xTicks=[0,4,8,13,16,20,24];
   const xLabels={'0':'00:00','4':'04:00','8':'08:00','13':'13:00','16':'16:00','20':'20:00','24':'24:00'};
-
   function draw(){
     ctx.clearRect(0,0,W,H);
     ctx.fillStyle='#f0ece3';ctx.fillRect(0,0,W,H);
@@ -1393,63 +991,21 @@ function runODE(){
     frame++;if(frame<=tot+3)requestAnimationFrame(draw);
   }
   requestAnimationFrame(draw);
-
-  // Summary
   const fBp=Bp[Bp.length-1],fBc=Bc[Bc.length-1];
   const ratio=fBp/Math.max(fBc,1);
   const tf=['breakfast','lunch','dinner'].reduce((s,slot)=>s+sel_items[slot].reduce((a,b)=>a+b.fibre,0),0);
   const peakNI=Math.max(...NI),peakNF=Math.max(...NF);
   const out=document.getElementById('simOut'),ot=document.getElementById('simOutText');
   out.style.display='block';
-  ot.textContent=
-    'Your day\'s meals provide '+tf.toFixed(1)+'g total fibre. '
-    +'Peak inulin: '+peakNI.toFixed(3)+' mM. '
-    +'Peak FOS: '+peakNF.toFixed(4)+' mM. '
-    +'End-of-day ratio B. theta : B. breve = '+ratio.toFixed(1)+':1. '
-    +(tf>20?'High-fibre day — strong inulin pulses give B. theta a growth advantage. Try raising εc to see if FOS production rescues B. breve.':
-      tf>10?'Moderate-fibre day — B. theta dominates but B. breve may hold a niche if FOS builds up over multiple meals.':
-      'Low-fibre day — inulin pulses are small, FOS barely accumulates, and B. breve is heavily suppressed. Add Chapati, Dal, or Muesli to change this.');
+  ot.textContent='Your day\'s meals provide '+tf.toFixed(1)+'g total fibre. Peak inulin: '+peakNI.toFixed(3)+' mM. Peak FOS: '+peakNF.toFixed(4)+' mM. End-of-day ratio B. theta : B. breve = '+ratio.toFixed(1)+':1. '+(tf>20?'High-fibre day — strong inulin pulses give B. theta a growth advantage. Try raising εc to see if FOS production rescues B. breve.':tf>10?'Moderate-fibre day — B. theta dominates but B. breve may hold a niche if FOS builds up over multiple meals.':'Low-fibre day — inulin pulses are small, FOS barely accumulates, and B. breve is heavily suppressed. Add Chapati, Dal, or Muesli to change this.');
 }
 
-// ── Intro image URL loader ──
-function loadIntroImg(n, url) {
-  if (!url) return;
-  const img = document.getElementById('intro-img' + n);
-  const ph = document.getElementById('intro-img' + n + '-placeholder');
-  img.src = url;
-  img.onload = function() {
-    img.style.display = 'block';
-    ph.style.display = 'none';
-  };
-}
-
-// ── Team photo upload ──
-function loadTeam(n,input){
-  const f=input.files[0];if(!f)return;
-  const url=URL.createObjectURL(f);
-  document.getElementById('tslot-'+n).style.display='none';
-  const img=document.getElementById('timg-'+n);
-  img.src=url;img.style.display='block';
-}
-
-// ── BTS photo upload ──
-function loadBTS(n,input){
-  const f=input.files[0];if(!f)return;
-  const url=URL.createObjectURL(f);
-  const slot=document.getElementById('bts-'+n);
-  slot.querySelector('.bts-inner').style.display='none';
-  const img=document.getElementById('bts-img-'+n);
-  img.src=url;img.style.display='block';
-}
-
-// ── BTS carousel scroll ──
 function scrollBTS(dir){
   const track=document.getElementById('bts-track');
-  const slideW=track.querySelector('.bts-slide').offsetWidth+16; // +gap
+  const slideW=track.querySelector('.bts-slide').offsetWidth+16;
   track.scrollBy({left:dir*slideW,behavior:'smooth'});
 }
 
-// ── Poll ──
 let pollVotes={yes:0,no:0,partial:0};
 let hasVoted=false;
 function vote(choice){
