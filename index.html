@@ -296,7 +296,7 @@ input[type=range]{width:100%;accent-color:var(--moss);}
     <div class="ss" style="direction:rtl;" data-obs>
       <div class="ss-text" style="direction:ltr;">
         <div class="ss-n">02 &mdash; The washout problem</div>
-        <h2 class="ss-title">The washout problem</h2>
+        <h2 class="ss-title">Cremer's biophysical models</h2>
         <div class="ss-body">
           <p>From a fluid dynamics perspective, the gut is a tube with constant forward flow. If bacteria were simply suspended in luminal content, they would be expelled before they could reproduce — a phenomenon termed <em>washout</em>.</p>
           <p>Cremer et al.<a class="cite" onclick="gotoRef(4)">[4]</a> constructed a 2D partial differential model that showed peristaltic mixing is necessary to combat washout. Their model considers flow to peak an hour after food has been consumed, with a dynamic radius accounting for gut contractions. A dead-end cecal pouch provides a region safe from flow where bacterial populations can be replenished.</p>
@@ -354,20 +354,37 @@ input[type=range]{width:100%;accent-color:var(--moss);}
       </div>
     </div>
 
-    <!-- 04 — text right, placeholder left (flip) -->
-    <div class="ss" style="direction:rtl;" data-obs>
-      <div class="ss-text" style="direction:ltr;">
-        <div class="ss-n">04 &mdash; Our approach</div>
-        <h2 class="ss-title">Our approach</h2>
-        <div class="ss-body">
-          <p>We developed a time-dependent ODE model that replaces traditional steady-state assumptions with a dynamic meal influx function $M(t)$. Using the Ashoka University canteen menu, we simulated a 10-day dietary profile by randomly selecting three food items and one beverage for each of breakfast, lunch, and dinner.</p>
-          <p>Nutrient delivery was characterised using discrete Gaussian distributions. Unlike models that assume instantaneous spikes or constant flow, this accounts for the gradual passage of a meal through the colon — fibre concentration increases toward a peak and gradually dissipates, with a 1.5h standard deviation centred 1.5h after each meal.</p>
-        </div>
-      </div>
-     
-        </div>
-      </div>
+    <!-- 04 — text right, image left (flip) -->
+<div class="ss flip" data-obs>
+
+  <!-- IMAGE LEFT -->
+  <div class="ss-vis" style="padding:1.2rem;display:flex;justify-content:center;align-items:center;">
+    <img src="dining.png"
+         style="width:100%;max-width:420px;border-radius:3px;border:1px solid var(--rule);object-fit:contain;">
+  </div>
+
+  <!-- TEXT RIGHT -->
+  <div class="ss-text">
+    <div class="ss-n">04 &mdash; Our approach</div>
+    <h2 class="ss-title">Our approach</h2>
+
+    <div class="ss-body">
+      <p>
+        We developed a time-dependent ODE model that replaces traditional steady-state assumptions with a dynamic meal influx function $M(t)$. 
+        Using the Ashoka University canteen menu, we simulated a 10-day dietary profile by randomly selecting three food items and one beverage 
+        for each of breakfast, lunch, and dinner.
+      </p>
+
+      <p>
+        Nutrient delivery was characterised using discrete Gaussian distributions. Unlike models that assume instantaneous spikes or constant flow, 
+        this accounts for the gradual passage of a meal through the colon — fibre concentration increases toward a peak and gradually dissipates, 
+        with a 1.5h standard deviation centred 1.5h after each meal.
+      </p>
     </div>
+
+  </div>
+
+</div>
 
 <!-- ════ MODEL ════ -->
 <div id="model" class="page">
@@ -748,6 +765,7 @@ input[type=range]{width:100%;accent-color:var(--moss);}
         </div>
         <div class="team-info">
           <div class="team-name">Shreya</div>
+          <img src="shreya.jpg" class="team-photo-img" alt="Shreya">
           <div class="team-bio">Let's assume!</div>
         </div>
       </div>
@@ -771,7 +789,7 @@ input[type=range]{width:100%;accent-color:var(--moss);}
 
     <div class="blabel">Behind the scenes</div>
     <div class="btitle">How this project came together</div>
-    <p>The model went through five major iterations over the course of the semester — from a single-species chemostat to a two-species, meal-driven CSTR. Below are snapshots from the process: whiteboard derivations, debugging sessions, and the canteen meals that became our data.</p>
+    <p>Snapshots of all out brainstorming sessions! Thank you housekeeping for letting us use classrooms :).</p>
     <div class="bts-carousel">
       <div class="bts-track" id="bts-track">
         <div class="bts-slide"><img src="board1.png" class="bts-img" alt="Board 1"></div>
