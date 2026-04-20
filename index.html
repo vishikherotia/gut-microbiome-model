@@ -1,4 +1,4 @@
-\<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -56,7 +56,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:500;display:flex;align-items:cen
 @keyframes up{from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:translateY(0);}}
 @keyframes fade{from{opacity:0;}to{opacity:1;}}
 
-/* INTRO SCROLL — always 2-col grid */
+/* INTRO SCROLL */
 .intro-scroll{padding:7rem 4rem 5rem;max-width:1160px;margin:0 auto;}
 .ss{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start;margin-bottom:8rem;opacity:0;transform:translateY(32px);transition:opacity .7s,transform .7s;}
 .ss.vis{opacity:1;transform:translateY(0);}
@@ -64,10 +64,8 @@ nav{position:fixed;top:0;left:0;right:0;z-index:500;display:flex;align-items:cen
 .ss-title{font-family:var(--serif);font-size:1.9rem;font-weight:400;line-height:1.18;color:var(--ink);margin-bottom:1rem;}
 .ss-body p{font-family:Georgia,'Times New Roman',serif;font-size:1.05rem;color:var(--ink2);line-height:1.88;margin-bottom:.85rem;}
 .ss-body p:last-child{margin-bottom:0;}
-/* FIX: ss-vis always flex col, image fills properly */
 .ss-vis{background:var(--paper2);border:1px solid var(--rule);border-radius:3px;overflow:hidden;display:flex;flex-direction:column;}
 .ss-vis img{width:100%;display:block;object-fit:contain;}
-/* FIX: fig-cap — never clipped, full width */
 .fig-cap{font-family:var(--mono);font-size:9.5px;color:var(--ink3);line-height:1.6;padding:.65rem 1rem;background:var(--paper2);border-top:1px solid var(--rule);width:100%;}
 
 /* SHARED */
@@ -133,13 +131,14 @@ em{color:var(--moss);font-style:italic;}
 .inf-lbl{font-family:var(--mono);font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--moss);margin-bottom:.3rem;}
 .inference p{font-family:var(--serif);font-size:.92rem;margin:0;color:var(--ink2);}
 
-/* POLL — always inside results content, no special container needed */
+/* POLL */
 .poll-block{background:var(--paper2);border:1px solid var(--rule2);border-radius:3px;padding:1.5rem 1.8rem;margin:2.5rem 0;}
 .poll-q{font-family:var(--serif);font-size:1.15rem;color:var(--ink);margin-bottom:1.1rem;}
 .poll-opts{display:flex;gap:.75rem;flex-wrap:wrap;}
 .poll-opt{font-family:var(--mono);font-size:11px;padding:.42rem 1.2rem;border:1px solid var(--rule2);border-radius:2px;cursor:pointer;background:none;color:var(--ink2);transition:all .18s;}
-.poll-opt:hover{border-color:var(--moss);color:var(--moss);}
+.poll-opt:hover:not(:disabled){border-color:var(--moss);color:var(--moss);}
 .poll-opt.voted{background:var(--moss);color:var(--paper);border-color:var(--moss);}
+.poll-opt:disabled{opacity:.7;cursor:default;}
 .poll-bar-wrap{margin-top:1.1rem;display:none;}
 .poll-result{display:flex;align-items:center;gap:.8rem;margin-bottom:.5rem;}
 .poll-rl{font-family:var(--mono);font-size:10px;color:var(--ink3);width:170px;flex-shrink:0;}
@@ -147,6 +146,7 @@ em{color:var(--moss);font-style:italic;}
 .poll-bar-fill{height:100%;background:var(--moss3);border-radius:3px;transition:width .6s ease;}
 .poll-pct{font-family:var(--mono);font-size:10px;color:var(--moss);width:35px;text-align:right;}
 .poll-note{font-family:var(--mono);font-size:9.5px;color:var(--ink3);margin-top:.8rem;}
+.poll-loading{font-family:var(--mono);font-size:10px;color:var(--ink3);margin-top:.8rem;}
 
 /* SIMULATE */
 .meal-slot{margin-bottom:1.75rem;}
@@ -195,10 +195,9 @@ input[type=range]{width:100%;accent-color:var(--moss);}
 .ref-text em{color:var(--ink);font-style:italic;}
 .ref-j{font-family:var(--mono);font-size:10px;color:var(--ink3);display:block;margin-top:.2rem;}
 
-/* TEAM PAGE — FIX: natural height photos, no compression */
+/* TEAM */
 .team-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin:1.5rem 0;}
 .team-card{background:var(--paper2);border:1px solid var(--rule);border-radius:3px;overflow:hidden;}
-/* FIX: photo container has no fixed height — auto height so image shows naturally */
 .team-photo-wrap{width:100%;overflow:hidden;background:var(--paper3);}
 .team-photo-img{width:100%;height:auto;display:block;object-fit:cover;}
 .team-info{padding:1.1rem 1.2rem;}
@@ -273,7 +272,6 @@ input[type=range]{width:100%;accent-color:var(--moss);}
 
   <div class="intro-scroll">
 
-    <!-- 01 — 2-col: text left, image right -->
     <div class="ss" data-obs>
       <div class="ss-text">
         <div class="ss-n">01 &mdash; The gut microbiome</div>
@@ -283,7 +281,6 @@ input[type=range]{width:100%;accent-color:var(--moss);}
           <p>A central function of the gut microbiota is the fermentation of complex dietary fibres into short-chain fatty acids (SCFAs), which contribute almost 10% of host energy requirements.<a class="cite" onclick="gotoRef(3)">[3]</a> Early ODE-based frameworks, such as the Muñoz-Tamayo model, established the "trophic chain" of this fermentation process — but assume constant fibre intake and lump all carbohydrates into a single variable, diverging significantly from reality.</p>
         </div>
       </div>
-      <!-- FIX: image in its own col, caption outside the overflow clip -->
       <div style="display:flex;flex-direction:column;gap:0;">
         <div class="ss-vis" style="padding:0;">
           <img src="gut biogeography.png" alt="Gut biogeography" style="width:100%;display:block;object-fit:contain;">
@@ -292,7 +289,6 @@ input[type=range]{width:100%;accent-color:var(--moss);}
       </div>
     </div>
 
-    <!-- 02 — text right, equation panel left (flip) -->
     <div class="ss" style="direction:rtl;" data-obs>
       <div class="ss-text" style="direction:ltr;">
         <div class="ss-n">02 &mdash; The washout problem</div>
@@ -320,90 +316,41 @@ input[type=range]{width:100%;accent-color:var(--moss);}
     </div>
 
     <div class="ss" data-obs>
-
-  <!-- TEXT -->
-  <div class="ss-text">
-    <div class="ss-n">03 &mdash; Our biological system</div>
-    <h2 class="ss-title"><em>B. theta</em> feeds <em>B. breve</em></h2>
-
-    <div class="ss-body">
-
-      <p>
-        Our model investigates gut community structure driven by cross-feeding between primary degraders and secondary consumers. 
-        <em>Bacteroides thetaiotaomicron</em> ($B_p$) cleaves complex inulin into fructo-oligosaccharides (FOS), which 
-        <em>Bifidobacterium breve</em> ($B_c$) then consumes, as it lacks the enzymes for initial polymer breakdown.
-      </p>
-
-      <p>
-        Growth in this system follows Monod kinetics, where the rate depends on substrate availability via the half-saturation constant $K_s$. 
-        This constant represents the substrate concentration at which growth reaches half of its maximum value. Crucially, $K_s$ differs across 
-        species and substrates.
-
-        This asymmetry in substrate affinity reinforces the directional nature of cross-feeding, where primary degraders generate accessible 
-        metabolites that selectively sustain secondary consumers.
-        <a class="cite" onclick="gotoRef(6)">[6]</a>
-        <a class="cite" onclick="gotoRef(7)">[7]</a>
-      </p>
-
+      <div class="ss-text">
+        <div class="ss-n">03 &mdash; Our biological system</div>
+        <h2 class="ss-title"><em>B. theta</em> feeds <em>B. breve</em></h2>
+        <div class="ss-body">
+          <p>Our model investigates gut community structure driven by cross-feeding between primary degraders and secondary consumers. <em>Bacteroides thetaiotaomicron</em> ($B_p$) cleaves complex inulin into fructo-oligosaccharides (FOS), which <em>Bifidobacterium breve</em> ($B_c$) then consumes, as it lacks the enzymes for initial polymer breakdown.</p>
+          <p>Growth in this system follows Monod kinetics, where the rate depends on substrate availability via the half-saturation constant $K_s$. This constant represents the substrate concentration at which growth reaches half of its maximum value. Crucially, $K_s$ differs across species and substrates. This asymmetry in substrate affinity reinforces the directional nature of cross-feeding, where primary degraders generate accessible metabolites that selectively sustain secondary consumers.<a class="cite" onclick="gotoRef(6)">[6]</a><a class="cite" onclick="gotoRef(7)">[7]</a></p>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:0;">
+        <div class="ss-vis" style="padding:0;">
+          <img src="metabolic pathway.png" alt="Metabolic pathway" style="width:100%;display:block;object-fit:contain;">
+        </div>
+        <div class="fig-cap"><strong>Figure 3.</strong> Cross-feeding interaction between <em>B. thetaiotaomicron</em> and <em>B. breve</em>.</div>
+      </div>
     </div>
+
+    <div class="ss" data-obs>
+      <div style="display:flex;flex-direction:column;gap:0;">
+        <div class="ss-vis" style="padding:0;">
+          <img src="dining.png" alt="dining menu" style="width:100%;display:block;object-fit:contain;">
+        </div>
+        <div class="fig-cap"><strong>Figure 4.</strong> Ashoka University canteen menu used as dietary input.</div>
+      </div>
+      <div class="ss-text">
+        <div class="ss-n">04 &mdash; Our approach</div>
+        <h2 class="ss-title">Our approach</h2>
+        <div class="ss-body">
+          <p>We developed a time-dependent ODE model that replaces traditional steady-state assumptions with a dynamic meal influx function $M(t)$. Using the Ashoka University canteen menu, we simulated a 10-day dietary profile by randomly selecting three food items and one beverage for each of breakfast, lunch, and dinner.</p>
+          <p>Nutrient delivery was characterised using discrete Gaussian distributions. Unlike models that assume instantaneous spikes or constant flow, this accounts for the gradual passage of a meal through the colon — fibre concentration increases toward a peak and gradually dissipates, with a 1.5h standard deviation centred 1.5h after each meal.</p>
+        </div>
+      </div>
+    </div>
+
   </div>
-
-  <!-- IMAGE -->
-  <div style="display:flex;flex-direction:column;gap:0;">
-    <div class="ss-vis" style="padding:0;">
-      <img src="metabolic pathway.png" 
-           alt="Metabolic pathway"
-           style="width:100%;display:block;object-fit:contain;">
-    </div>
-
-    <div class="fig-cap">
-      <strong>Figure 3.</strong> Cross-feeding interaction between <em>B. thetaiotaomicron</em> and <em>B. breve</em>.
-    </div>
-  </div>
-
 </div>
-
-    <!-- 04 — text right, image left (flip) -->
-<!-- 04 — image left, text right -->
-<div class="ss" data-obs>
-
-  <!-- IMAGE COLUMN -->
-  <div style="display:flex;flex-direction:column;gap:0;">
-    <div class="ss-vis" style="padding:0;">
-      <img src="dining.png" 
-           alt="dining menu"
-           style="width:100%;display:block;object-fit:contain;">
-    </div>
-
-    <div class="fig-cap">
-      <strong>Figure 4.</strong> .
-    </div>
-  </div>
-
-  <!-- TEXT COLUMN -->
-  <div class="ss-text">
-    <div class="ss-n">04 &mdash; Our approach</div>
-    <h2 class="ss-title">Our approach</h2>
-
-    <div class="ss-body">
-      <p>
-        We developed a time-dependent ODE model that replaces traditional steady-state assumptions with a dynamic meal influx function $M(t)$. 
-        Using the Ashoka University canteen menu, we simulated a 10-day dietary profile by randomly selecting three food items and one beverage 
-        for each of breakfast, lunch, and dinner.
-      </p>
-
-      <p>
-        Nutrient delivery was characterised using discrete Gaussian distributions. Unlike models that assume instantaneous spikes or constant flow, 
-        this accounts for the gradual passage of a meal through the colon — fibre concentration increases toward a peak and gradually dissipates, 
-        with a 1.5h standard deviation centred 1.5h after each meal.
-      </p>
-    </div>
-
-  </div>
-
-    </div><!-- end last .ss -->
-  </div><!-- end intro-scroll -->
-</div><!-- end #home -->
 
 <!-- ════ MODEL ════ -->
 <div id="model" class="page">
@@ -560,15 +507,16 @@ input[type=range]{width:100%;accent-color:var(--moss);}
 
     <div class="divider"></div>
 
-    <!-- POLL — now correctly INSIDE the results .content div -->
+    <!-- ── POLL with persistent shared votes via JSONBin.io ── -->
     <div class="poll-block">
       <div class="blabel">Community poll</div>
       <div class="poll-q">Based on the results, do you think $Y_p$ (the yield coefficient for <em>B. theta</em>) is set too high?</div>
-      <div class="poll-opts">
+      <div class="poll-opts" id="poll-opts">
         <button class="poll-opt" onclick="vote('yes')">Yes — $Y_p$ is too high, starving <em>B. breve</em> of FOS</button>
         <button class="poll-opt" onclick="vote('no')">No — the issue lies elsewhere (washout, $\varepsilon_c$, initial conditions)</button>
         <button class="poll-opt" onclick="vote('partial')">Partially — $Y_p$ contributes but isn't the sole problem</button>
       </div>
+      <div class="poll-loading" id="poll-loading">Loading votes&hellip;</div>
       <div class="poll-bar-wrap" id="poll-bars">
         <div class="poll-result">
           <div class="poll-rl">Yes — $Y_p$ too high</div>
@@ -746,17 +694,8 @@ input[type=range]{width:100%;accent-color:var(--moss);}
       <li class="ref-item" id="ref5"><span class="ref-n">[5]</span><span class="ref-text">Salari A. &amp; Cremer J. <em>Diurnal variations in digestion and flow drive microbial dynamics in the gut.</em><span class="ref-j">PRX Life, 3, 023012 (2025). doi:10.1103/PRXLife.3.023012</span></span></li>
       <li class="ref-item" id="ref6"><span class="ref-n">[6]</span><span class="ref-text">Van Wey A.S., Lovatt S.J., Roy N.C. &amp; Shorten P.R. <em>Monoculture parameters successfully predict co-culture growth kinetics of Bacteroides thetaiotaomicron and two Bifidobacterium strains.</em><span class="ref-j">International Journal of Food Microbiology, 191, 172&ndash;181 (2014). doi:10.1016/j.ijfoodmicro.2014.09.015</span></span></li>
       <li class="ref-item" id="ref7"><span class="ref-n">[7]</span><span class="ref-text">Kumar M., Ji B., Zengler K. &amp; Nielsen J. <em>Modelling approaches for studying the microbiome.</em><span class="ref-j">Nature Microbiology, 4, 1253&ndash;1267 (2019). doi:10.1038/s41564-019-0491-9</span></span></li>
-      <li class="ref-item" id="ref8">
-  <span class="ref-n">[8]</span>
-  <span class="ref-text">
-    Kherotia V., Hitee &amp; Shreya. 
-    <em>GutModel — ODE simulation of B. thetaiotaomicron &amp; B. breve cross-feeding dynamics under real dietary inputs.</em>
-    <span class="ref-j">
-      Python source code. Ashoka University, Computational Biology Course (2026). 
-      <a href="compbiofinal.ipynb" target="_blank">[view]</a>
-    </span>
-  </span>
-</li>
+      <li class="ref-item" id="ref8"><span class="ref-n">[8]</span><span class="ref-text">Kherotia V., Hitee &amp; Shreya. <em>GutModel — ODE simulation of B. thetaiotaomicron &amp; B. breve cross-feeding dynamics under real dietary inputs.</em><span class="ref-j">Python source code. Ashoka University, Computational Biology Course (2026). <a href="compbiofinal.ipynb" target="_blank">[view]</a></span></span></li>
+    </ul>
   </div>
 </div>
 
@@ -766,31 +705,23 @@ input[type=range]{width:100%;accent-color:var(--moss);}
     <div class="sec-hdr"><div class="sec-hdr-inner"><span class="sec-n">07</span><h2 class="sec-t">Meet the Team</h2></div></div>
     <p style="max-width:560px">Third-year students at Ashoka University, 2026. This project was built for the Computational Biology course — modelling the gut microbiome from scratch using real dietary data from our own canteen.</p>
     <div class="divider"></div>
-
-    <!-- FIX: team-photo-wrap has no fixed height so portrait photos display naturally -->
     <div class="team-grid">
       <div class="team-card">
-        <div class="team-photo-wrap">
-          <img src="hitee.JPG" class="team-photo-img" alt="Hitee">
-        </div>
+        <div class="team-photo-wrap"><img src="hitee.JPG" class="team-photo-img" alt="Hitee"></div>
         <div class="team-info">
           <div class="team-name">Hitee</div>
           <div class="team-bio">Do you have a gut feeling?</div>
         </div>
       </div>
       <div class="team-card">
-        <div class="team-photo-wrap">
-          <img src="vishi.png" class="team-photo-img" alt="Vishi">
-        </div>
+        <div class="team-photo-wrap"><img src="vishi.png" class="team-photo-img" alt="Vishi"></div>
         <div class="team-info">
           <div class="team-name">Vishi</div>
           <div class="team-bio">"I didn't come this far to come this far...is a trap in modelling."</div>
         </div>
       </div>
       <div class="team-card">
-        <div class="team-photo-wrap">
-          <img src="shreya.jpg" class="team-photo-img" alt="Shreya">
-        </div>
+        <div class="team-photo-wrap"><img src="shreya.jpg" class="team-photo-img" alt="Shreya"></div>
         <div class="team-info">
           <div class="team-name">Shreya</div>
           <div class="team-bio">Let's assume!</div>
@@ -799,7 +730,6 @@ input[type=range]{width:100%;accent-color:var(--moss);}
     </div>
 
     <div class="divider"></div>
-
     <div class="blabel">Modelling journey</div>
     <div class="btitle">Five iterations from PDE to real meals</div>
     <p>The final model emerged through successive iterations, each adding one layer of biological realism while keeping the system analytically tractable.</p>
@@ -813,10 +743,9 @@ input[type=range]{width:100%;accent-color:var(--moss);}
     <div class="callout"><p>Each iteration added exactly one degree of realism. The final model is the minimal system that simultaneously captures CSTR geometry, inulin&rarr;FOS cross-feeding, logistic crowding, and real dietary inflow.</p></div>
 
     <div class="divider"></div>
-
     <div class="blabel">Behind the scenes</div>
     <div class="btitle">How this project came together</div>
-    <p>Snapshots of all out brainstorming sessions! Thank you housekeeping for letting us use classrooms :).</p>
+    <p>Snapshots of all our brainstorming sessions! Thank you housekeeping for letting us use classrooms :).</p>
     <div class="bts-carousel">
       <div class="bts-track" id="bts-track">
         <div class="bts-slide"><img src="board1.png" class="bts-img" alt="Board 1"></div>
@@ -835,251 +764,324 @@ input[type=range]{width:100%;accent-color:var(--moss);}
 </div>
 
 <script>
-const MENU_DATA={"breakfast": {"Akuri": 1.1, "Banana Porridge": 0.9, "Boiled Egg": 0.0, "Boiled Eggs": 0.0, "Brown Bread & White Bread": 2.3, "Chocos": 5.0, "Cinnamon Wheat Porridge": 0.3, "Corn Flakes": 4.5, "Cut Guava": 5.4, "Dal Paratha": 5.2, "Daliya Porridge with Jaggery": 1.9, "Egg Bhurji": 0.0, "Fruit Loops": 5.0, "Herb Scrambled Egg": 0.0, "Honeydew": 0.8, "Idli": 2.6, "Indori Poha": 1.1, "Karwari Poha": 1.1, "Keerai Vada": 4.6, "Kulcha": 1.6, "Masala Omellete": 0.9, "Medu Vada": 4.8, "Methi Thepla": 5.9, "Millet Porridge": 0.7, "Mix Cut Fruit": 2.5, "Mix Fruit": 2.5, "Mix Fruit Porridge": 1.9, "Mix Veg Paratha": 5.6, "Muesli": 7.5, "Oats & Cinnamon Porridge": 1.6, "Orange": 1.1, "Papaya": 2.6, "Peanut Butter Porridge": 1.2, "Pyaaz Methi Paratha": 5.7, "Ragi Porridge": 0.7, "Ragi Uttapam": 3.9, "Rawa Upma": 1.1, "Sago Khichidi": 1.5, "Sago Porridge": 0.2, "Sambhar": 2.5, "Saute Veg Idli": 2.6, "Star & Moon": 4.5, "Tomato Cucumber Sandwich": 1.8, "Tooti Frooti Porridge": 1.6, "Vegetable Besan Cheela": 3.2, "Vegetable Oats": 2.6, "Vegetable Podi Uttapam": 1.7, "Vegetable Upma": 1.1, "Vermicelli Upma": 1.1, "Wheat Flakes": 10.0, "Whole Banana": 1.9, "Whole Fruit Banana": 1.9}, "lunch": {"Adraki Aloo Gobhi": 2.2, "Ajwaini Chapati": 7.7, "Assorted Pastry": 0.7, "Banarasi Thela Aloo Sabzi": 1.7, "Beetroot Sesame Salad": 3.5, "Black Eyed Pea Salad": 1.9, "Boondi Laddu": 2.4, "Burani Raita": 0.4, "Chapati": 7.7, "Chicken Curry": 1.2, "Chicken Vindaloo": 1.1, "Cholar Dal": 3.7, "Chole Masala": 3.9, "Chu Chu Baingan Masala": 3.1, "Churma Laddu": 2.6, "Coconut Laddo": 2.6, "Corn Salad": 2.1, "Creamy Coleslaw Salad": 2.1, "Cucumber Raita": 0.3, "Curd": 0.0, "Dahi Bhalla": 2.4, "Dal Kachori": 2.3, "Dal Makhani": 3.9, "Dal Tadka": 1.9, "Death By Chocolate": 1.0, "Gajar Methi Shalgum Ki Sabji": 4.6, "Green Salad": 1.8, "Gulab Jamun": 0.0, "Gunjiya": 2.4, "Handi Paneer": 0.8, "Homestyle Macaroni": 1.5, "Ice Cream": 0.0, "Jalebi": 0.6, "Jeera Chapati": 7.7, "Jeera Rice": 1.0, "Kadambo Poriyal": 3.6, "Kaddu Masala": 1.2, "Kadhai Chicken": 1.2, "Karela Do Pyaza": 3.9, "Masoor Dal Tadka": 2.2, "Mediterranean Salad": 2.0, "Methi Mooli Ki Bhurji": 2.1, "Mexican Corn Salad": 2.0, "Mint Raita": 0.7, "Murgh Khada Masala": 1.2, "Murgh Makhanwala": 1.2, "Palak Paneer": 2.1, "Palak Poori": 6.1, "Paneer Butter Masala": 0.8, "Paneer Kolhapuri": 0.8, "Paneer Lababdar": 0.8, "Paruppu": 3.5, "Penne Pasta In Pink Sauce": 1.5, "Plain Curd": 0.0, "Ragda Pattice/Saunth/Mint Chutney": 2.5, "Rawa Ladoo": 3.1, "Red Masoor Dal Tadka": 2.2, "Sem Aloo": 5.7, "Sindhi Kadhi": 1.9, "Soya Matar Curry": 3.9, "Steam Rice": 0.4, "Steamed Rice": 0.4, "Stir Fry Arbi": 4.3, "Tadka Dahi": 0.8, "Urad Dhuli Dal Tadka": 2.6, "Veg Jalfrezi": 2.4, "Veg Kofta Curry": 2.3, "Vegetable Pulao": 1.3}, "dinner": {"Achari Baingan": 3.2, "Ajwaini Chapati": 7.1, "Assorted Pastry": 0.7, "Atte Ka Halwa": 2.0, "Balushahi": 0.1, "Beans Fogath": 2.9, "Black Masoor Dal Tadka": 2.2, "Carrot Kosambari": 4.3, "Chapati": 7.7, "Coriander Rice": 0.9, "Dal Double Tadka": 2.0, "Dal Maharani": 3.7, "Dal Methi": 0.6, "Dal Nagori": 1.2, "Dal Panchmel": 2.3, "Dhaba Dal": 2.0, "Dum Aloo Kashmiri": 1.6, "Elaichi Malpua": 0.9, "Green Moong Dal Tadka": 3.7, "Green Salad": 1.8, "Gulab Jamun": 0.0, "Ice Cream": 0.0, "Jeera Rice": 1.0, "Karela Masala": 3.4, "Kimchi Salad": 2.9, "Lauki Mussallam": 2.8, "Lauki Tamatar ki Sabzi": 2.0, "Lehsuni Palak Corn": 2.3, "Mac And Cheese": 1.5, "Mangori Ki Sabji": 1.2, "Matar Patta Gobhi ki Sabji": 2.5, "Matar Pulao": 1.7, "Matki Sprout Salad": 1.4, "Millet & Bean Salad": 7.1, "Moong Dal Halwa": 1.5, "Mushroom Matar": 2.5, "Onion Pulao": 2.0, "Panzanella Salad": 3.5, "Phirni": 0.7, "Pickled Vegetable Salad": 0.8, "Pumpkin Salad With Herb Chilli Dressing": 3.0, "Pyaaz ka Pulao": 2.0, "Rai Wali Arbi": 4.1, "Raw Banana Kofta Curry": 1.1, "Raw Papaya & Black Chana Tarkari": 2.6, "Raw Papaya Salad": 2.6, "Roasted Beetroot & Orange Salad": 1.1, "Roasted Egg Curry": 1.0, "Sago Kheer": 0.4, "Sambhar": 2.5, "Sev Tamatar Nu Saak": 2.1, "Shahi Tukda": 1.0, "Soya Matar": 3.9, "Steam Rice": 0.4, "Suran Kalwadi": 4.1, "Tabbouleh Salad": 4.5, "Tadka Nariyali Tindli": 3.3, "Urad Dhuli Dal Tadka": 2.6, "Veg Diwani Handi": 2.1}};
+// ═══════════════════════════════════════════════════════════════
+//  POLL — persistent shared votes via JSONBin.io
+//  Setup:
+//    1. Go to https://jsonbin.io and create a free account
+//    2. Create a new bin with content: {"yes":0,"no":0,"partial":0}
+//    3. Paste your Bin ID and Master Key below
+// ═══════════════════════════════════════════════════════════════
+const JSONBIN_ID  = 'YOUR_BIN_ID_HERE';   // e.g. 64f2a1c5266cfc3fde8b1234
+const JSONBIN_KEY = 'YOUR_API_KEY_HERE';  // e.g. $2a$10$abc...
+const BIN_URL     = 'https://api.jsonbin.io/v3/b/' + JSONBIN_ID;
 
-function show(id){
-  document.querySelectorAll('.page').forEach(function(p){
-    p.classList.remove('active');
-    p.style.display='none';
+let pollVotes = {yes:0, no:0, partial:0};
+let hasVoted  = localStorage.getItem('gutmodel_voted') === 'true';
+
+async function fetchVotes() {
+  const loadingEl = document.getElementById('poll-loading');
+  loadingEl.style.display = 'block';
+  try {
+    const res  = await fetch(BIN_URL + '/latest', {
+      headers: {'X-Master-Key': JSONBIN_KEY}
+    });
+    if (!res.ok) throw new Error('fetch failed');
+    const data = await res.json();
+    pollVotes  = data.record;
+    loadingEl.style.display = 'none';
+    if (hasVoted) {
+      document.querySelectorAll('.poll-opt').forEach(b => b.disabled = true);
+      updatePollDisplay();
+    } else {
+      loadingEl.style.display = 'none';
+    }
+  } catch(e) {
+    loadingEl.textContent = 'Could not load votes — check your JSONBin credentials.';
+    console.error('Poll fetch error:', e);
+  }
+}
+
+async function vote(choice) {
+  if (hasVoted) return;
+  hasVoted = true;
+  localStorage.setItem('gutmodel_voted', 'true');
+  pollVotes[choice]++;
+
+  document.querySelectorAll('.poll-opt').forEach(b => {
+    b.disabled = true;
+    if (b.getAttribute('onclick') === "vote('" + choice + "')") b.classList.add('voted');
   });
-  document.querySelectorAll('.nav-links a').forEach(function(a){ a.classList.remove('active'); });
-  var target=document.getElementById(id);
-  if(!target){ console.error('Page not found: '+id); return; }
+
+  updatePollDisplay();
+
+  try {
+    await fetch(BIN_URL, {
+      method:  'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+        'X-Master-Key': JSONBIN_KEY
+      },
+      body: JSON.stringify(pollVotes)
+    });
+  } catch(e) {
+    console.error('Poll save error:', e);
+  }
+}
+
+function updatePollDisplay() {
+  const total = Object.values(pollVotes).reduce((a,b) => a+b, 0);
+  document.getElementById('poll-loading').style.display = 'none';
+  document.getElementById('poll-bars').style.display = 'block';
+  ['yes','no','partial'].forEach(k => {
+    const pct = total > 0 ? Math.round(pollVotes[k] / total * 100) : 0;
+    document.getElementById('bar-' + k).style.width  = pct + '%';
+    document.getElementById('pct-' + k).textContent  = pct + '%';
+  });
+  document.getElementById('poll-total-note').textContent =
+    total + ' vote' + (total === 1 ? '' : 's') + ' total across all visitors.';
+}
+
+// ═══════════════════════════════════════════════════════════════
+//  PAGE NAVIGATION
+// ═══════════════════════════════════════════════════════════════
+function show(id) {
+  document.querySelectorAll('.page').forEach(function(p) {
+    p.classList.remove('active');
+    p.style.display = 'none';
+  });
+  document.querySelectorAll('.nav-links a').forEach(function(a) { a.classList.remove('active'); });
+  var target = document.getElementById(id);
+  if (!target) { console.error('Page not found: ' + id); return; }
   target.classList.add('active');
-  target.style.display='block';
-  var navEl=document.getElementById('nav-'+id);
-  if(navEl) navEl.classList.add('active');
-  window.scrollTo(0,0);
-  target.querySelectorAll('[data-obs]').forEach(function(el){ el.classList.add('vis'); });
-  if(window.MathJax && window.MathJax.typesetPromise){
-    MathJax.typesetPromise([target]).catch(function(err){ console.log(err); });
+  target.style.display = 'block';
+  var navEl = document.getElementById('nav-' + id);
+  if (navEl) navEl.classList.add('active');
+  window.scrollTo(0, 0);
+  target.querySelectorAll('[data-obs]').forEach(function(el) { el.classList.add('vis'); });
+  if (window.MathJax && window.MathJax.typesetPromise) {
+    MathJax.typesetPromise([target]).catch(function(err) { console.log(err); });
   }
+  // Load poll votes whenever results page is shown
+  if (id === 'results') fetchVotes();
 }
 
-function gotoRef(n){
+function gotoRef(n) {
   show('references');
-  setTimeout(()=>{
-    const el=document.getElementById('ref'+n);
-    if(!el)return;
-    el.scrollIntoView({behavior:'smooth',block:'center'});
+  setTimeout(() => {
+    const el = document.getElementById('ref' + n);
+    if (!el) return;
+    el.scrollIntoView({behavior:'smooth', block:'center'});
     el.classList.add('hl');
-    setTimeout(()=>el.classList.remove('hl'),2200);
-  },80);
+    setTimeout(() => el.classList.remove('hl'), 2200);
+  }, 80);
 }
 
-window.addEventListener('load',function(){
-  if(window.MathJax && window.MathJax.typesetPromise){
-    MathJax.typesetPromise().catch(err=>console.log('MathJax:',err));
+window.addEventListener('load', function() {
+  if (window.MathJax && window.MathJax.typesetPromise) {
+    MathJax.typesetPromise().catch(err => console.log('MathJax:', err));
   }
+  // If results page is active on load, fetch votes immediately
+  if (document.getElementById('results').classList.contains('active')) fetchVotes();
 });
 
-const obs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('vis');});},{threshold:0.1});
-document.querySelectorAll('[data-obs]').forEach(el=>obs.observe(el));
+const obs = new IntersectionObserver(es => {
+  es.forEach(e => { if (e.isIntersecting) e.target.classList.add('vis'); });
+}, {threshold:0.1});
+document.querySelectorAll('[data-obs]').forEach(el => obs.observe(el));
 
-function loadIntroImg(n, url) {
-  if (!url) return;
-  const img = document.getElementById('intro-img' + n);
-  const ph = document.getElementById('intro-img' + n + '-placeholder');
-  img.src = url;
-  img.onload = function() {
-    img.style.display = 'block';
-    ph.style.display = 'none';
-  };
-}
+// ═══════════════════════════════════════════════════════════════
+//  MENU DATA + SIMULATE
+// ═══════════════════════════════════════════════════════════════
+const MENU_DATA={"breakfast":{"Akuri":1.1,"Banana Porridge":0.9,"Boiled Egg":0.0,"Boiled Eggs":0.0,"Brown Bread & White Bread":2.3,"Chocos":5.0,"Cinnamon Wheat Porridge":0.3,"Corn Flakes":4.5,"Cut Guava":5.4,"Dal Paratha":5.2,"Daliya Porridge with Jaggery":1.9,"Egg Bhurji":0.0,"Fruit Loops":5.0,"Herb Scrambled Egg":0.0,"Honeydew":0.8,"Idli":2.6,"Indori Poha":1.1,"Karwari Poha":1.1,"Keerai Vada":4.6,"Kulcha":1.6,"Masala Omellete":0.9,"Medu Vada":4.8,"Methi Thepla":5.9,"Millet Porridge":0.7,"Mix Cut Fruit":2.5,"Mix Fruit":2.5,"Mix Fruit Porridge":1.9,"Mix Veg Paratha":5.6,"Muesli":7.5,"Oats & Cinnamon Porridge":1.6,"Orange":1.1,"Papaya":2.6,"Peanut Butter Porridge":1.2,"Pyaaz Methi Paratha":5.7,"Ragi Porridge":0.7,"Ragi Uttapam":3.9,"Rawa Upma":1.1,"Sago Khichidi":1.5,"Sago Porridge":0.2,"Sambhar":2.5,"Saute Veg Idli":2.6,"Star & Moon":4.5,"Tomato Cucumber Sandwich":1.8,"Tooti Frooti Porridge":1.6,"Vegetable Besan Cheela":3.2,"Vegetable Oats":2.6,"Vegetable Podi Uttapam":1.7,"Vegetable Upma":1.1,"Vermicelli Upma":1.1,"Wheat Flakes":10.0,"Whole Banana":1.9,"Whole Fruit Banana":1.9},"lunch":{"Adraki Aloo Gobhi":2.2,"Ajwaini Chapati":7.7,"Assorted Pastry":0.7,"Banarasi Thela Aloo Sabzi":1.7,"Beetroot Sesame Salad":3.5,"Black Eyed Pea Salad":1.9,"Boondi Laddu":2.4,"Burani Raita":0.4,"Chapati":7.7,"Chicken Curry":1.2,"Chicken Vindaloo":1.1,"Cholar Dal":3.7,"Chole Masala":3.9,"Chu Chu Baingan Masala":3.1,"Churma Laddu":2.6,"Coconut Laddo":2.6,"Corn Salad":2.1,"Creamy Coleslaw Salad":2.1,"Cucumber Raita":0.3,"Curd":0.0,"Dahi Bhalla":2.4,"Dal Kachori":2.3,"Dal Makhani":3.9,"Dal Tadka":1.9,"Death By Chocolate":1.0,"Gajar Methi Shalgum Ki Sabji":4.6,"Green Salad":1.8,"Gulab Jamun":0.0,"Gunjiya":2.4,"Handi Paneer":0.8,"Homestyle Macaroni":1.5,"Ice Cream":0.0,"Jalebi":0.6,"Jeera Chapati":7.7,"Jeera Rice":1.0,"Kadambo Poriyal":3.6,"Kaddu Masala":1.2,"Kadhai Chicken":1.2,"Karela Do Pyaza":3.9,"Masoor Dal Tadka":2.2,"Mediterranean Salad":2.0,"Methi Mooli Ki Bhurji":2.1,"Mexican Corn Salad":2.0,"Mint Raita":0.7,"Murgh Khada Masala":1.2,"Murgh Makhanwala":1.2,"Palak Paneer":2.1,"Palak Poori":6.1,"Paneer Butter Masala":0.8,"Paneer Kolhapuri":0.8,"Paneer Lababdar":0.8,"Paruppu":3.5,"Penne Pasta In Pink Sauce":1.5,"Plain Curd":0.0,"Ragda Pattice/Saunth/Mint Chutney":2.5,"Rawa Ladoo":3.1,"Red Masoor Dal Tadka":2.2,"Sem Aloo":5.7,"Sindhi Kadhi":1.9,"Soya Matar Curry":3.9,"Steam Rice":0.4,"Steamed Rice":0.4,"Stir Fry Arbi":4.3,"Tadka Dahi":0.8,"Urad Dhuli Dal Tadka":2.6,"Veg Jalfrezi":2.4,"Veg Kofta Curry":2.3,"Vegetable Pulao":1.3},"dinner":{"Achari Baingan":3.2,"Ajwaini Chapati":7.1,"Assorted Pastry":0.7,"Atte Ka Halwa":2.0,"Balushahi":0.1,"Beans Fogath":2.9,"Black Masoor Dal Tadka":2.2,"Carrot Kosambari":4.3,"Chapati":7.7,"Coriander Rice":0.9,"Dal Double Tadka":2.0,"Dal Maharani":3.7,"Dal Methi":0.6,"Dal Nagori":1.2,"Dal Panchmel":2.3,"Dhaba Dal":2.0,"Dum Aloo Kashmiri":1.6,"Elaichi Malpua":0.9,"Green Moong Dal Tadka":3.7,"Green Salad":1.8,"Gulab Jamun":0.0,"Ice Cream":0.0,"Jeera Rice":1.0,"Karela Masala":3.4,"Kimchi Salad":2.9,"Lauki Mussallam":2.8,"Lauki Tamatar ki Sabzi":2.0,"Lehsuni Palak Corn":2.3,"Mac And Cheese":1.5,"Mangori Ki Sabji":1.2,"Matar Patta Gobhi ki Sabzi":2.5,"Matar Pulao":1.7,"Matki Sprout Salad":1.4,"Millet & Bean Salad":7.1,"Moong Dal Halwa":1.5,"Mushroom Matar":2.5,"Onion Pulao":2.0,"Panzanella Salad":3.5,"Phirni":0.7,"Pickled Vegetable Salad":0.8,"Pumpkin Salad With Herb Chilli Dressing":3.0,"Pyaaz ka Pulao":2.0,"Rai Wali Arbi":4.1,"Raw Banana Kofta Curry":1.1,"Raw Papaya & Black Chana Tarkari":2.6,"Raw Papaya Salad":2.6,"Roasted Beetroot & Orange Salad":1.1,"Roasted Egg Curry":1.0,"Sago Kheer":0.4,"Sambhar":2.5,"Sev Tamatar Nu Saak":2.1,"Shahi Tukda":1.0,"Soya Matar":3.9,"Steam Rice":0.4,"Suran Kalwadi":4.1,"Tabbouleh Salad":4.5,"Tadka Nariyali Tindli":3.3,"Urad Dhuli Dal Tadka":2.6,"Veg Diwani Handi":2.1}};
 
-const sel_items={breakfast:[],lunch:[],dinner:[]};
-function populateDDs(){
-  ['breakfast','lunch','dinner'].forEach(slot=>{
-    const el=document.getElementById('sel-'+slot);
-    Object.entries(MENU_DATA[slot]).forEach(([name,fibre])=>{
-      const o=document.createElement('option');
-      o.value=fibre;o.textContent=name+' ('+fibre+'g)';
-      o.dataset.name=name;el.appendChild(o);
+function populateDDs() {
+  ['breakfast','lunch','dinner'].forEach(slot => {
+    const el = document.getElementById('sel-' + slot);
+    Object.entries(MENU_DATA[slot]).forEach(([name, fibre]) => {
+      const o = document.createElement('option');
+      o.value = fibre; o.textContent = name + ' (' + fibre + 'g)';
+      o.dataset.name = name; el.appendChild(o);
     });
   });
 }
 populateDDs();
 
-function updateBadge(slot){
-  const sel=document.getElementById('sel-'+slot);
-  document.getElementById('bdg-'+slot).textContent=(parseFloat(sel.value)||0).toFixed(1)+' g fibre';
+const sel_items = {breakfast:[], lunch:[], dinner:[]};
+
+function updateBadge(slot) {
+  const sel = document.getElementById('sel-' + slot);
+  document.getElementById('bdg-' + slot).textContent = (parseFloat(sel.value)||0).toFixed(1) + ' g fibre';
 }
-function addItem(slot){
-  const sel=document.getElementById('sel-'+slot);
-  if(sel.selectedIndex<=0)return;
-  const opt=sel.options[sel.selectedIndex];
-  const name=opt.dataset.name||opt.text.split(' (')[0];
-  const fibre=parseFloat(opt.value)||0;
-  sel_items[slot].push({name,fibre});
-  renderItems(slot);updateTotals();
+
+function addItem(slot) {
+  const sel = document.getElementById('sel-' + slot);
+  if (sel.selectedIndex <= 0) return;
+  const opt = sel.options[sel.selectedIndex];
+  const name = opt.dataset.name || opt.text.split(' (')[0];
+  const fibre = parseFloat(opt.value) || 0;
+  sel_items[slot].push({name, fibre});
+  renderItems(slot); updateTotals();
 }
-function removeItem(slot,i){sel_items[slot].splice(i,1);renderItems(slot);updateTotals();}
-function renderItems(slot){
-  const c=document.getElementById('items-'+slot);c.innerHTML='';
-  sel_items[slot].forEach((item,i)=>{
-    const t=document.createElement('div');t.className='sel-tag';
-    t.innerHTML=item.name+' <span style="font-size:9.5px;color:var(--ink3)">('+item.fibre+'g)</span>&nbsp;<span class="rm" onclick="removeItem(\''+slot+'\','+i+')">&times;</span>';
+
+function removeItem(slot, i) { sel_items[slot].splice(i, 1); renderItems(slot); updateTotals(); }
+
+function renderItems(slot) {
+  const c = document.getElementById('items-' + slot); c.innerHTML = '';
+  sel_items[slot].forEach((item, i) => {
+    const t = document.createElement('div'); t.className = 'sel-tag';
+    t.innerHTML = item.name + ' <span style="font-size:9.5px;color:var(--ink3)">(' + item.fibre + 'g)</span>&nbsp;<span class="rm" onclick="removeItem(\'' + slot + '\',' + i + ')">&times;</span>';
     c.appendChild(t);
   });
 }
-function updateTotals(){
-  const total=['breakfast','lunch','dinner'].reduce((s,slot)=>s+sel_items[slot].reduce((a,b)=>a+b.fibre,0),0);
-  document.getElementById('fs-total').textContent=total.toFixed(1);
-  const mM=total*0.15/0.504/0.377;
-  document.getElementById('fs-inulin').textContent=mM.toFixed(2);
+
+function updateTotals() {
+  const total = ['breakfast','lunch','dinner'].reduce((s, slot) => s + sel_items[slot].reduce((a,b) => a + b.fibre, 0), 0);
+  document.getElementById('fs-total').textContent = total.toFixed(1);
+  const mM = total * 0.15 / 0.504 / 0.377;
+  document.getElementById('fs-inulin').textContent = mM.toFixed(2);
 }
 
-const MEAL_TIMES=[8,13,20];
-function getMeal(slot){return sel_items[slot].reduce((a,b)=>a+b.fibre,0);}
+const MEAL_TIMES = [8, 13, 20];
 
-function runODE(){
-  const lp=parseFloat(document.getElementById('sl-lp').value);
-  const lc=parseFloat(document.getElementById('sl-lc').value);
-  const Kp=parseFloat(document.getElementById('sl-kp').value);
-  const Kc=parseFloat(document.getElementById('sl-kc').value);
-  const ec=parseFloat(document.getElementById('sl-ec').value);
-  const D=parseFloat(document.getElementById('sl-D').value);
-  const Yp=Math.pow(10, parseFloat(document.getElementById('sl-Yp').value));
-  const Yc=Math.pow(10, parseFloat(document.getElementById('sl-Yc').value));
+function getMeal(slot) { return sel_items[slot].reduce((a,b) => a + b.fibre, 0); }
+
+function runODE() {
+  const lp  = parseFloat(document.getElementById('sl-lp').value);
+  const lc  = parseFloat(document.getElementById('sl-lc').value);
+  const Kp  = parseFloat(document.getElementById('sl-kp').value);
+  const Kc  = parseFloat(document.getElementById('sl-kc').value);
+  const ec  = parseFloat(document.getElementById('sl-ec').value);
+  const D   = parseFloat(document.getElementById('sl-D').value);
+  const Yp  = Math.pow(10, parseFloat(document.getElementById('sl-Yp').value));
+  const Yc  = Math.pow(10, parseFloat(document.getElementById('sl-Yc').value));
   const S=5.9e9, Sp=7.85, Sc=4.25, SIG=0.5, INFRAC=0.15, MW=0.504, VG=0.377, EI=0.95, EFOS=0.125;
   const T=24, dt=0.02, steps=Math.floor(T/dt);
-  const mF=[getMeal('breakfast'),getMeal('lunch'),getMeal('dinner')];
-  const mealPeaks=[8+1.5, 13+1.5, 20+1.5];
-  function Mfn(t){
-    let Q=0;
-    mealPeaks.forEach((peak,i)=>{
-      const d=t-peak;
-      if(Math.abs(d)<3*SIG){
-        const gauss=Math.exp(-0.5*(d/SIG)**2)/(SIG*Math.sqrt(2*Math.PI));
-        Q+=(mF[i]*INFRAC/MW/VG)*gauss;
+  const mF = [getMeal('breakfast'), getMeal('lunch'), getMeal('dinner')];
+  const mealPeaks = [8+1.5, 13+1.5, 20+1.5];
+
+  function Mfn(t) {
+    let Q = 0;
+    mealPeaks.forEach((peak, i) => {
+      const d = t - peak;
+      if (Math.abs(d) < 3*SIG) {
+        const gauss = Math.exp(-0.5*(d/SIG)**2) / (SIG*Math.sqrt(2*Math.PI));
+        Q += (mF[i]*INFRAC/MW/VG) * gauss;
       }
     });
     return Q;
   }
-  function monod(n,K){return Math.max(0,n)/(K+Math.max(0,n)+1e-12);}
-  function crowd(Bp,Bc){return Math.max(0,1-(Bp*Sp+Bc*Sc)/S);}
-  function deriv([Bp,Bc,NI,NF],t){
+
+  function monod(n, K) { return Math.max(0,n) / (K + Math.max(0,n) + 1e-12); }
+  function crowd(Bp, Bc) { return Math.max(0, 1 - (Bp*Sp + Bc*Sc)/S); }
+
+  function deriv([Bp,Bc,NI,NF], t) {
     const Q=Mfn(t), m1=monod(NI,Kp), m2=monod(NF,Kc), cr=crowd(Bp,Bc);
-    const dBp=lp*m1*Bp*cr - D*Bp;
-    const dBc=lc*m2*Bc*cr - D*Bc;
-    const dNI=Q - (lp/Yp)*m1*Bp - D*NI;
-    const dNF=ec*EI*(lp/Yp)*m1*Bp - (lc/Yc)*EFOS*m2*Bc - D*NF;
-    return[dBp,dBc,dNI,dNF];
+    return [
+      lp*m1*Bp*cr - D*Bp,
+      lc*m2*Bc*cr - D*Bc,
+      Q - (lp/Yp)*m1*Bp - D*NI,
+      ec*EI*(lp/Yp)*m1*Bp - (lc/Yc)*EFOS*m2*Bc - D*NF
+    ];
   }
-  function rk4(s,t,h){
+
+  function rk4(s, t, h) {
     const k1=deriv(s,t);
-    const s2=s.map((v,i)=>v+k1[i]*h/2);const k2=deriv(s2,t+h/2);
-    const s3=s.map((v,i)=>v+k2[i]*h/2);const k3=deriv(s3,t+h/2);
-    const s4=s.map((v,i)=>v+k3[i]*h);  const k4=deriv(s4,t+h);
-    return s.map((v,i)=>Math.max(1e-12,v+(k1[i]+2*k2[i]+2*k3[i]+k4[i])*h/6));
+    const s2=s.map((v,i)=>v+k1[i]*h/2); const k2=deriv(s2,t+h/2);
+    const s3=s.map((v,i)=>v+k2[i]*h/2); const k3=deriv(s3,t+h/2);
+    const s4=s.map((v,i)=>v+k3[i]*h);   const k4=deriv(s4,t+h);
+    return s.map((v,i) => Math.max(1e-12, v + (k1[i]+2*k2[i]+2*k3[i]+k4[i])*h/6));
   }
-  let state=[0.25e6, 0.12e6, 0.451, 0.434];
+
+  let state = [0.25e6, 0.12e6, 0.451, 0.434];
   const Bp=[],Bc=[],NI=[],NF=[],tArr=[];
-  for(let i=0;i<=steps;i++){
-    const t=i*dt;
-    tArr.push(t);Bp.push(state[0]);Bc.push(state[1]);NI.push(state[2]);NF.push(state[3]);
-    state=rk4(state,t,dt);
+  for (let i=0; i<=steps; i++) {
+    const t = i*dt;
+    tArr.push(t); Bp.push(state[0]); Bc.push(state[1]); NI.push(state[2]); NF.push(state[3]);
+    state = rk4(state, t, dt);
   }
-  const cv=document.getElementById('simCanvas'),ctx=cv.getContext('2d');
-  const W=cv.width,H=cv.height;
+
+  const cv=document.getElementById('simCanvas'), ctx=cv.getContext('2d');
+  const W=cv.width, H=cv.height;
   const pad={l:68,r:22,t:28,b:44};
-  const mid=H/2,bH=mid-pad.t-20,nH=mid-20-pad.b,pW=W-pad.l-pad.r;
+  const mid=H/2, bH=mid-pad.t-20, nH=mid-20-pad.b, pW=W-pad.l-pad.r;
   const N=Bp.length;
   const maxB=Math.max(...Bp,...Bc,1), maxN=Math.max(...NI,...NF,0.01);
-  let frame=0;const tot=75;
+  let frame=0; const tot=75;
   const xTicks=[0,4,8,13,16,20,24];
   const xLabels={'0':'00:00','4':'04:00','8':'08:00','13':'13:00','16':'16:00','20':'20:00','24':'24:00'};
-  function draw(){
+
+  function draw() {
     ctx.clearRect(0,0,W,H);
-    ctx.fillStyle='#f0ece3';ctx.fillRect(0,0,W,H);
-    ctx.font='9px JetBrains Mono';ctx.fillStyle='#8a8a84';ctx.textAlign='left';
-    ctx.fillText('BACTERIAL CONCENTRATION (CFU/ml)',pad.l,pad.t-6);
-    ctx.fillText('NUTRIENT CONCENTRATIONS (mM)',pad.l,mid+14);
-    ctx.strokeStyle='rgba(45,90,61,0.08)';ctx.lineWidth=0.5;
-    for(let g=0;g<=4;g++){
-      const y1=pad.t+bH*(1-g/4);ctx.beginPath();ctx.moveTo(pad.l,y1);ctx.lineTo(pad.l+pW,y1);ctx.stroke();
-      const y2=mid+20+nH*(1-g/4);ctx.beginPath();ctx.moveTo(pad.l,y2);ctx.lineTo(pad.l+pW,y2);ctx.stroke();
+    ctx.fillStyle='#f0ece3'; ctx.fillRect(0,0,W,H);
+    ctx.font='9px JetBrains Mono'; ctx.fillStyle='#8a8a84'; ctx.textAlign='left';
+    ctx.fillText('BACTERIAL CONCENTRATION (CFU/ml)', pad.l, pad.t-6);
+    ctx.fillText('NUTRIENT CONCENTRATIONS (mM)', pad.l, mid+14);
+    ctx.strokeStyle='rgba(45,90,61,0.08)'; ctx.lineWidth=0.5;
+    for (let g=0; g<=4; g++) {
+      const y1=pad.t+bH*(1-g/4); ctx.beginPath(); ctx.moveTo(pad.l,y1); ctx.lineTo(pad.l+pW,y1); ctx.stroke();
+      const y2=mid+20+nH*(1-g/4); ctx.beginPath(); ctx.moveTo(pad.l,y2); ctx.lineTo(pad.l+pW,y2); ctx.stroke();
     }
-    ctx.strokeStyle='rgba(45,90,61,0.2)';ctx.lineWidth=0.5;
-    ctx.beginPath();ctx.moveTo(pad.l,pad.t);ctx.lineTo(pad.l,pad.t+bH);ctx.lineTo(pad.l+pW,pad.t+bH);ctx.stroke();
-    ctx.beginPath();ctx.moveTo(pad.l,mid+20);ctx.lineTo(pad.l,mid+20+nH);ctx.lineTo(pad.l+pW,mid+20+nH);ctx.stroke();
-    ctx.fillStyle='#8a8a84';ctx.font='8.5px JetBrains Mono';ctx.textAlign='center';
-    xTicks.forEach(h=>{
-      const x=pad.l+(h/T)*pW;
-      ctx.fillText(xLabels[String(h)],x,pad.t+bH+14);
-      ctx.fillText(xLabels[String(h)],x,mid+20+nH+14);
+    ctx.strokeStyle='rgba(45,90,61,0.2)'; ctx.lineWidth=0.5;
+    ctx.beginPath(); ctx.moveTo(pad.l,pad.t); ctx.lineTo(pad.l,pad.t+bH); ctx.lineTo(pad.l+pW,pad.t+bH); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(pad.l,mid+20); ctx.lineTo(pad.l,mid+20+nH); ctx.lineTo(pad.l+pW,mid+20+nH); ctx.stroke();
+    ctx.fillStyle='#8a8a84'; ctx.font='8.5px JetBrains Mono'; ctx.textAlign='center';
+    xTicks.forEach(h => {
+      const x = pad.l+(h/T)*pW;
+      ctx.fillText(xLabels[String(h)], x, pad.t+bH+14);
+      ctx.fillText(xLabels[String(h)], x, mid+20+nH+14);
     });
-    ctx.strokeStyle='rgba(45,90,61,0.12)';ctx.lineWidth=0.8;
-    MEAL_TIMES.forEach(mh=>{
-      const x=pad.l+(mh/T)*pW;
-      ctx.beginPath();ctx.moveTo(x,pad.t);ctx.lineTo(x,pad.t+bH);ctx.stroke();
-      ctx.beginPath();ctx.moveTo(x,mid+20);ctx.lineTo(x,mid+20+nH);ctx.stroke();
+    ctx.strokeStyle='rgba(45,90,61,0.12)'; ctx.lineWidth=0.8;
+    MEAL_TIMES.forEach(mh => {
+      const x = pad.l+(mh/T)*pW;
+      ctx.beginPath(); ctx.moveTo(x,pad.t); ctx.lineTo(x,pad.t+bH); ctx.stroke();
+      ctx.beginPath(); ctx.moveTo(x,mid+20); ctx.lineTo(x,mid+20+nH); ctx.stroke();
     });
-    ctx.fillStyle='rgba(45,90,61,0.5)';ctx.font='8px JetBrains Mono';ctx.textAlign='center';
-    [{h:8,l:'B/fast'},{h:13,l:'Lunch'},{h:20,l:'Dinner'}].forEach(({h,l})=>{
-      ctx.fillText(l,pad.l+(h/T)*pW,pad.t-1);
+    ctx.fillStyle='rgba(45,90,61,0.5)'; ctx.font='8px JetBrains Mono'; ctx.textAlign='center';
+    [{h:8,l:'B/fast'},{h:13,l:'Lunch'},{h:20,l:'Dinner'}].forEach(({h,l}) => {
+      ctx.fillText(l, pad.l+(h/T)*pW, pad.t-1);
     });
-    ctx.textAlign='right';ctx.fillStyle='#8a8a84';ctx.font='8.5px JetBrains Mono';
-    [0,.25,.5,.75,1].forEach(f=>{
-      ctx.fillText((maxB*f).toExponential(0),pad.l-5,pad.t+bH*(1-f)+3);
-      ctx.fillText((maxN*f).toFixed(3),pad.l-5,mid+20+nH*(1-f)+3);
+    ctx.textAlign='right'; ctx.fillStyle='#8a8a84'; ctx.font='8.5px JetBrains Mono';
+    [0,.25,.5,.75,1].forEach(f => {
+      ctx.fillText((maxB*f).toExponential(0), pad.l-5, pad.t+bH*(1-f)+3);
+      ctx.fillText((maxN*f).toFixed(3), pad.l-5, mid+20+nH*(1-f)+3);
     });
-    const prog=Math.min(frame/tot,1);const pts=Math.max(2,Math.floor(prog*N));
-    function line(arr,maxV,yBase,hh,color,lw,dash){
-      if(pts<2)return;
-      ctx.strokeStyle=color;ctx.lineWidth=lw;ctx.setLineDash(dash||[]);ctx.beginPath();
-      for(let i=0;i<pts;i++){
-        const x=pad.l+(i/(N-1))*pW,y=yBase+hh*(1-Math.max(0,arr[i])/maxV);
-        i===0?ctx.moveTo(x,y):ctx.lineTo(x,y);
+    const prog=Math.min(frame/tot,1), pts=Math.max(2,Math.floor(prog*N));
+    function line(arr, maxV, yBase, hh, color, lw, dash) {
+      if (pts<2) return;
+      ctx.strokeStyle=color; ctx.lineWidth=lw; ctx.setLineDash(dash||[]); ctx.beginPath();
+      for (let i=0; i<pts; i++) {
+        const x=pad.l+(i/(N-1))*pW, y=yBase+hh*(1-Math.max(0,arr[i])/maxV);
+        i===0 ? ctx.moveTo(x,y) : ctx.lineTo(x,y);
       }
-      ctx.stroke();ctx.setLineDash([]);
+      ctx.stroke(); ctx.setLineDash([]);
     }
-    line(Bc,maxB,pad.t,bH,'#8b6914',1.8);
-    line(Bp,maxB,pad.t,bH,'#2d5a3d',2.2);
-    line(NF,maxN,mid+20,nH,'#5a7a3d',1.5,[4,4]);
-    line(NI,maxN,mid+20,nH,'#3a5a9e',2,[6,3]);
-    ctx.save();ctx.translate(12,pad.t+bH/2);ctx.rotate(-Math.PI/2);
-    ctx.fillStyle='#8a8a84';ctx.font='8.5px JetBrains Mono';ctx.textAlign='center';
-    ctx.fillText('CFU/ml',0,0);ctx.restore();
-    frame++;if(frame<=tot+3)requestAnimationFrame(draw);
+    line(Bc, maxB, pad.t, bH, '#8b6914', 1.8);
+    line(Bp, maxB, pad.t, bH, '#2d5a3d', 2.2);
+    line(NF, maxN, mid+20, nH, '#5a7a3d', 1.5, [4,4]);
+    line(NI, maxN, mid+20, nH, '#3a5a9e', 2,   [6,3]);
+    ctx.save(); ctx.translate(12,pad.t+bH/2); ctx.rotate(-Math.PI/2);
+    ctx.fillStyle='#8a8a84'; ctx.font='8.5px JetBrains Mono'; ctx.textAlign='center';
+    ctx.fillText('CFU/ml',0,0); ctx.restore();
+    frame++; if (frame<=tot+3) requestAnimationFrame(draw);
   }
   requestAnimationFrame(draw);
-  const fBp=Bp[Bp.length-1],fBc=Bc[Bc.length-1];
+
+  const fBp=Bp[Bp.length-1], fBc=Bc[Bc.length-1];
   const ratio=fBp/Math.max(fBc,1);
   const tf=['breakfast','lunch','dinner'].reduce((s,slot)=>s+sel_items[slot].reduce((a,b)=>a+b.fibre,0),0);
-  const peakNI=Math.max(...NI),peakNF=Math.max(...NF);
-  const out=document.getElementById('simOut'),ot=document.getElementById('simOutText');
+  const peakNI=Math.max(...NI), peakNF=Math.max(...NF);
+  const out=document.getElementById('simOut'), ot=document.getElementById('simOutText');
   out.style.display='block';
   ot.textContent='Your day\'s meals provide '+tf.toFixed(1)+'g total fibre. Peak inulin: '+peakNI.toFixed(3)+' mM. Peak FOS: '+peakNF.toFixed(4)+' mM. End-of-day ratio B. theta : B. breve = '+ratio.toFixed(1)+':1. '+(tf>20?'High-fibre day — strong inulin pulses give B. theta a growth advantage. Try raising εc to see if FOS production rescues B. breve.':tf>10?'Moderate-fibre day — B. theta dominates but B. breve may hold a niche if FOS builds up over multiple meals.':'Low-fibre day — inulin pulses are small, FOS barely accumulates, and B. breve is heavily suppressed. Add Chapati, Dal, or Muesli to change this.');
 }
 
-function scrollBTS(dir){
-  const track=document.getElementById('bts-track');
-  const slideW=track.querySelector('.bts-slide').offsetWidth+16;
-  track.scrollBy({left:dir*slideW,behavior:'smooth'});
-}
-
-let pollVotes={yes:0,no:0,partial:0};
-let hasVoted=false;
-function vote(choice){
-  if(hasVoted)return;
-  hasVoted=true;
-  pollVotes[choice]++;
-  document.querySelectorAll('.poll-opt').forEach(b=>{
-    b.disabled=true;
-    if(b.getAttribute('onclick')==='vote(\''+choice+'\')')b.classList.add('voted');
-  });
-  updatePoll();
-}
-function updatePoll(){
-  const total=Object.values(pollVotes).reduce((a,b)=>a+b,0);
-  document.getElementById('poll-bars').style.display='block';
-  ['yes','no','partial'].forEach(k=>{
-    const pct=total>0?Math.round(pollVotes[k]/total*100):0;
-    document.getElementById('bar-'+k).style.width=pct+'%';
-    document.getElementById('pct-'+k).textContent=pct+'%';
-  });
-  document.getElementById('poll-total-note').textContent=total+' vote'+(total===1?'':'s')+' recorded this session.';
+// ═══════════════════════════════════════════════════════════════
+//  BTS CAROUSEL
+// ═══════════════════════════════════════════════════════════════
+function scrollBTS(dir) {
+  const track = document.getElementById('bts-track');
+  const slideW = track.querySelector('.bts-slide').offsetWidth + 16;
+  track.scrollBy({left: dir*slideW, behavior:'smooth'});
 }
 </script>
 </body>
